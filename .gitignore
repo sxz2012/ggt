@@ -1,0 +1,18 @@
+# Source books: copyrighted, not ours to redistribute
+*.pdf
+!chapter1_book/chapter1_book.pdf
+!chapter1_annotated/chapter1_annotated.pdf
+!chapter2_annotated/chapter2_annotated.pdf
+!chapter1_zh/chapter1_zh.pdf
+!slides/ch1_groups_slides.pdf
+
+# Page images extracted from the book
+*/pages/
+
+# LaTeX build artefacts
+*.log
+*.aux
+*.out
+*.toc
+*.synctex.gz
+.DS_Store
