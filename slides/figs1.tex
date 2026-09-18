@@ -1,0 +1,497 @@
+% figure macros extracted from chapter1_annotated.tex
+%                              FIGURES
+% =====================================================================
+\newcommand{\figtriangle}{%
+\begin{tikzpicture}[scale=0.9]
+  \coordinate (A) at (90:1.3); \coordinate (B) at (210:1.3); \coordinate (C) at (330:1.3);
+  \draw[thick,big] (A)--(B)--(C)--cycle;
+  \foreach \ang in {90,210,330} \draw[dashed,gray] (\ang:1.55) -- (\ang+180:1.55);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (0.55,0) arc (0:100:0.55);
+  \node[font=\scriptsize] at (A) [above] {1}; \node[font=\scriptsize] at (B) [below left] {2}; \node[font=\scriptsize] at (C) [below right] {3};
+  \node[font=\scriptsize,text=gray,anchor=west] at (1.7,0.9) {3 reflections (dashed axes)};
+  \node[font=\scriptsize,text=mkc,anchor=west] at (1.7,0.5) {rotations by $0^\circ,120^\circ,240^\circ$};
+  \node[font=\scriptsize,anchor=west] at (1.7,0.0) {$3+3=6$ symmetries $=|S_3|$};
+\end{tikzpicture}}
+
+\newcommand{\figcube}[1]{%
+\begin{tikzpicture}[scale=#1,line join=round]
+  \coordinate (A) at (0,0); \coordinate (B) at (3,0); \coordinate (C) at (3,3); \coordinate (D) at (0,3);
+  \coordinate (E) at (1.3,1.3); \coordinate (F) at (4.3,1.3); \coordinate (G) at (4.3,4.3); \coordinate (H) at (1.3,4.3);
+  \draw[thick] (A)--(B)--(C)--(D)--cycle;
+  \draw[thick] (B)--(F)--(G)--(C); \draw[thick] (D)--(H)--(G);
+  \draw[thick,dashed,gray] (A)--(E)--(F); \draw[thick,dashed,gray] (E)--(H);
+  \draw[very thick,red!80!black] (A)--(G);
+  \draw[very thick,blue!70!black] (B)--(H);
+  \draw[very thick,green!55!black] (C)--(E);
+  \draw[very thick,orange!90!black] (D)--(F);
+  \foreach \p/\l/\pos in {A/A/below left,B/B/below right,C/C/above right,D/D/above left,E/E/left,F/F/right,G/G/above right,H/H/above left}
+    \node[font=\scriptsize,\pos] at (\p) {$\l$};
+  \node[font=\scriptsize,red!80!black] at (2.6,2.9) {$d_1$};
+  \node[font=\scriptsize,blue!70!black] at (1.7,1.55) {$d_2$};
+  \node[font=\scriptsize,green!55!black] at (2.35,2.1) {$d_3$};
+  \node[font=\scriptsize,orange!90!black] at (2.9,1.3) {$d_4$};
+\end{tikzpicture}}
+
+\newcommand{\figpent}{%
+\begin{tikzpicture}[scale=1.0]
+  \foreach \k in {0,...,4} \coordinate (P\k) at ({90+72*\k}:1.3);
+  \draw[thick,big] (P0)--(P1)--(P2)--(P3)--(P4)--cycle;
+  \draw[dashed,gray!70!black] (90:1.7)--(270:1.7);
+  \draw[dashed,gray!70!black] (126:1.7)--(306:1.7);
+  \node[font=\scriptsize] at (90:1.9) {$t$};
+  \node[font=\scriptsize] at (126:1.9) {$s$};
+  \draw[-{Stealth[length=4pt]},mkc,thick] (0.5,0) arc (0:72:0.5);
+  \node[font=\scriptsize,mkc] at (0.95,0.55) {$\tfrac{2\pi}{5}$};
+  \draw[{Stealth[length=3pt]}-{Stealth[length=3pt]},thin] (0.28,0.1) arc (20:56:0.3);
+  \node[font=\tiny,gray] at (-0.35,-0.55) {axes meet at $\pi/5$};
+\end{tikzpicture}}
+
+\newcommand{\figcompose}{%
+\begin{tikzpicture}[node distance=1.6cm,>={Stealth[length=4pt]}]
+  \node (x) {cube};
+  \node (y) [right=of x] {cube};
+  \node (z) [right=of y] {cube};
+  \draw[->,thick] (x) -- node[above,font=\scriptsize] {first $h$} (y);
+  \draw[->,thick] (y) -- node[above,font=\scriptsize] {then $g$} (z);
+  \draw[->,thick,mkc] (x) to[bend right=35] node[below,font=\scriptsize] {$gh=g\circ h$} (z);
+\end{tikzpicture}}
+
+\newcommand{\figbraid}{%
+\begin{tikzpicture}[x=0.55cm,y=0.62cm,line cap=round]
+  \foreach \i in {1,...,6} {\node[font=\scriptsize] at (\i,0.45) {\i}; \node[font=\scriptsize] at (\i,-5.45) {\i};}
+  \draw[thick,red!80!black,rounded corners=5pt] (1,0)--(1,-1)--(1,-2)--(1,-3)--(2,-4)--(2,-5);
+  \draw[thick,blue!70!black,rounded corners=5pt] (2,0)--(2,-1)--(3,-2)--(3,-3)--(3,-4)--(4,-5);
+  \draw[thick,green!55!black,rounded corners=5pt] (3,0)--(4,-1)--(4,-2)--(5,-3)--(5,-4)--(5,-5);
+  \draw[thick,orange!90!black,rounded corners=5pt] (4,0)--(3,-1)--(2,-2)--(2,-3)--(1,-4)--(1,-5);
+  \draw[thick,violet,rounded corners=5pt] (5,0)--(5,-1)--(5,-2)--(4,-3)--(4,-4)--(3,-5);
+  \draw[thick,gray] (6,0)--(6,-5);
+  \foreach \y/\l in {0.5/(3\,4), 1.5/(2\,3), 2.5/(4\,5), 3.5/(1\,2), 4.5/(3\,4)}
+    \node[font=\scriptsize,anchor=west] at (6.6,-\y) {$\l$};
+  \node[font=\scriptsize,anchor=west,gray] at (6.6,0.45) {applied first};
+  \node[font=\scriptsize,anchor=west,gray] at (6.6,-5.45) {applied last};
+\end{tikzpicture}}
+
+\newcommand{\figstack}{%
+\begin{tikzpicture}[x=0.55cm,y=0.75cm]
+  \foreach \i in {1,...,6} {\node[font=\scriptsize] at (\i,0.4) {\i}; \node[font=\scriptsize] at (\i,-4.4) {\i};}
+  \fill[gray!10] (0.5,-0.05) rectangle (6.5,-1.95);
+  \fill[gray!20] (0.5,-2.05) rectangle (6.5,-3.95);
+  % top block: (1 2 4)(3 5): i -> sigma(i)
+  \foreach \a/\b/\c in {1/2/red!80!black, 2/4/blue!70!black, 4/1/orange!90!black, 3/5/green!55!black, 5/3/violet, 6/6/gray}
+    \draw[thick,\c] (\a,0) to[out=-90,in=90] (\b,-2);
+  % bottom block: (2 6)
+  \foreach \a/\b/\c in {2/6/red!80!black, 6/2/gray, 1/1/orange!90!black, 3/3/violet, 4/4/blue!70!black, 5/5/green!55!black}
+    \draw[thick,\c] (\a,-2) to[out=-90,in=90] (\b,-4);
+  \node[font=\scriptsize,anchor=west] at (6.7,-1) {top: $(1\,2\,4)(3\,5)$, done first};
+  \node[font=\scriptsize,anchor=west] at (6.7,-3) {bottom: $(2\,6)$, done second};
+  \node[font=\scriptsize,anchor=west] at (6.7,-4.4) {read off: $1\!\to\!6,\ 6\!\to\!2,\ 2\!\to\!4,\ 4\!\to\!1,\ 3\!\leftrightarrow\!5$};
+\end{tikzpicture}}
+
+\newcommand{\figclock}{%
+\begin{tikzpicture}[scale=0.75]
+  \draw[thick] (0,0) circle (1.3);
+  \foreach \h in {1,...,12} \node[font=\tiny] at ({90-30*\h}:1.05) {\h};
+  \draw[-{Stealth[length=4pt]},very thick,big] (0,0) -- ({90-30*9}:0.8);
+  \draw[-{Stealth[length=4pt]},very thick,mkc] (0,0) -- ({90-30*1}:0.8);
+  \draw[-{Stealth[length=3pt]},mkc,thick] ({90-30*9+6}:1.5) arc ({90-30*9+6}:{90-30*13-6}:1.5);
+  \node[font=\scriptsize,anchor=west] at (1.8,0.6) {$9+4=13\equiv 1 \pmod{12}$};
+  \node[font=\scriptsize,anchor=west] at (1.8,0.1) {``$13$'' is not an element;};
+  \node[font=\scriptsize,anchor=west] at (1.8,-0.35) {subtract $n=12$ to land in $\{0,\dots,11\}$.};
+\end{tikzpicture}}
+
+\newcommand{\figarrowgon}{%
+\begin{tikzpicture}[scale=0.85]
+  \begin{scope}
+    \foreach \k in {0,...,4} \coordinate (P\k) at ({90+72*\k}:1.2);
+    \draw[thick] (P0)--(P1)--(P2)--(P3)--(P4)--cycle;
+    \foreach \k in {0,...,4} {\pgfmathtruncatemacro{\nk}{mod(\k+1,5)}
+      \draw[-{Stealth[length=4pt]},very thick,red!75!black] ($(P\k)!0.38!(P\nk)$)--($(P\k)!0.62!(P\nk)$);}
+    \node[font=\scriptsize] at (0,-1.65) {rotate: arrows still agree};
+  \end{scope}
+  \begin{scope}[xshift=3.6cm]
+    \foreach \k in {0,...,4} \coordinate (Q\k) at ({90-72*\k}:1.2);
+    \draw[thick] (Q0)--(Q1)--(Q2)--(Q3)--(Q4)--cycle;
+    \draw[dashed,gray] (0,1.5)--(0,-1.5);
+    \foreach \k in {0,...,4} {\pgfmathtruncatemacro{\nk}{mod(\k+1,5)}
+      \draw[-{Stealth[length=4pt]},very thick,red!75!black] ($(Q\k)!0.38!(Q\nk)$)--($(Q\k)!0.62!(Q\nk)$);}
+    \node[font=\scriptsize] at (0,-1.65) {reflect: every arrow flips};
+  \end{scope}
+\end{tikzpicture}}
+
+\newcommand{\figline}{%
+\begin{tikzpicture}[scale=0.62]
+  \draw[thick] (-4.4,0)--(4.4,0);
+  \foreach \x in {-4,...,4} \fill[red!75!black] (\x,0) circle (2.2pt);
+  \foreach \x in {-4,...,3} \draw[-{Stealth[length=4pt]},thick,blue!65!black] (\x+0.3,0.28)--(\x+0.7,0.28);
+  \node[font=\tiny] at (0,-0.4) {0}; \node[font=\tiny] at (1,-0.4) {1}; \node[font=\tiny] at (-1,-0.4) {$-1$};
+  \draw[dashed,gray] (2,-0.7)--(2,0.9); \node[font=\tiny,gray] at (2,1.15) {reflect at 2};
+  \draw[dashed,gray] (-2.5,-0.7)--(-2.5,0.9); \node[font=\tiny,gray] at (-2.5,1.15) {reflect at $-2.5$};
+  \draw[-{Stealth[length=4pt]},very thick,mkc] (0,-1.0) -- (3,-1.0); \node[font=\tiny,mkc] at (1.5,-1.35) {translate by $3$};
+\end{tikzpicture}}
+
+\newcommand{\figlattice}{%
+\begin{tikzpicture}[scale=0.75]
+  \foreach \x in {0,...,4} \foreach \y in {0,...,3} \fill[red!75!black] (\x,\y) circle (2pt);
+  \foreach \y in {0,...,3} \foreach \x in {0,...,3} {
+    \draw[blue!65!black,thick] (\x,\y)--(\x+1,\y);
+    \draw[-{Stealth[length=4pt]},blue!65!black,thick] (\x+0.35,\y)--(\x+0.65,\y);}
+  \foreach \x in {0,...,4} \foreach \y in {0,...,2} {
+    \draw[green!50!black,thick] (\x,\y)--(\x,\y+1);
+    \draw[-{Stealth[length=4pt]},green!50!black,thick] (\x,\y+0.35)--(\x,\y+0.65);}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (0,0)--(2,1);
+  \node[font=\scriptsize,mkc,anchor=west] at (2.1,0.85) {$(2,1)$: right 2, up 1};
+  \node[font=\scriptsize,anchor=north west] at (0,-0.25) {blue = horizontal edges, green = vertical edges};
+\end{tikzpicture}}
+
+\newcommand{\figreduce}{%
+\begin{tikzpicture}[node distance=5mm and 3mm,>={Stealth[length=4pt]},every node/.style={font=\scriptsize}]
+  \node (w) {$a\,a\inv\,a\,b\,b\inv\,a$};
+  \node (l) [below left=of w] {$a\,b\,b\inv\,a$};
+  \node (m) [below=of w] {$a\,b\,b\inv\,a$};
+  \node (r) [below right=of w] {$a\,a\inv\,a\,a$};
+  \node (e) [below=of m] {$a\,a$};
+  \draw[->] (w) -- node[left,pos=0.4] {cut $a a\inv$ (1st)} (l);
+  \draw[->] (w) -- node[right,pos=0.6] {cut $a\inv a$} (m);
+  \draw[->] (w) -- node[right,pos=0.4] {cut $b b\inv$} (r);
+  \draw[->] (l) -- (e); \draw[->] (m) -- (e); \draw[->] (r) -- (e);
+\end{tikzpicture}}
+
+\newcommand{\figtree}{%
+\begin{tikzpicture}[scale=0.62]
+  \foreach \d/\o in {0/180,90/270,180/0,270/90} {
+    \draw[thick] (0,0) -- (\d:2);
+    \foreach \e in {0,90,180,270} {
+      \ifnum\e=\o\relax\else
+        \draw[thick] (\d:2) -- ($(\d:2)+(\e:1)$);
+        \pgfmathtruncatemacro{\eo}{mod(\e+180,360)}
+        \foreach \f in {0,90,180,270} {
+          \ifnum\f=\eo\relax\else
+            \draw[thin] ($(\d:2)+(\e:1)$) -- ($(\d:2)+(\e:1)+(\f:0.45)$);
+          \fi }
+      \fi } }
+  \fill (0,0) circle (2.5pt);
+  \node[font=\scriptsize,above] at (1,0) {$a$};
+  \node[font=\scriptsize,left] at (0,1) {$b$};
+  \node[font=\scriptsize,above] at (-1,0) {$a\inv$};
+  \node[font=\scriptsize,left] at (0,-1) {$b\inv$};
+  \node[font=\scriptsize,below left] at (0,0) {$1$};
+  \node[font=\scriptsize,above right] at (2,1) {$ab$};
+  \node[font=\scriptsize,above left] at (-2,1) {$a\inv b$};
+\end{tikzpicture}}
+
+\newcommand{\fighom}{%
+\begin{tikzpicture}[>={Stealth[length=4pt]},every node/.style={font=\scriptsize}]
+  \node (a) at (0,1.2) {$(a,b)\in G\times G$};
+  \node (b) at (3.6,1.2) {$(f(a),f(b))\in H\times H$};
+  \node (c) at (0,0) {$ab\in G$};
+  \node (d) at (3.6,0) {$f(a)f(b)=f(ab)\in H$};
+  \draw[->] (a) -- node[above] {$f$ on each} (b);
+  \draw[->] (a) -- node[left] {multiply in $G$} (c);
+  \draw[->] (b) -- node[right] {multiply in $H$} (d);
+  \draw[->] (c) -- node[below] {$f$} (d);
+\end{tikzpicture}}
+
+\newcommand{\figwrap}{%
+\begin{tikzpicture}[scale=0.5]
+  \draw[thick] (-4.5,0)--(7.5,0);
+  \foreach \x in {-4,...,7} {\pgfmathtruncatemacro{\r}{mod(\x+8,4)}
+    \ifnum\r=0 \fill[red!75!black] (\x,0) circle (3pt);\fi
+    \ifnum\r=1 \fill[blue!65!black] (\x,0) circle (3pt);\fi
+    \ifnum\r=2 \fill[green!50!black] (\x,0) circle (3pt);\fi
+    \ifnum\r=3 \fill[orange!90!black] (\x,0) circle (3pt);\fi
+    \node[font=\tiny] at (\x,-0.45) {\x};}
+  \node[font=\scriptsize] at (1.5,0.75) {$\Z$ coloured by remainder mod 4};
+  \begin{scope}[xshift=10.5cm]
+    \draw[thick] (0,0) circle (1.1);
+    \fill[red!75!black] (90:1.1) circle (3pt); \node[font=\tiny] at (90:1.5) {$[0]$};
+    \fill[blue!65!black] (0:1.1) circle (3pt); \node[font=\tiny] at (0:1.5) {$[1]$};
+    \fill[green!50!black] (270:1.1) circle (3pt); \node[font=\tiny] at (270:1.5) {$[2]$};
+    \fill[orange!90!black] (180:1.1) circle (3pt); \node[font=\tiny] at (180:1.5) {$[3]$};
+    \node[font=\scriptsize] at (0,-2.0) {$\Z/4\Z$};
+  \end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (7.9,0) -- (9.1,0); \node[font=\tiny,mkc] at (8.5,0.4) {$n\mapsto[n]$};
+\end{tikzpicture}}
+
+\newcommand{\figiso}{%
+\begin{tikzpicture}[>={Stealth[length=4pt]},every node/.style={font=\small}]
+  \node (G) at (0,1.4) {$G$};
+  \node (H) at (3.2,1.4) {$H$};
+  \node (Q) at (1.6,0) {$G/K$};
+  \draw[->] (G) -- node[above,font=\scriptsize] {$f$ (onto, kernel $K$)} (H);
+  \draw[->] (G) -- node[below left,font=\scriptsize] {$g\mapsto[g]$} (Q);
+  \draw[->,mkc,thick] (Q) -- node[below right,font=\scriptsize] {$[g]\mapsto f(g)$, an isomorphism} (H);
+\end{tikzpicture}}
+
+\newcommand{\figpres}{%
+\begin{tikzpicture}[>={Stealth[length=4pt]},every node/.style={font=\small}]
+  \node (F) at (0,0) {$F(S)$};
+  \node (G) at (4.2,0) {$G\cong\langle S\mid R\rangle$};
+  \node (N) at (0,-1.3) {$\langle\!\langle R\rangle\!\rangle$ = normal closure of $R$};
+  \draw[-{Stealth[length=4pt]Stealth[length=4pt]}] (F) -- node[above,font=\scriptsize] {send each letter to itself} (G);
+  \draw[{Hooks[right,length=3pt]}-{Stealth[length=4pt]}] (N) -- node[left,font=\scriptsize] {kernel} (F);
+\end{tikzpicture}}
+
+\newcommand{\figmap}{%
+\begin{tikzpicture}[>={Stealth[length=5pt]},node distance=5mm and 6mm,
+  box/.style={draw,rounded corners=3pt,align=center,font=\scriptsize,inner sep=3pt,fill=white},
+  key/.style={box,fill=big!8,draw=big,thick}]
+  \node[key] (sym) {symmetries of\\an object};
+  \node[key,right=10mm of sym] (grp) {group\\(set + multiplication)};
+  \node[box,below=of sym] (ex) {$D_n,\ S_n,\ \Z/n\Z$\\$\Z,\ \Z^2,\ \R^\times,\ \GL(n,\R)$\\$F_2,\ F(S)$};
+  \node[box,right=8mm of ex] (hom) {homomorphism\\$f(ab)=f(a)f(b)$};
+  \node[box,right=of hom] (ker) {kernel $K$\\= normal subgroup};
+  \node[box,below=of ker] (quo) {quotient $G/K$};
+  \node[key,left=of quo] (iso) {First isomorphism thm\\$H\cong G/K$};
+  \node[box,below=of ex] (free) {free group $F(S)$};
+  \node[key,below=of iso] (pres) {presentation\\$\langle S\mid R\rangle = F(S)/\langle\!\langle R\rangle\!\rangle$};
+  \node[box,right=of quo,fill=ahead!8,draw=ahead] (cay) {Office Hour 2:\\Cayley graph};
+  \draw[<->,thick] (sym) -- node[above,font=\scriptsize] {this chapter's thesis} (grp);
+  \draw[->] (grp) -- (ex); \draw[->] (grp) -- (hom); \draw[->] (hom) -- (ker); \draw[->] (ker) -- (quo);
+  \draw[->] (quo) -- (iso); \draw[->] (ex) -- (free); \draw[->] (free) -- (pres); \draw[->] (iso) -- (pres);
+  \draw[->,ahead,dashed] (grp) to[bend left=25] (cay);
+\end{tikzpicture}}
+
+% ---------------- extra visualisations ----------------
+% gallery of the 8 symmetries of a square; #1..#4 = labels at TL,TR,BR,BL; #5 caption; #6 axis code
+\newcommand{\sq}[6]{%
+\begin{tikzpicture}[scale=0.55]
+  \draw[thick,big] (0,0) rectangle (2,2);
+  #6
+  \node[font=\scriptsize] at (0.25,1.75) {#1}; \node[font=\scriptsize] at (1.75,1.75) {#2};
+  \node[font=\scriptsize] at (1.75,0.25) {#3}; \node[font=\scriptsize] at (0.25,0.25) {#4};
+  \node[font=\scriptsize,align=center] at (1,-0.55) {#5};
+\end{tikzpicture}}
+\newcommand{\figsquares}{%
+\begin{tabular}{@{}cccc@{}}
+\sq{1}{2}{3}{4}{identity $1$}{} &
+\sq{2}{3}{4}{1}{$r$ = turn $90^\circ$}{\draw[-{Stealth[length=3pt]},mkc,thick] (1.45,1) arc (0:270:0.45);} &
+\sq{3}{4}{1}{2}{$r^2$}{\draw[-{Stealth[length=3pt]},mkc,thick] (1.45,1) arc (0:180:0.45);} &
+\sq{4}{1}{2}{3}{$r^3$}{\draw[-{Stealth[length=3pt]},mkc,thick] (1.45,1) arc (0:90:0.45);}\\[2pt]
+\sq{2}{1}{4}{3}{$s$ (vertical axis)}{\draw[dashed,pit] (1,-0.2)--(1,2.2);} &
+\sq{4}{3}{2}{1}{$sr^2$ (horizontal)}{\draw[dashed,pit] (-0.2,1)--(2.2,1);} &
+\sq{1}{4}{3}{2}{$sr$ (diagonal)}{\draw[dashed,pit] (-0.2,2.2)--(2.2,-0.2);} &
+\sq{3}{2}{1}{4}{$sr^3$ (other diagonal)}{\draw[dashed,pit] (-0.2,-0.2)--(2.2,2.2);}\\
+\end{tabular}}
+
+\newcommand{\figcayleytable}{%
+\begin{tikzpicture}[x=0.72cm,y=-0.6cm]
+  \def\els{{"$1$","$r$","$r^2$","$s$","$sr$","$sr^2$"}}
+  % table body: 1=rotation, 2=reflection; entries as strings
+  \foreach \i/\row in {0/{1,r,r^2,s,sr,sr^2}, 1/{r,r^2,1,sr^2,s,sr}, 2/{r^2,1,r,sr,sr^2,s}, 3/{s,sr,sr^2,1,r,r^2}, 4/{sr,sr^2,s,r^2,1,r}, 5/{sr^2,s,sr,r,r^2,1}} {
+    \foreach \e [count=\j from 0] in \row {
+      \pgfmathtruncatemacro{\isrot}{ifthenelse(\j<3,1,0)*ifthenelse(\i<3,1,0)+ifthenelse(\j>2,1,0)*ifthenelse(\i>2,1,0)}
+      \ifnum\isrot=1 \fill[big!14] (\j,\i) rectangle ++(1,1); \else \fill[pit!12] (\j,\i) rectangle ++(1,1); \fi
+      \node[font=\scriptsize] at (\j+0.5,\i+0.5) {$\e$};
+    } }
+  \draw[gray!60] (0,0) grid (6,6);
+  \draw[very thick] (3,0)--(3,6); \draw[very thick] (0,3)--(6,3);
+  \foreach \e [count=\j from 0] in {1,r,r^2,s,sr,sr^2} {\node[font=\scriptsize,big] at (\j+0.5,-0.5) {$\e$}; \node[font=\scriptsize,big] at (-0.5,\j+0.5) {$\e$};}
+  \node[font=\scriptsize,anchor=east] at (-0.9,-0.5) {row $\cdot$ column:};
+\end{tikzpicture}}
+
+\newcommand{\figaxes}{%
+\begin{tikzpicture}[scale=0.42,line join=round]
+  \foreach \dx/\axis/\cap in {0/face/{face axis: 3 of them, turns by $90^\circ$}, 7.5/vertex/{vertex axis: 4, turns by $120^\circ$}, 15/edge/{edge axis: 6, turns by $180^\circ$}} {
+    \begin{scope}[xshift=\dx cm]
+      \coordinate (A) at (0,0); \coordinate (B) at (3,0); \coordinate (C) at (3,3); \coordinate (D) at (0,3);
+      \coordinate (E) at (1.3,1.3); \coordinate (F) at (4.3,1.3); \coordinate (G) at (4.3,4.3); \coordinate (H) at (1.3,4.3);
+      \draw[thick] (A)--(B)--(C)--(D)--cycle; \draw[thick] (B)--(F)--(G)--(C); \draw[thick] (D)--(H)--(G);
+      \draw[dashed,gray] (A)--(E)--(F); \draw[dashed,gray] (E)--(H);
+      \node[font=\scriptsize,align=center] at (2.15,-1.3) {\cap};
+    \end{scope} }
+  \draw[very thick,mkc] (2.15,-0.6) -- (2.15,5.0);
+  \draw[very thick,mkc] (7.5-0.8,-0.8) -- (7.5+4.3+0.8,4.3+0.8);
+  \draw[very thick,mkc] (15+1.5,-0.7) -- (15+2.8,5.0);
+  \fill[mkc] (15+1.5,0) circle (3pt); \fill[mkc] (15+2.8,4.3) circle (3pt);
+\end{tikzpicture}}
+
+\newcommand{\figcyclearrows}{%
+\begin{tikzpicture}[scale=0.9,>={Stealth[length=4pt]}]
+  \foreach \i in {1,...,6} {\coordinate (P\i) at ({90-60*(\i-1)}:1.3); \fill (P\i) circle (2pt); \node[font=\scriptsize] at ({90-60*(\i-1)}:1.6) {\i};}
+  \draw[->,thick,red!80!black] (P1) to[bend left=15] (P2);
+  \draw[->,thick,red!80!black] (P2) to[bend left=15] (P4);
+  \draw[->,thick,red!80!black] (P4) to[bend left=15] (P1);
+  \draw[->,thick,blue!70!black] (P3) to[bend left=20] (P5);
+  \draw[->,thick,blue!70!black] (P5) to[bend left=20] (P3);
+  \draw[->,thick,gray] (P6) to[out=-60,in=0,looseness=6] (P6);
+  \node[font=\scriptsize,align=center] at (0,-2.3) {$(1\,2\,4)(3\,5)$ as arrows:\\ red 3-cycle, blue 2-cycle, 6 fixed};
+\end{tikzpicture}}
+
+\newcommand{\figclocksub}[2]{% #1 = step k (highlight 0,k,2k,...), #2 caption
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick,gray!60] (0,0) circle (1.2);
+  \foreach \h in {0,...,11} {\fill[gray!60] ({90-30*\h}:1.2) circle (1.5pt); \node[font=\tiny] at ({90-30*\h}:1.45) {\h};}
+  \pgfmathtruncatemacro{\npts}{12/#1}\pgfmathtruncatemacro{\last}{\npts-1}
+  \foreach \j in {0,...,\last} {
+    \pgfmathtruncatemacro{\pa}{\j*#1}\pgfmathtruncatemacro{\pb}{mod((\j+1)*#1,12)}
+    \draw[thick,mkc] ({90-30*\pa}:1.2) -- ({90-30*\pb}:1.2);
+    \fill[mkc] ({90-30*\pa}:1.2) circle (3pt);}
+  \node[font=\scriptsize,align=center] at (0,-1.95) {#2};
+\end{tikzpicture}}
+
+\newcommand{\figsubZ}{%
+\begin{tikzpicture}[scale=0.55]
+  \foreach \k/\lab/\step in {0/$\Z$/1, 1/$2\Z$/2, 2/$4\Z$/4} {
+    \draw[thick] (-6.3,-1.3*\k) -- (6.3,-1.3*\k);
+    \node[font=\scriptsize,anchor=east] at (-6.6,-1.3*\k) {\lab};
+    \foreach \x in {-6,...,6} {\pgfmathtruncatemacro{\r}{mod(\x+12,\step)} \ifnum\r=0 \fill[mkc] (\x,-1.3*\k) circle (3pt); \else \fill[gray!50] (\x,-1.3*\k) circle (1.5pt); \fi}
+  }
+  \node[font=\scriptsize,align=center] at (0,-4.4) {a chain of subgroups $\Z\supset2\Z\supset4\Z$; each is a copy of $\Z$ (multiplication by $2$)};
+\end{tikzpicture}}
+
+\newcommand{\figwordpath}{%
+\begin{tikzpicture}[scale=1.0,>={Stealth[length=4pt]}]
+  \foreach \d/\o in {0/180,90/270,180/0,270/90} {
+    \draw[gray!70] (0,0) -- (\d:2);
+    \foreach \e in {0,90,180,270} {
+      \ifnum\e=\o\relax\else
+        \draw[gray!70] (\d:2) -- ($(\d:2)+(\e:1)$);
+        \pgfmathtruncatemacro{\eo}{mod(\e+180,360)}
+        \foreach \f in {0,90,180,270} {\ifnum\f=\eo\relax\else \draw[gray!50,thin] ($(\d:2)+(\e:1)$) -- ($(\d:2)+(\e:1)+(\f:0.45)$); \fi }
+      \fi } }
+  \fill (0,0) circle (2.5pt); \node[font=\scriptsize,below left] at (0,0) {$1$};
+  \node[font=\scriptsize,below] at (2,-0.05) {$a$}; \node[font=\scriptsize,right] at (3,0) {$aa$}; \node[font=\scriptsize,right] at (2,1) {$ab$};
+  % path for a a^-1 a b b^-1 a
+  \draw[->,very thick,mkc] (0,0) to[bend left=35] node[above,font=\tiny] {1: $a$} (2,0);
+  \draw[->,very thick,mkc] (2,0) to[bend left=35] node[below,font=\tiny] {2: $a\inv$} (0,0);
+  \draw[->,very thick,mkc] (0,0) -- node[above,font=\tiny,pos=0.6] {3: $a$} (2,0);
+  \draw[->,very thick,mkc] (2,0) to[bend left=35] node[left,font=\tiny] {4: $b$} (2,1);
+  \draw[->,very thick,mkc] (2,1) to[bend left=35] node[right,font=\tiny] {5: $b\inv$} (2,0);
+  \draw[->,very thick,mkc] (2,0) -- node[above,font=\tiny] {6: $a$} (3,0);
+  \fill[mkc] (3,0) circle (3pt);
+\end{tikzpicture}}
+
+\newcommand{\figabba}{%
+\begin{tikzpicture}[scale=1.0,>={Stealth[length=4pt]}]
+  \begin{scope}
+    \draw[gray!70] (-1.5,0)--(3,0); \draw[gray!70] (0,-1)--(0,2.5); \draw[gray!70] (2,-1)--(2,2.5); \draw[gray!70] (0,2)--(-1,2); \draw[gray!70] (0,2)--(1,2);
+    \draw[gray!70] (2,2)--(3,2); \draw[gray!70] (2,2)--(1,2);
+    \fill (0,0) circle (2pt); \node[font=\tiny,below left] at (0,0) {$1$};
+    \draw[->,very thick,mkc] (0,0)--(2,0); \draw[->,very thick,mkc] (2,0)--(2,2); \node[font=\scriptsize,mkc,right] at (2,2) {$ab$};
+    \draw[->,very thick,big] (0,0)--(0,2); \draw[->,very thick,big] (0,2)--(1,2); \node[font=\scriptsize,big,above] at (1,2) {$ba$};
+    \node[font=\scriptsize,align=center] at (1,-1.7) {in the tree of $F_2$:\\ $ab$ and $ba$ end at different vertices};
+  \end{scope}
+  \begin{scope}[xshift=6.5cm]
+    \draw[gray!70] (-1,0) grid (3,2.5);
+    \fill (0,0) circle (2pt); \node[font=\tiny,below left] at (0,0) {$1$};
+    \draw[->,very thick,mkc] (0,0)--(2,0); \draw[->,very thick,mkc] (2,0)--(2,2);
+    \draw[->,very thick,big] (0,0)--(0,2); \draw[->,very thick,big] (0,2)--(2,2);
+    \node[font=\scriptsize,above right] at (2,2) {$ab=ba$};
+    \node[font=\scriptsize,align=center] at (1,-1.7) {in the grid of $\Z^2$:\\ the relator $aba\inv b\inv$ is a closed square};
+  \end{scope}
+\end{tikzpicture}}
+
+\newcommand{\fighomdots}{%
+\begin{tikzpicture}[>={Stealth[length=4pt]},scale=0.9]
+  \foreach \i/\l/\c in {0/1/big,1/r/big,2/r^2/big,3/s/pit,4/sr/pit,5/sr^2/pit} {
+    \fill[\c] (0,-0.7*\i) circle (2.5pt); \node[font=\scriptsize,anchor=east] at (-0.2,-0.7*\i) {$\l$}; }
+  \fill[big] (4,-0.7) circle (3pt); \node[font=\scriptsize,anchor=west] at (4.2,-0.7) {$0$ (even)};
+  \fill[pit] (4,-2.8) circle (3pt); \node[font=\scriptsize,anchor=west] at (4.2,-2.8) {$1$ (odd)};
+  \foreach \i in {0,1,2} \draw[->,big!70] (0.15,-0.7*\i) -- (3.85,-0.7);
+  \foreach \i in {3,4,5} \draw[->,pit!70] (0.15,-0.7*\i) -- (3.85,-2.8);
+  \draw[rounded corners=6pt,big,dashed] (-0.9,0.35) rectangle (0.4,-1.75); \node[font=\tiny,big] at (-0.25,0.6) {kernel $=A_3$};
+  \node[font=\scriptsize] at (2,0.9) {$S_3=D_3\ \xrightarrow{\ f\ }\ \Z/2\Z$};
+  \node[font=\scriptsize,align=center] at (2,-4.2) {each target point is hit by a whole coset;\\ $S_3/A_3\cong\Z/2\Z$ (Theorem 1.1)};
+\end{tikzpicture}}
+
+\newcommand{\figcosets}{%
+\begin{tikzpicture}[scale=0.9]
+  \begin{scope}
+    \foreach \j/\l in {0/1,1/r,2/r^2} {\fill (1.4*\j,0) circle (2.5pt); \node[font=\scriptsize,above] at (1.4*\j,0.1) {$\l$};}
+    \foreach \j/\l in {0/s,1/sr,2/sr^2} {\fill (1.4*\j,-1.4) circle (2.5pt); \node[font=\scriptsize,below] at (1.4*\j,-1.5) {$\l$};}
+    \draw[rounded corners=8pt,fill=big!12,draw=big,thick,fill opacity=0.5] (-0.45,-0.4) rectangle (3.25,0.4);
+    \draw[rounded corners=8pt,fill=pit!12,draw=pit,thick,fill opacity=0.5] (-0.45,-1.8) rectangle (3.25,-1.0);
+    \node[font=\scriptsize,align=center] at (1.4,-2.5) {$N=\{1,r,r^2\}$ is normal:\\ left cosets $gN$ and right cosets $Ng$ agree};
+  \end{scope}
+  \begin{scope}[xshift=6cm]
+    \foreach \j/\l in {0/1,1/r,2/r^2} {\fill (1.4*\j,0) circle (2.5pt); \node[font=\scriptsize,above] at (1.4*\j,0.1) {$\l$};}
+    \foreach \j/\l in {0/s,1/sr,2/sr^2} {\fill (1.4*\j,-1.4) circle (2.5pt); \node[font=\scriptsize,below] at (1.4*\j,-1.5) {$\l$};}
+    % left cosets of H={1,s}: {1,s},{r,sr^2},{r^2,sr}  solid
+    \draw[very thick,big] (0,0)--(0,-1.4);
+    \draw[very thick,big] (1.4,0)--(2.8,-1.4);
+    \draw[very thick,big] (2.8,0)--(1.4,-1.4);
+    % right cosets: {1,s},{r,sr},{r^2,sr^2} dashed
+    \draw[very thick,pit,dashed] (0.12,0)--(0.12,-1.4);
+    \draw[very thick,pit,dashed] (1.4,0)--(1.4,-1.4);
+    \draw[very thick,pit,dashed] (2.8,0)--(2.8,-1.4);
+    \node[font=\scriptsize,align=center] at (1.4,-2.5) {$H=\{1,s\}$ is not normal:\\ left cosets $gH$ (solid) $\neq$ right cosets $Hg$ (dashed)};
+  \end{scope}
+\end{tikzpicture}}
+
+\newcommand{\figcayleygallery}{%
+\begin{tikzpicture}[>={Stealth[length=4pt]},scale=1.15]
+  % Z/6Z
+  \begin{scope}
+    \foreach \k in {0,...,5} {\coordinate (C\k) at ({90-60*\k}:1.1); \fill (C\k) circle (2pt); \node[font=\tiny] at ({90-60*\k}:1.4) {\k};}
+    \foreach \k in {0,...,5} {\pgfmathtruncatemacro{\n}{mod(\k+1,6)} \draw[->,thick,mkc] (C\k) -- (C\n);}
+    \node[font=\scriptsize,align=center] at (0,-2.1) {$\Z/6\Z=\langle a\mid a^6\rangle$\\ the relator is the loop around};
+  \end{scope}
+  % Z
+  \begin{scope}[xshift=4.2cm]
+    \draw[gray] (-1.3,0)--(1.3,0);
+    \foreach \x in {-1,0,1} {\fill (\x,0) circle (2pt);}
+    \foreach \x in {-1,0} \draw[->,thick,mkc] (\x+0.1,0)--(\x+0.9,0);
+    \node[font=\tiny] at (-1.6,0) {$\cdots$}; \node[font=\tiny] at (1.6,0) {$\cdots$};
+    \node[font=\scriptsize,align=center] at (0,-2.1) {$\Z=\langle a\mid\ \rangle=F_1$\\ no relator, no loop};
+  \end{scope}
+  % D4
+  \begin{scope}[xshift=8.6cm]
+    \foreach \k/\l in {0/1,1/r,2/r^2,3/r^3} {\coordinate (O\k) at ({135-90*\k}:1.35); \fill (O\k) circle (2pt);}
+    \foreach \k/\l in {0/s,1/sr^3,2/sr^2,3/sr} {\coordinate (I\k) at ({135-90*\k}:0.6); \fill (I\k) circle (2pt);}
+    \node[font=\tiny,above left] at (O0) {$1$}; \node[font=\tiny,above right] at (O1) {$r$}; \node[font=\tiny,below right] at (O2) {$r^2$}; \node[font=\tiny,below left] at (O3) {$r^3$};
+    \foreach \k in {0,...,3} {\pgfmathtruncatemacro{\n}{mod(\k+1,4)} \draw[->,thick,mkc] (O\k) -- (O\n);}
+    % inner: s -> sr (at I3), sr -> sr^2 (I2), sr^2 -> sr^3 (I1), sr^3 -> s (I0): reversed direction
+    \foreach \k in {0,...,3} {\pgfmathtruncatemacro{\n}{mod(\k+3,4)} \draw[->,thick,mkc] (I\k) -- (I\n);}
+    \foreach \k in {0,...,3} \draw[thick,big] (O\k) -- (I\k);
+    \node[font=\scriptsize,align=center] at (0,-2.1) {$D_4=\langle r,s\mid r^4,s^2,(sr)^2\rangle$\\ orange $=r$, blue $=s$ (two-way)};
+  \end{scope}
+  % Z^2
+  \begin{scope}[xshift=13cm,yshift=-1.2cm]
+    \foreach \x in {0,1,2} \foreach \y in {0,1,2} \fill (\x*0.9,\y*0.9) circle (1.5pt);
+    \foreach \y in {0,1,2} \foreach \x in {0,1} \draw[->,mkc] (\x*0.9+0.1,\y*0.9)--(\x*0.9+0.8,\y*0.9);
+    \foreach \x in {0,1,2} \foreach \y in {0,1} \draw[->,big] (\x*0.9,\y*0.9+0.1)--(\x*0.9,\y*0.9+0.8);
+    \draw[very thick,green!50!black,rounded corners=2pt] (0.9,0.9) rectangle (1.8,1.8);
+    \node[font=\scriptsize,align=center] at (0.9,-0.9) {$\Z^2=\langle a,b\mid aba\inv b\inv\rangle$\\ every square is the relator};
+  \end{scope}
+  % F2
+  \begin{scope}[xshift=17.6cm,scale=0.55]
+    \foreach \d/\o in {0/180,90/270,180/0,270/90} {\draw[thick] (0,0) -- (\d:2);
+      \foreach \e in {0,90,180,270} {\ifnum\e=\o\relax\else \draw (\d:2) -- ($(\d:2)+(\e:1)$); \fi}}
+    \fill (0,0) circle (2.5pt);
+    \node[font=\scriptsize,align=center] at (0,-3.8) {$F_2=\langle a,b\mid\ \rangle$\\ no relators, no loops: a tree};
+  \end{scope}
+\end{tikzpicture}}
+
+
+\newcommand{\figwhypi}{%
+\begin{tikzpicture}[scale=0.8,>={Stealth[length=4pt]}]
+  % (a) face axis: square silhouette
+  \begin{scope}
+    \draw[thick,big] (-1,-1) rectangle (1,1); \fill[mkc] (-1,1) circle (3pt);
+    \fill (0,0) circle (1.5pt);
+    \draw[->,mkc,thick] (0.55,0.55) arc (45:135:0.78);
+    \node[font=\tiny,mkc] at (0,1.25) {$90^\circ$};
+    \draw[thick,pit,dashed,rotate=45] (-1,-1) rectangle (1,1);
+    \node[font=\tiny,pit] at (1.55,1.15) {$45^\circ$: sticks out};
+    \node[font=\scriptsize,align=center] at (0,-2.0) {looking down a face axis:\\ the outline is a square, 4-fold};
+  \end{scope}
+  % (b) vertex axis: hexagon silhouette
+  \begin{scope}[xshift=6.4cm]
+    \draw[thick,big] (30:1.15)--(90:1.15)--(150:1.15)--(210:1.15)--(270:1.15)--(330:1.15)--cycle;
+    \draw[thick,big] (0,0)--(90:1.15); \draw[thick,big] (0,0)--(210:1.15); \draw[thick,big] (0,0)--(330:1.15);
+    \fill (0,0) circle (1.8pt);
+    \draw[->,mkc,thick] (100:0.55) arc (100:200:0.55); \node[font=\tiny,mkc] at (150:0.85) {$120^\circ$};
+    \node[font=\scriptsize,align=center] at (0,-2.0) {looking down a long diagonal:\\ the outline is a regular hexagon, 3-fold};
+  \end{scope}
+  % (c) edge axis: rectangle silhouette 1 x sqrt2
+  \begin{scope}[xshift=12.8cm]
+    \draw[thick,big] (-1.2,-0.85) rectangle (1.2,0.85);
+    \draw[thick,big] (-1.2,0)--(1.2,0);
+    \fill (0,0) circle (1.8pt);
+    \draw[->,mkc,thick] (0.6,0.3) arc (25:155:0.65); \node[font=\tiny,mkc] at (0,0.95) {$180^\circ$};
+    \draw[thick,pit,dashed,rotate=90] (-1.2,-0.85) rectangle (1.2,0.85);
+    \node[font=\tiny,pit] at (1.75,-1.05) {$90^\circ$: no};
+    \node[font=\scriptsize,align=center] at (0,-2.0) {looking down an edge axis:\\ the outline is a $1\times\sqrt2$ rectangle, 2-fold};
+  \end{scope}
+\end{tikzpicture}}
+

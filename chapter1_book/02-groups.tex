@@ -1,0 +1,207 @@
+\section{What a group is}\label{sec:def}
+
+\subsection{Multiplying symmetries}
+
+Symmetries of the cube can be combined: do one, then do another, and the result is again a
+symmetry. That operation is the multiplication we are going to axiomatise, and it needs a
+convention, because ``do $g$ then $h$'' and ``do $h$ then $g$'' are different motions.
+
+\begin{defi}\label{def:order}
+For symmetries $g$ and $h$, the product $gh$ means: \emph{first do $h$, then do $g$}.
+\end{defi}
+
+The order looks backwards until you notice where it comes from. A symmetry is a function on the
+points of space, and functions are written to the left of their inputs: $(g\circ h)(x)=g(h(x))$, so
+$h$ acts first. Every computation in this chapter depends on this convention, so it is worth
+saying out loud once: \emph{the right-hand factor acts first}.
+
+\sfig{The convention in a picture: the product of two symmetries is the single symmetry that does
+the same job as the two in succession.}{\figcompose}
+
+\subsection{The definition}
+
+\begin{defi}\label{def:group}
+A \defn{multiplication} on a set $G$ is a function that takes an ordered pair of elements of $G$ and
+returns an element of $G$, written $(g,h)\mapsto gh$. A \defn{group} is a set $G$ together with a
+multiplication on it such that:
+\begin{itemize}[nosep,leftmargin=1.4em]
+\item[\textbf{(G1)}] \emph{Identity.} There is an element $1\in G$ with $1g=g1=g$ for every
+$g\in G$.
+\item[\textbf{(G2)}] \emph{Inverses.} For every $g\in G$ there is an $h\in G$ with $gh=hg=1$. It is
+written $g\inv$.
+\item[\textbf{(G3)}] \emph{Associativity.} $(fg)h=f(gh)$ for all $f,g,h\in G$.
+\end{itemize}
+\end{defi}
+
+Two things about the definition are easy to read past.
+
+The first is that the \emph{multiplication is part of the data}. The same set can be a group with
+one rule and fail to be one with another: the integers with addition form a group, the integers
+with subtraction do not. So a group is a pair, a set and a rule, and naming only the set is an
+abbreviation.
+
+The second is that the word ``multiplication'' is a generic label. For the integers it will mean
+addition; for symmetries it means composition; for words it will mean writing one after the other.
+Nothing about it needs to resemble multiplying numbers. In particular \textbf{nothing in
+Definition~\ref{def:group} says $gh=hg$}. Groups in which that happens to hold for every pair are
+called \defn{abelian}, and most of the interesting groups in this chapter are not.
+
+\sfig{The anatomy of the definition: a set, a rule on that set whose answers stay inside the set,
+and three promises about the rule.}{\figXj}
+
+\begin{rem}
+The requirement that $gh$ lie back in $G$ is often called \defn{closure}. In
+Definition~\ref{def:group} it is not a separate axiom, because it is built into the word
+``function into $G$''. When you are handed a candidate group, however, closure is usually the
+first thing to check and the easiest to get wrong; Section~\ref{sec:checklist} has an example
+where it fails inside the cube.
+\end{rem}
+
+\begin{rem}
+The symbol $1$ in (G1) is a \emph{name}, not the number one. For the integers under addition the
+identity is $0$; for the cube it is ``leave it alone''; for invertible matrices it is the identity
+matrix. Many books write $e$ instead, from the German \emph{Einselement}. Likewise $g\inv$ is a
+name for the element that undoes $g$, and it is not ``$1/g$'' unless the group happens to consist
+of numbers under ordinary multiplication.
+\end{rem}
+
+\subsection{The three axioms on the cube}
+
+The cube is the example to hold in mind, so here is each axiom checked on it. Grey letters are
+fixed positions, and a coloured disc names the corner of the original cube now sitting there.
+
+\subsubsection*{(G1) Identity}
+
+``Leave the cube alone'' is a rotation, by $0^\circ$. Doing it after any move $r$ leaves the
+picture of $r$ untouched, and doing it before $r$ produces $r$ as well, so $1r=r1=r$.
+
+\sfigs{0.80}{Identity on the cube: start, after a quarter turn $r$, then after doing nothing. The last two
+pictures are identical.}{\figXl}
+
+\subsubsection*{(G2) Inverses}
+
+The inverse of a quarter turn is the quarter turn the other way about the same axis. Three more
+turns in the original direction do the same job, so $r\inv=r^3$. A half turn is its own inverse,
+which is the analogue of $0$ being its own inverse in the integers.
+
+\sfigs{0.80}{Inverses on the cube: start, after $r$, then after $r\inv$. Every disc is back on its grey
+letter, so $r\inv r=rr\inv=1$.}{\figXm}
+
+\subsubsection*{(G3) Associativity}
+
+Let $h$ be a quarter turn about the vertical axis, $g$ a quarter turn about the left--right axis,
+and $f$ a half turn about the vertical axis. Performed one after another they do this:
+
+\sfigs{0.80}{The three moves $h$, then $g$, then $f$, one picture at a time.}{\figXn}
+
+Now $(fg)h$ says: do $h$, then the \emph{single} rotation that $f$ and $g$ amount to together.
+And $f(gh)$ says: do the single rotation that $g$ and $h$ amount to, then $f$. Both routes end at
+the same cube as the row above.
+
+\sfigs{0.80}{$(fg)h$: after $h$, the single move $fg$ turns out to be the half turn about the edge axis
+through the midpoints of $AB$ and $HG$.}{\figXo}
+
+\sfigs{0.80}{$f(gh)$: the single move $gh$ is a third of a turn about the diagonal $CE$, and then
+$f$. Same final cube.}{\figXp}
+
+The brackets only decide which two moves you merge into one before performing anything; the cube
+still receives $h$, then $g$, then $f$, so the final position cannot depend on them. Said in one
+line: symmetries are functions, and composition of functions satisfies
+$\big((fg)h\big)(x)=f\big(g(h(x))\big)=\big(f(gh)\big)(x)$ for every point $x$.
+
+\begin{bigpic}
+This is worth remembering as a labour-saving device. \emph{Any} group whose elements are functions
+and whose multiplication is composition satisfies (G3) automatically. Associativity only costs
+something when the multiplication is given by a formula with cases, as for the integers mod $n$ in
+Section~\ref{sec:modn}, or by a recipe on strings, as for the free group in
+Section~\ref{sec:free}.
+\end{bigpic}
+
+\subsection{Why exactly these three axioms}
+
+The three promises are not a random selection. They are exactly what is needed to solve equations.
+Suppose $g$ and $k$ are known and you want $x$ with $gx=k$; on the cube, ``which move $x$, followed
+by $g$, produces $k$?''
+
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+$gx=k$ & given\\
+$g\inv(gx)=g\inv k$ & multiply both sides on the left by $g\inv$ \hfill (G2)\\
+$(g\inv g)x=g\inv k$ & regroup \hfill (G3)\\
+$1x=g\inv k$ & $g\inv g=1$ \hfill (G2)\\
+$x=g\inv k$ & \hfill (G1)\\
+\end{tabular}
+\end{center}
+
+Each axiom is used exactly once, and the solution is unique, since the calculation derives it.
+Drop any one axiom and the argument breaks. The same three steps prove the
+\defn{cancellation law}: if $gx=gy$ then $x=y$, in every group.
+
+\begin{tryit}
+Solve $gx=k$ on the cube with $g$ the quarter turn about the vertical axis and $k$ the half turn
+about the same axis. Then solve $xg=k$ for the same $g$ and $k$, and notice that the answer requires
+multiplying on the \emph{right}, giving $x=kg\inv$. In an abelian group these two answers agree; in
+general they do not.
+\end{tryit}
+
+\begin{prop}
+In any group the identity is unique, inverses are unique, and $(gh)\inv=h\inv g\inv$.
+\end{prop}
+
+\begin{proof}
+If $1$ and $1'$ both satisfy (G1) then $1=1\cdot 1'=1'$. If $h$ and $h'$ are both inverses of $g$
+then $h=h1=h(gh')=(hg)h'=1h'=h'$. For the last claim, multiply $gh$ by $h\inv g\inv$ and regroup:
+$(gh)(h\inv g\inv)=g(hh\inv)g\inv=gg\inv=1$, and similarly on the other side.
+\end{proof}
+
+The formula $(gh)\inv=h\inv g\inv$ is the \defn{socks-and-shoes rule}: to undo ``socks, then
+shoes'' you take the shoes off first. It will be used constantly from Section~\ref{sec:free}
+onwards.
+
+\subsection{Which of these are groups?}\label{sec:checklist}
+
+The fastest way to get used to Definition~\ref{def:group} is to watch it fail.
+
+\begin{center}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+set & rule & closed & identity & inverses & associative\\
+\midrule
+$\Z$ & $+$ & \cmark & $0$ & $-n$ & \cmark\\
+$\{0,1,2,\dots\}$ & $+$ & \cmark & $0$ & \xmark\ no $-5$ & \cmark\\
+$\Z$ & $-$ & \cmark & \xmark\ $0-5\neq5$ & --- & \xmark\\
+$\Z$ & $\times$ & \cmark & $1$ & \xmark\ no $\tfrac12$ & \cmark\\
+$\{1,-1\}$ & $\times$ & \cmark & $1$ & each its own & \cmark\\
+$\R$ & $\times$ & \cmark & $1$ & \xmark\ none for $0$ & \cmark\\
+$\R\setminus\{0\}$ & $\times$ & \cmark & $1$ & $1/x$ & \cmark\\
+the $24$ rotations of a cube & do one, then the other & \cmark & do nothing & undo & \cmark\\
+the $6$ quarter turns of a cube & do one, then the other & \xmark & --- & --- & ---\\
+$\{1\}\cup\{\text{3 face half turns}\}$ & do one, then the other & \cmark & $1$ & each its own & \cmark\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Four of these ten are groups. The failures repay study.
+For $\Z$ with subtraction, $5-0=5$ but $0-5\neq 5$, so $0$ is an identity on one side only, and
+$(8-4)-2=2$ while $8-(4-2)=6$, so (G3) fails too.
+For the non-negative integers, the only problem is inverses; everything else is fine, which shows
+the axioms are genuinely independent of one another.
+The last line but one is the interesting failure, and it happens inside the cube.
+
+\sfig{Closure can fail inside the cube: a quarter turn followed by a quarter turn about a different
+axis is a third of a turn about a long diagonal, not a quarter turn. So the six quarter turns are
+not closed under the multiplication, and they do not form a group on their own.}{\figXk}
+
+\begin{why}
+Associativity never fails for a set of symmetries, so it is not worth checking there; it fails only
+for rules invented by formula, like subtraction. This is why the checklist above has no
+\xmark\ in its last column except on the row for subtraction.
+\end{why}
+
+\begin{tryit}
+Decide, using the columns of the table: the even integers with $+$; the odd integers with $+$; the
+eight third-of-a-turn rotations of the cube together with the identity (try two of them about
+different diagonals); the four rotations about a single face axis.
+\end{tryit}

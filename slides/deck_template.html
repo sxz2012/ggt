@@ -1,0 +1,439 @@
+<title>The 24 Turns</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#F3F5F8; --panel:#FFFFFF; --ink:#17202B; --ink-2:#4B5868; --line:#D3D9E2;
+  --accent:#D65A00; --accent-soft:#FBE9DC;
+  --d1:#C62828; --d2:#1E4FB2; --d3:#2E7D32; --d4:#E08A00; --d5:#7B3FA0;
+  --why:#2E7D32; --warn:#B3262E; --face:rgba(40,60,90,.10); --edge:#2A3646; --ghost:rgba(23,32,43,.28);
+  --paper:#FFFFFF;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono',Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161D; --panel:#182028; --ink:#E8EDF2; --ink-2:#A7B3C2; --line:#2E3A48;
+    --accent:#FF8A3D; --accent-soft:#3A2416;
+    --d1:#EF5350; --d2:#5C8DEB; --d3:#66BB6A; --d4:#FFB74D; --d5:#B085D6;
+    --why:#66BB6A; --warn:#EF6A70; --face:rgba(180,200,230,.12); --edge:#C9D3DF; --ghost:rgba(232,237,242,.3);
+    --paper:#F4F6F9;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161D; --panel:#182028; --ink:#E8EDF2; --ink-2:#A7B3C2; --line:#2E3A48;
+  --accent:#FF8A3D; --accent-soft:#3A2416;
+  --d1:#EF5350; --d2:#5C8DEB; --d3:#66BB6A; --d4:#FFB74D; --d5:#B085D6;
+  --why:#66BB6A; --warn:#EF6A70; --face:rgba(180,200,230,.12); --edge:#C9D3DF; --ghost:rgba(232,237,242,.3);
+  --paper:#F4F6F9;
+}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:clamp(19px,1.45vw,26px);line-height:1.45}
+*{box-sizing:border-box}
+.deck{height:100%;display:flex;flex-direction:column}
+.slides{flex:1;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;padding:22px 36px 56px;display:none;overflow:auto}
+.slide.active{display:block}
+.slide h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.4vw,48px);line-height:1.1;margin:0 0 8px;text-wrap:balance;letter-spacing:-.01em}
+.eyebrow{font-family:var(--mono);font-size:clamp(12px,1vw,15px);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.lede{font-size:clamp(21px,1.8vw,28px);color:var(--ink-2);max-width:66ch;margin:0 0 10px}
+p{max-width:66ch;margin:6px 0}
+.cols{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.cols.eq{grid-template-columns:1fr 1fr}
+.cols.rev{grid-template-columns:.9fr 1.1fr}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+@media (max-width:900px){.cols,.cols.eq,.cols.rev,.row2{grid-template-columns:1fr}.slide{padding:18px 16px 70px}}
+.box{border-left:3px solid var(--accent);background:var(--panel);padding:10px 14px;margin:12px 0;font-size:clamp(17px,1.3vw,23px);max-width:66ch}
+.box .t{font-family:var(--mono);font-size:clamp(11px,.9vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.box.why{border-color:var(--why)}.box.why .t{color:var(--why)}
+.box.warn{border-color:var(--warn)}.box.warn .t{color:var(--warn)}
+.box.ex{border-color:var(--d2)}.box.ex .t{color:var(--d2)}
+.box.def{border-color:var(--ink-2)}.box.def .t{color:var(--ink-2)}
+ul,ol{padding-left:20px;max-width:66ch;margin:6px 0}li{margin:3px 0}
+.m{font-family:var(--mono);font-size:.92em}
+table{border-collapse:collapse;font-size:clamp(16px,1.25vw,22px)}
+th,td{padding:4px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--mono);font-size:clamp(11px,.9vw,14px);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+td.num{font-variant-numeric:tabular-nums;text-align:right}
+.bar{display:flex;align-items:center;gap:10px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--panel);font-size:clamp(15px,1.1vw,19px);color:var(--ink-2)}
+.bar button{font:inherit;background:none;border:1px solid var(--line);border-radius:6px;padding:4px 12px;color:var(--ink);cursor:pointer}
+.bar button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.progress{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);width:0}
+.counter{font-family:var(--mono);font-size:clamp(14px,1.05vw,18px);font-variant-numeric:tabular-nums}
+/* static illustration cards: always on paper, so the printed figures read in both themes */
+.fig{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:10px 0}
+.fig img{display:block;width:100%;height:auto;max-height:46vh;object-fit:contain}
+.fig.sm img{max-height:30vh}
+.fig .c{font-size:clamp(15px,1.15vw,20px);color:#4B5868;margin-top:8px;text-align:center}
+/* player */
+.player{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.player canvas{display:block;width:100%;height:auto;max-height:58vh;object-fit:contain;background:var(--panel)}
+.pc{display:flex;align-items:center;gap:8px;padding:6px 10px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pc button{font:600 clamp(14px,1.05vw,18px) var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 9px;color:var(--ink);cursor:pointer;min-width:38px}
+.pc button:hover{border-color:var(--accent);color:var(--accent)}
+.pc button.play{background:var(--accent);border-color:var(--accent);color:#fff;min-width:64px}
+.pc input[type=range]{flex:1;min-width:80px;accent-color:var(--accent)}
+.pc .cap{flex-basis:100%;font-size:clamp(15px,1.15vw,20px);color:var(--ink-2);min-height:1.3em}
+.pc .cap b{color:var(--ink)}
+.opts{display:flex;flex-wrap:wrap;gap:6px;padding:6px 10px 0}
+.tb{font:600 clamp(14px,1.05vw,18px) var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--ink);cursor:pointer}
+.tb:hover{border-color:var(--accent);color:var(--accent)}
+.tb.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tb.util{font-family:var(--body)}
+.turns{display:grid;gap:8px}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.group h3{margin:0 0 5px;font:600 clamp(12px,.95vw,15px) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.group .row{display:flex;flex-wrap:wrap;gap:5px}
+.readout{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.ro{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.ro .k{font-family:var(--mono);font-size:clamp(11px,.9vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.ro .v{font-family:var(--mono);font-size:clamp(22px,1.7vw,30px);font-weight:600;margin-top:2px}
+.ro .s{font-size:clamp(14px,1.05vw,18px);color:var(--ink-2)}
+.slots{display:flex;gap:6px;margin-top:4px}
+.slot{flex:1;text-align:center;border:1px dashed var(--line);border-radius:6px;padding:3px 0;font-family:var(--mono);font-size:clamp(13px,1vw,17px)}
+.slot b{display:block;font-size:clamp(18px,1.4vw,24px)}
+.d1{color:var(--d1)}.d2{color:var(--d2)}.d3{color:var(--d3)}.d4{color:var(--d4)}
+.hist{font-family:var(--mono);font-size:clamp(13px,1vw,17px);color:var(--ink-2);margin-top:6px;overflow-wrap:anywhere}
+.slide.title-slide.active{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.title-slide h1{font-size:clamp(40px,6vw,80px);margin-bottom:8px}
+.kbd{font-family:var(--mono);font-size:.85em;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.anim-note{font-size:clamp(15px,1.15vw,20px);color:var(--ink-2);margin:4px 0 0}
+
+/* uniform slide structure */
+.main{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start;margin-top:4px}
+.main.wide{grid-template-columns:1fr 1.2fr}
+.main.text-only{grid-template-columns:1fr}
+@media (max-width:900px){.main,.main.wide{grid-template-columns:1fr}}
+.text>*:first-child{margin-top:0}
+.figs{display:grid;gap:12px}
+.figs .fig{margin:0}
+details.anim{margin-top:18px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+details.anim>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:10px 14px;font-family:var(--mono);font-size:clamp(14px,1.05vw,18px);color:var(--ink)}
+details.anim>summary::-webkit-details-marker{display:none}
+details.anim>summary::before{content:"▶";color:var(--accent);font-size:.9em}
+details.anim[open]>summary::before{content:"▼"}
+details.anim>summary .tag{background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:1px 7px;font-size:.85em;letter-spacing:.06em;text-transform:uppercase}
+details.anim>summary .what{font-family:var(--body);color:var(--ink-2)}
+details.anim>.body{padding:0 14px 14px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
+details.anim>.body.full{grid-template-columns:1fr}
+@media (max-width:900px){details.anim>.body{grid-template-columns:1fr}}
+details.anim .player{border:none;border-radius:8px}
+details.anim .anim-note{margin:0}
+</style>
+
+<div class="deck">
+<div class="slides" id="slides">
+
+<section class="slide title-slide">
+  <div class="cols">
+    <div>
+      <div class="eyebrow">Office Hour One · Groups</div>
+      <h1>The 24 Turns</h1>
+      <p class="lede">Every group is the symmetries of something. A lecture following the first chapter of Clay and Margalit's <i>Office Hours with a Geometric Group Theorist</i>.</p>
+      <p style="color:var(--ink-2)">Each slide has the explanation and its printed figure. Below them, an optional <b>Animation</b> panel can be opened for a moving version of the same idea; it has play, pause, step buttons and a scrubber, and never plays on its own. Move between slides with <span class="kbd">→</span> <span class="kbd">←</span>.</p>
+    </div>
+    <div class="fig sm">{{fig:figtriangle}}<div class="c">A warm-up: the equilateral triangle has 3 rotations and 3 reflections, and they behave exactly like the 6 ways of permuting its corners.</div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Opening · Symmetry</div>
+  <h1>Where we are going</h1>
+  <div class="main"><div class="text"><p class="lede">A <b>symmetry</b> of an object is a move that leaves it looking exactly as it did. To understand an object, find its symmetries: for a cube, a polygon, a line, or something abstract like a set of functions.</p>
+<ol>
+  <li><b>A puzzle.</b> How many ways can you turn a cube, and how do the turns combine?</li>
+  <li><b>What a group is</b>, and why every collection of symmetries is one.</li>
+  <li><b>A tour of examples:</b> polygons (<span class="m">D<sub>n</sub></span>), permutations (<span class="m">S<sub>n</sub></span>), clocks (<span class="m">ℤ/nℤ</span>), the integers, the grid, matrices, and free groups. Each comes with the picture it is the symmetries of.</li>
+  <li><b>Maps between groups:</b> homomorphisms, kernels, normal subgroups, quotients, and the first isomorphism theorem.</li>
+  <li><b>Writing a group down:</b> generators, relations, and the Cayley graph as the picture of a presentation.</li>
+</ol>
+<div class="box"><div class="t">The one sentence</div>“Group” and “the symmetries of something” are the same idea seen from two sides. Symmetries can be <b>combined</b> (do one, then another) and <b>undone</b>; a group is exactly a set with those two features. Every example today is both a group and a set of symmetries.</div></div><div class="figs"><div class="fig">{{fig:figtriangle}}<div class="c">The six symmetries of the equilateral triangle: three rotations and three reflections (dashed axes). Each one is a permutation of the corners {1, 2, 3}, and every permutation occurs exactly once.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · the six symmetries of the triangle, one at a time</span></summary><div class="body"><div><div class="player" id="p-triangle"></div><p class="anim-note">Watch where the numbered corners go: each symmetry is a permutation of {1, 2, 3}, and every permutation occurs once.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Opening · The cube</div>
+  <h1>A puzzle: how many ways can you turn a cube?</h1>
+  <div class="main"><div class="text"><p class="lede">A <b>symmetry of the cube</b> is what you get by picking it up, turning it, and putting it back in exactly the same place. Mirror images are not allowed: you cannot do those with your hands.</p>
+<ul>
+  <li>Skewer the cube through the centres of two opposite faces and turn by a multiple of 90°.</li>
+  <li>Or skewer it through the midpoints of two opposite edges, or through two opposite corners.</li>
+  <li><b>Counting:</b> corner <span class="m">A</span> can be sent to any of the 8 corners, and once you have chosen, the cube can still spin about that corner in 3 ways. So there are <b>8 × 3 = 24</b> symmetries.</li>
+</ul>
+<div class="box warn"><div class="t">Watch out</div>Counting is not understanding. What is a good way to <i>list</i> the 24? And if we do one turn and then another, we get a third turn: where is it on the list? The next three slides answer this.</div></div><div class="figs"><div class="fig">{{fig:figcube}}<div class="c">The cube with corners A–H and its four long diagonals d1 = AG, d2 = BH, d3 = CE, d4 = DF. Keep this labelling in mind: the animations use the same one.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · one turn of each kind about its axis</span></summary><div class="body"><div><div class="player" id="p-intro"></div><p class="anim-note">The axis of each turn is drawn as a dashed orange line. Drag the cube to look at it from another side.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Opening · Why multiples of 90°, 120°, 180°</div>
+  <h1>Look straight down the skewer</h1>
+  <div class="main"><div class="text"><p class="lede">Why can you only turn by 90° about a face axis, and not by, say, 45°? Look straight down the axis you are turning about. The cube's outline becomes a flat shape, and a turn is a symmetry of the cube exactly when it is a symmetry of that outline.</p>
+<ul>
+  <li>Down a <b>face axis</b> the outline is a square. It returns to itself after 90°; after 45° its corners stick out. So only multiples of 90° work.</li>
+  <li>Down a <b>long diagonal</b> the outline is a regular hexagon centred on the near corner, whose three edges make 120° angles. Multiples of 120°.</li>
+  <li>Down an <b>edge axis</b> the outline is a rectangle with sides 1 and √2, not a square. Only the half turn.</li>
+</ul>
+<div class="box why"><div class="t">The count, again</div>1 identity + 3 face axes × 3 turns + 4 long diagonals × 2 turns + 6 edge axes × 1 turn = <b>24</b>. The same number as before, now organised by axis.</div></div><div class="figs"><div class="fig">{{fig:figwhypi}}<div class="c">The three outlines: square (4-fold), regular hexagon (3-fold), 1 × √2 rectangle (2-fold). The red dashed shapes show a turn that is too small: the cube would stick out.</div></div><div class="fig sm">{{fig:figaxes}}<div class="c">Where the three kinds of axis run through the cube.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · look down an axis, then turn</span></summary><div class="body"><div><div class="player" id="p-axis"></div><p class="anim-note">Choose an axis, then play. The first turn is too small and the cube sticks out past the dashed outline of where it started; the second turn lands it back on the outline.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Opening · The four long diagonals</div>
+  <h1>The idea that solves the puzzle: turns of the cube are permutations of 4 diagonals</h1>
+  <div class="main"><div class="text"><p class="lede">Draw the four long diagonals of the cube. Two facts:</p>
+<ol>
+  <li>Every turn of the cube moves long diagonals to long diagonals, so it <b>permutes</b> <span class="m">d1, d2, d3, d4</span>.</li>
+  <li>Every permutation of the four diagonals comes from <b>exactly one</b> turn.</li>
+</ol>
+<div class="box why"><div class="t">Why fact 2 is true</div>Swapping two diagonals is the half turn about the axis through the midpoints of the two edges that join them, so every swap is a turn. Any permutation is a product of swaps, so every permutation is a turn. Both sides have 24 elements, so no two turns give the same permutation.</div>
+<div class="box"><div class="t">The payoff</div>A permutation is a bijection, so “do one turn, then another” is just composition of functions: mechanical. The 24 moves have become the <b>symmetric group</b> <span class="m">S₄</span>. In the lab below, the readout “where the cube is” is exactly this product.</div></div><div class="figs"><div class="fig">{{fig:figcube}}<div class="c">Swapping d1 = AG and d2 = BH: the edges AB and GH each join an endpoint of d1 to an endpoint of d2, and the half turn about the axis through their midpoints swaps A↔B and G↔H.</div></div></div></div>
+  <details class="anim" open><summary><span class="tag">Animation</span><span class="what">optional · the cube lab: queue turns, watch the diagonals get shuffled, read off the product</span></summary><div class="body"><div><div class="player" id="p-lab"></div><p class="anim-note">Click turns on the right to queue them, then press play. Turns compose: each button shows the cycle it induces on d1…d4, and the readout shows the running product in S₄.</p></div><div><div class="readout"><div class="ro"><div class="k">This turn shuffles the diagonals by</div><div class="v" id="ro-move">—</div><div class="s" id="ro-move-desc">choose a turn, then play</div></div><div class="ro"><div class="k">Where the cube is = element of S₄</div><div class="v" id="ro-total">()</div><div class="s">product of every turn so far</div></div></div><div class="ro" style="margin-top:8px"><div class="k">Which diagonal sits in each home slot</div><div class="slots" id="slots"></div></div><div class="hist" id="hist">History: (none yet)</div><div class="turns" id="turns" style="margin-top:10px"></div></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Opening · The dictionary</div>
+  <h1>Each kind of turn is a kind of permutation</h1>
+  <div class="main"><div class="text"><table>
+  <tr><th>rotation of the cube</th><th>how many</th><th>permutation of d1…d4</th><th>how many</th></tr>
+  <tr><td>do nothing</td><td class="num">1</td><td class="m">identity ()</td><td class="num">1</td></tr>
+  <tr><td>±90° about a face axis</td><td class="num">6</td><td class="m">4-cycle, e.g. (1 2 3 4)</td><td class="num">6</td></tr>
+  <tr><td>180° about a face axis</td><td class="num">3</td><td class="m">two swaps, e.g. (1 2)(3 4)</td><td class="num">3</td></tr>
+  <tr><td>±120° about a long diagonal</td><td class="num">8</td><td class="m">3-cycle, e.g. (2 3 4)</td><td class="num">8</td></tr>
+  <tr><td>180° about an edge axis</td><td class="num">6</td><td class="m">one swap, e.g. (1 2)</td><td class="num">6</td></tr>
+  <tr><td><b>total</b></td><td class="num"><b>24</b></td><td></td><td class="num"><b>24</b></td></tr>
+</table>
+<div class="box why"><div class="t">Why a 120° turn about d1 is a 3-cycle</div>The axis is d1 itself, so d1 is carried to itself. The three corners next to A are B, D and E, and the turn cycles them; d2, d4, d3 are the diagonals starting at those corners, so they are cycled.</div>
+<div class="box"><div class="t">Check it in the lab</div>Every button in the lab on the previous slide is labelled with the cycle it induces on the diagonals, grouped exactly as in this table. Cycle notation is explained on the S<sub>n</sub> slide.</div></div><div class="figs"><div class="fig">{{fig:figaxes}}<div class="c">The three kinds of axis: through face centres (3 axes, quarter turns), through opposite corners (4 axes, third turns), through opposite edge midpoints (6 axes, half turns).</div></div></div></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.1 Groups · The definition</div>
+  <h1>Definition of a group</h1>
+  <div class="main"><div class="text"><div class="box def"><div class="t">Definition</div>A <b>multiplication</b> on a set <span class="m">G</span> is a function <span class="m">G × G → G</span>; the image of <span class="m">(g, h)</span> is written <span class="m">gh</span>. A <b>group</b> is a set <span class="m">G</span> with a multiplication such that
+  <ol>
+    <li><b>Identity.</b> There is an element <span class="m">1 ∈ G</span> with <span class="m">1g = g1 = g</span> for all <span class="m">g</span>.</li>
+    <li><b>Inverses.</b> For each <span class="m">g</span> there is an element <span class="m">g⁻¹</span> with <span class="m">gg⁻¹ = g⁻¹g = 1</span>.</li>
+    <li><b>Associativity.</b> <span class="m">(fg)h = f(gh)</span> for all <span class="m">f, g, h</span>.</li>
+  </ol>
+</div>
+<div class="box why"><div class="t">Why this is about symmetries</div>For the symmetries of the cube, define <span class="m">gh</span> as “do <span class="m">h</span>, then do <span class="m">g</span>”, like the composition <span class="m">g∘h</span>. The identity is “leave it alone”; the inverse of <span class="m">g</span> is “undo <span class="m">g</span>”; associativity holds because composing functions is associative. So the symmetries of anything form a group. The symbol <span class="m">1</span> is a name, not the number one: in <span class="m">ℤ</span> the identity is 0.</div>
+<div class="box warn"><div class="t">Watch out</div>Nothing in the definition says <span class="m">gh = hg</span>. Groups where that always holds are called <b>abelian</b>. The cube's group is not abelian: a quarter turn about a vertical axis followed by a half turn about an edge axis differs from the same two moves in the other order.</div>
+<div class="box"><div class="t">Generators</div>A subset <span class="m">S</span> <b>generates</b> <span class="m">G</span> if every element of <span class="m">G</span> is a product of elements of <span class="m">S</span> and their inverses. The two reflections on the next slide generate the whole dihedral group; the neighbour swaps generate all of <span class="m">S<sub>n</sub></span>.</div></div><div class="figs"><div class="fig sm">{{fig:figcube}}<div class="c">The symmetries of the cube satisfy all three axioms: do nothing, undo, and compose.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · the axioms acted out on the cube</span></summary><div class="body"><div><div class="player" id="p-axioms"></div><p class="anim-note"><span class="m">g</span> (a quarter turn) then <span class="m">g⁻¹</span> undoes it; then <span class="m">h</span> (an edge half-turn) followed by <span class="m">g</span>. Do the two turns in the other order in the lab and the cube ends up somewhere else: <span class="m">gh ≠ hg</span>.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.1 Groups · The dihedral group</div>
+  <h1><span class="m">D<sub>n</sub></span>: symmetries of a regular <span class="m">n</span>-gon</h1>
+  <div class="main"><div class="text"><p class="lede"><span class="m">D<sub>n</sub></span> is the set of symmetries of a regular <span class="m">n</span>-gon in the plane, now including reflections (you can flip a flat polygon over). It has <span class="m">n</span> rotations and <span class="m">n</span> reflections, so <span class="m">|D<sub>n</sub>| = 2n</span>.</p>
+<ul>
+  <li><span class="m">s</span>: reflection in a line through the centre and a vertex. <span class="m">t</span>: reflection in the line rotated from it by <span class="m">π/n</span>.</li>
+  <li><span class="m">s</span> and <span class="m">t</span> <b>generate</b> <span class="m">D<sub>n</sub></span>: every symmetry is a product of <span class="m">s</span>'s and <span class="m">t</span>'s. A rotation by <span class="m">m</span> clicks is <span class="m">(st)<sup>m</sup></span>; each reflection is a rotation followed by <span class="m">s</span>.</li>
+  <li><span class="m">s² = 1</span>: reflecting twice puts everything back, so <span class="m">s</span> is its own inverse.</li>
+</ul>
+<div class="box why"><div class="t">Why st is one click</div>Reflecting in two lines that meet at angle θ is the same as rotating by 2θ about their intersection. Here θ = π/n, so <span class="m">st</span> is the rotation by 2π/n.</div>
+<div class="box warn"><div class="t">Notation</div>Some books call this group <span class="m">D<sub>2n</sub></span>, naming it by its size. This book names it by the polygon.</div></div><div class="figs"><div class="fig">{{fig:figsquares}}<div class="c">The eight symmetries of a square, D₄: four rotations (top row) and four reflections (bottom row). Corners are numbered so you can see where each one goes.</div></div><div class="fig sm">{{fig:figpent}}<div class="c">The pentagon with the two reflection axes t (vertical) and s (rotated by π/5). Their product is the rotation by 2π/5, one “click”.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · two reflections make one rotation</span></summary><div class="body"><div><div class="player" id="p-dihedral"></div><p class="anim-note">Apply <span class="m">t</span>, then <span class="m">s</span>; then rewind and turn the original by one click. The results coincide.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.1 Groups · The symmetric group</div>
+  <h1><span class="m">S<sub>n</sub></span>: all permutations of {1, …, n}</h1>
+  <div class="main"><div class="text"><p class="lede"><span class="m">S<sub>n</sub></span> is the set of permutations (bijections) of <span class="m">{1, …, n}</span>, with multiplication given by composition. It is the symmetry group of <span class="m">n</span> loose points: no distances or shape to respect, so every rearrangement counts, and <span class="m">|S<sub>n</sub>| = n!</span>.</p>
+<p><b>Cycle notation.</b> <span class="m">(i₁ i₂ … i<sub>k</sub>)</span> sends each listed number to the next, the last back to the first, and leaves everything else fixed: <span class="m">(1 2 4)</span> sends 1→2, 2→4, 4→1. Every permutation is a product of <b>disjoint</b> cycles, such as <span class="m">(1 2 4)(3 5)</span> in <span class="m">S₆</span>.</p>
+<p><b>Multiplying</b> is composing, right factor first. For <span class="m">(2 6)·(1 2 4)(3 5)</span>:</p>
+<table>
+  <tr><th>x</th><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num">5</td><td class="num">6</td></tr>
+  <tr><th>after (1 2 4)(3 5)</th><td class="num">2</td><td class="num">4</td><td class="num">5</td><td class="num">1</td><td class="num">3</td><td class="num">6</td></tr>
+  <tr><th>after (2 6)</th><td class="num">6</td><td class="num">4</td><td class="num">5</td><td class="num">1</td><td class="num">3</td><td class="num">2</td></tr>
+</table>
+<p>Reading the last row: 1→6→2→4→1 and 3↔5, so the product is <span class="m">(1 6 2 4)(3 5)</span>.</p>
+<div class="box warn"><div class="t">Watch out</div>Apply the left factor first and you get <span class="m">(1 2 4 6)(3 5)</span>, a different element. Order matters, and the convention is “right factor first”, matching <span class="m">gh</span> = “<span class="m">h</span>, then <span class="m">g</span>”.</div></div><div class="figs"><div class="fig sm">{{fig:figcyclearrows}}<div class="c">(1 2 4)(3 5) drawn as arrows: each cycle is a closed loop, and disjoint cycles share no points. The inverse permutation is the same picture with every arrow reversed.</div></div><div class="fig">{{fig:figstack}}<div class="c">Multiplying by stacking: the first-applied permutation on top, the second underneath. Follow each colour through both blocks to read the product (1 6 2 4)(3 5).</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · stacking the two diagrams</span></summary><div class="body"><div><div class="player" id="p-stack"></div><p class="anim-note">The first-applied permutation is drawn on top, the second underneath; follow each colour through both blocks to read the product.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.1 Groups · Transpositions · Exercises 1 and 2</div>
+  <h1>Neighbour swaps generate <span class="m">S<sub>n</sub></span></h1>
+  <div class="main"><div class="text"><p class="lede">A <b>transposition</b> is a 2-cycle such as <span class="m">(3 5)</span>: it swaps two things and fixes the rest. Important fact: <span class="m">S<sub>n</sub></span> is generated by the <b>adjacent</b> transpositions <span class="m">(i i+1)</span>, <span class="m">1 ≤ i ≤ n−1</span>. (We used this on the cube: every permutation of the diagonals is a product of swaps.)</p>
+<p>In a strand diagram each crossing swaps two neighbouring positions, so it is an adjacent transposition. Read the crossings top to bottom and write them right to left: for <span class="m">(1 2 4)(3 5)</span> the diagram gives <span class="m">(3 4)(1 2)(4 5)(2 3)(3 4)</span>.</p>
+<div class="box ex"><div class="t">Exercise 1, as an algorithm</div>Any strand diagram can be drawn with its crossings at different heights, and then it <i>is</i> a product of adjacent transpositions. Equivalently: bubble sort. Take the arrangement the permutation produces and sort it back into order using only swaps of neighbours. Each swap is an adjacent transposition, and the list of swaps is a factorisation.</div>
+<div class="box"><div class="t">Exercise 2</div>Which other <span class="m">S<sub>n</sub></span> are the symmetries of a shape? The regular tetrahedron's rotations and reflections give <span class="m">S₄</span>; in general the regular simplex with <span class="m">n</span> corners gives <span class="m">S<sub>n</sub></span>. Higher cubes do not: the 4-dimensional cube has 192 rotations, and <span class="m">5! = 120</span>.</div></div><div class="figs"><div class="fig">{{fig:figbraid}}<div class="c">The strand diagram of (1 2 4)(3 5). Strand i runs from position i at the top to position σ(i) at the bottom; the five crossings, read top to bottom, are the five adjacent transpositions in the factorisation.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · bubble sort as a factorisation</span></summary><div class="body"><div><div class="player" id="p-bubble"></div><p class="anim-note">Sorting <span class="m">2, 4, 5, 1, 3, 6</span> back into order with neighbour swaps only; the product of swaps builds up below the boxes.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.1 Groups · The integers modulo n · Exercise 3</div>
+  <h1><span class="m">ℤ/nℤ</span>: add, then wrap around</h1>
+  <div class="main"><div class="text"><div class="box def"><div class="t">Definition</div>For an integer <span class="m">n > 1</span>, <span class="m">ℤ/nℤ = {0, 1, …, n−1}</span> with the multiplication “add <span class="m">a</span> and <span class="m">b</span>, and subtract <span class="m">n</span> if the result is <span class="m">n</span> or more”. The identity is 0; the inverse of <span class="m">m ≠ 0</span> is <span class="m">n − m</span>.</div>
+<p>Three familiar cases: <span class="m">n = 12</span> is clock arithmetic (9 o'clock plus 4 hours is 1 o'clock); <span class="m">n = 10</span> is “only keep the last digit”; <span class="m">n = 2</span> is light-switch arithmetic, where 1 means flip and flip plus flip is nothing.</p>
+<div class="box why"><div class="t">Associativity</div>The definition is by cases, but <span class="m">(a + b) + c</span> and <span class="m">a + (b + c)</span> are both the remainder of the ordinary integer <span class="m">a + b + c</span> on division by <span class="m">n</span>, and taking remainders is consistent with integer addition.</div>
+<div class="box ex"><div class="t">Exercise 3</div>If <span class="m">gcd(m, n) = 1</span> then <span class="m">{m}</span> generates <span class="m">ℤ/nℤ</span>. Why: there are integers <span class="m">u, v</span> with <span class="m">um + vn = 1</span>, so <span class="m">u·m ≡ 1</span>, and from 1 you reach everything. Conversely if <span class="m">d = gcd(m, n) > 1</span>, every multiple of <span class="m">m</span> is a multiple of <span class="m">d</span> on the clock, so 1 is never reached.</div>
+<div class="box"><div class="t">Subgroup</div>A <b>subgroup</b> is a subset containing 1 that is closed under products and inverses. Starting from 4 on the 12-clock you only ever visit {0, 4, 8}: a subgroup, a copy of ℤ/3ℤ inside ℤ/12ℤ.</div></div><div class="figs"><div class="fig sm">{{fig:figclock}}<div class="c">9 + 4 on the clock: 13 is not an element, so subtract 12 and land on 1.</div></div><div class="fig sm">{{fig:figclocksub}}<div class="c">The subgroups of ℤ/12ℤ: each is closed under “add and wrap”, and each is a regular polygon inscribed in the clock.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · 9 + 4, then repeated adding of 5 or 4</span></summary><div class="body"><div><div class="player" id="p-clock"></div><p class="anim-note">Choose <span class="m">m = 5</span> or <span class="m">m = 4</span> above the picture and play: adding 5 repeatedly visits every hour; adding 4 only ever visits three.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.1 Groups · What is ℤ/nℤ the symmetries of?</div>
+  <h1>Decorate the polygon until only rotations survive</h1>
+  <div class="main"><div class="text"><p class="lede">Using the clock, we might guess that <span class="m">ℤ/nℤ</span> is the symmetries of a regular <span class="m">n</span>-gon. Not quite: it is the <b>rotations</b>, a proper subgroup of <span class="m">D<sub>n</sub></span>, because the reflections are missing.</p>
+<p>The trick: draw a small arrow on every edge and insist that a symmetry keeps the arrows pointing the same way round. Reflections reverse the sense of travel, so they are no longer symmetries; the <span class="m">n</span> rotations remain, and they compose exactly like <span class="m">ℤ/nℤ</span> (turn <span class="m">j</span> clicks, then <span class="m">k</span> clicks, is <span class="m">j + k</span> clicks, wrapped).</p>
+<div class="box"><div class="t">Looking ahead</div>This decorated polygon is the <b>Cayley graph</b> of <span class="m">ℤ/nℤ</span>: one dot per element, one arrow per “add 1”. The same recipe builds an object for every group; Office Hour 2 proves the group is exactly its symmetry group.</div></div><div class="figs"><div class="fig">{{fig:figarrowgon}}<div class="c">Left: after a rotation the arrows still agree. Right: after a reflection every arrow is reversed, so the reflection is not a symmetry of the decorated polygon.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · rotate versus reflect the arrowed pentagon</span></summary><div class="body"><div><div class="player" id="p-arrowgon"></div><p class="anim-note">A rotation carries every arrow to an arrow pointing the same way round; a reflection lands the polygon on itself but reverses every arrow.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.2 Infinite groups · ℤ and ℤ²</div>
+  <h1>The integers and the integer grid</h1>
+  <div class="main"><div class="text"><p class="lede">Many first courses skip infinite groups. This is where the fun is, and where pictures earn their keep: you cannot write an infinite multiplication table, but you can draw the group's object.</p>
+<div class="box"><div class="t">ℤ</div>The integers under addition: identity 0, inverse of <span class="m">n</span> is <span class="m">−n</span>. Generated by <span class="m">{1}</span>, and also by <span class="m">{2, 3}</span> since <span class="m">3 − 2 = 1</span>. Mark the integer points on a line: the symmetries are translations by an integer and reflections about integer or half-integer points. <span class="m">ℤ</span> is the translations. Draw arrows on the segments and the reflections disappear, so <span class="m">ℤ</span> becomes the full symmetry group.</div>
+<div class="box"><div class="t">ℤ²</div>Pairs <span class="m">(m, n)</span> of integers, added coordinate by coordinate, generated by <span class="m">(1, 0)</span> and <span class="m">(0, 1)</span>. Colour the horizontal edges blue and the vertical edges green, add arrows, and demand that colours and arrows are preserved. A quarter turn would swap blue and green and a reflection would flip arrows, so only translations by lattice vectors survive: the symmetries are exactly <span class="m">ℤ²</span>.</div>
+<div class="box warn"><div class="t">Keep in mind</div><span class="m">ℤ²</span> is abelian. The free group two slides on also has two generators but is not. Two generators, two very different groups.</div></div><div class="figs"><div class="fig sm">{{fig:figline}}<div class="c">The marked line with arrows: its symmetries are exactly the translations by integers, i.e. ℤ.</div></div><div class="fig">{{fig:figlattice}}<div class="c">The coloured, arrowed grid: its symmetries are exactly the lattice translations, i.e. ℤ².</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · translations and a reflection of the arrowed line</span></summary><div class="body"><div><div class="player" id="p-line"></div><p class="anim-note">Translate by +3, then by −2 (net +1: composition is addition); then reflect, and watch the arrows flip.</p></div><div><div class="player" id="p-grid"></div><p class="anim-note">Translate the grid by (2, 1); then try a quarter turn and watch the colours swap.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.2 Infinite groups · Multiplicative and matrix groups</div>
+  <h1>Numbers under multiplication, and <span class="m">GL(n, ℝ)</span></h1>
+  <div class="main text-only"><div class="text"><p><b>Multiplicative groups.</b> <span class="m">ℝ<sup>×</sup></span> and <span class="m">ℂ<sup>×</sup></span> are the nonzero real and complex numbers under ordinary multiplication, identity 1. Zero is left out because it has no inverse.</p>
+<div class="box why"><div class="t">Why they are not finitely generated</div>Finitely many numbers <span class="m">r₁, …, r<sub>k</sub></span> produce only the products <span class="m">r₁<sup>e₁</sup>⋯r<sub>k</sub><sup>e<sub>k</sub></sup></span> with integer exponents: countably many. But <span class="m">ℝ<sup>×</sup></span> is uncountable. Every group met so far had a finite generating set; these do not.</div>
+<p><b>Matrix groups.</b> <span class="m">GL(n, ℝ)</span>, the <i>general linear group</i>, is the set of real <span class="m">n × n</span> matrices with nonzero determinant. It is a group because: the product of two such matrices again has nonzero determinant, by <span class="m">det(MN) = det M · det N</span>; the identity matrix has determinant 1; a matrix with nonzero determinant is invertible; and matrix multiplication is associative.</p>
+<p>Relatives: <span class="m">SL(n, ℝ)</span> (determinant 1, the <i>special linear group</i>), <span class="m">GL(n, ℤ)</span> (integer entries, which forces determinant ±1), <span class="m">SL(n, ℤ)</span>, and the complex versions. Subgroups of <span class="m">GL(n, ℂ)</span> are called linear groups.</p>
+<div class="box ex"><div class="t">Exercise 4</div>A matrix group over a finite field: <span class="m">GL(2, ℤ/2ℤ)</span>, the invertible 2 × 2 matrices with entries 0 and 1, has 6 elements and behaves like <span class="m">S₃</span>.</div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · the determinant as an area factor</span></summary><div class="body"><div><div class="player" id="p-det"></div><p class="anim-note">Apply <span class="m">M</span> to the unit square, then <span class="m">N</span>: the areas multiply, which is <span class="m">det(NM) = det N · det M</span> made visible.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.2 Infinite groups · The free group of rank 2 · Exercises 5 and 6</div>
+  <h1><span class="m">F₂</span>: words with no rules except cancellation</h1>
+  <div class="main"><div class="text"><div class="box def"><div class="t">Definitions</div>A <b>word</b> in the letters <span class="m">a, b</span> is any finite string of the symbols <span class="m">a, b, a⁻¹, b⁻¹</span>, the empty word included; two words are multiplied by <b>concatenation</b>. A word is <b>reduced</b> if no <span class="m">a</span> stands next to an <span class="m">a⁻¹</span> and no <span class="m">b</span> next to a <span class="m">b⁻¹</span>. Deleting such a pair shortens a word, and repeating this reaches a reduced word.<br><span class="m">F₂</span> is the set of reduced words, with multiplication <b>“concatenate, then reduce”</b>.</div>
+<ul>
+  <li>Identity: the empty word. Inverse: reverse the word and invert each letter, e.g. <span class="m">(aba⁻¹b)⁻¹ = b⁻¹ab⁻¹a⁻¹</span> (socks and shoes).</li>
+  <li>Associativity follows from one fact that needs proof: reducing a word always ends at the <b>same</b> reduced word, whatever order you cancel in.</li>
+  <li><span class="m">F₂</span> is generated by <span class="m">{a, b}</span>. It is not abelian: <span class="m">ab</span> and <span class="m">ba</span> are different reduced words, hence different elements.</li>
+</ul>
+<div class="box ex"><div class="t">Exercises 5 and 6</div>Uniqueness of the reduced word, by induction on length: if two different cancelling pairs are available and they do not overlap, cancel both in either order and the results agree; if they overlap, the word contains <span class="m">x x⁻¹ x</span> and either cancellation leaves <span class="m">x</span>. This is exactly what makes <span class="m">(uv)w = u(vw)</span>: both are reductions of the single string <span class="m">uvw</span>.</div>
+<div class="box"><div class="t">Other free groups</div>The same construction on any alphabet <span class="m">S</span> gives the free group <span class="m">F(S)</span>; its <b>rank</b> is the size of <span class="m">S</span>. <span class="m">F₁</span> is just the powers of one letter, a copy of <span class="m">ℤ</span>. Free groups matter because every group is a quotient of one (Section 1.4).</div></div><div class="figs"><div class="fig">{{fig:figreduce}}<div class="c">Reducing a a⁻¹ a b b⁻¹ a: three possible first steps, one final answer, aa.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · reduction in three different orders</span></summary><div class="body"><div><div class="player" id="p-reduce"></div><p class="anim-note">The word <span class="m">a a⁻¹ a b b⁻¹ a</span> reduced three ways. All three reach <span class="m">aa</span>.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.2 Infinite groups · The picture for F₂</div>
+  <h1>A word is a walk that never backtracks</h1>
+  <div class="main"><div class="text"><p class="lede">Read a word letter by letter starting at the centre: right for <span class="m">a</span>, up for <span class="m">b</span>, left for <span class="m">a⁻¹</span>, down for <span class="m">b⁻¹</span>. Cancelling <span class="m">xx⁻¹</span> is erasing a there-and-back. A reduced word is a walk that never backtracks.</p>
+<p>The picture continues forever, every vertex has four neighbours, and there are no loops: an infinite tree. Distinct reduced words reach distinct vertices, because in a tree there is only one non-backtracking route to each vertex.</p>
+<div class="box"><div class="t">What this tree is</div>It is the Cayley graph of <span class="m">F₂</span>, and Office Hour 2 shows that <span class="m">F₂</span> is exactly its group of symmetries preserving the letters and arrows. Compare: the arrowed polygon (<span class="m">ℤ/nℤ</span>), the arrowed line (<span class="m">ℤ</span>), the coloured grid (<span class="m">ℤ²</span>). Same construction, different groups.</div>
+<div class="box"><div class="t">And many more</div>Coxeter groups, right-angled Artin groups, lamplighter groups, Thompson's groups, mapping class groups and braid groups all appear later in the book, each with its own picture.</div></div><div class="figs"><div class="fig">{{fig:figtree}}<div class="c">The tree of F₂: from the centre 1, the four neighbours are a, b, a⁻¹, b⁻¹, and every vertex has three further neighbours.</div></div><div class="fig sm">{{fig:figwordpath}}<div class="c">The walk for a a⁻¹ a b b⁻¹ a. Steps 1–2 and 4–5 go out and straight back; what remains is the straight path aa.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · the walk with its detours erased</span></summary><div class="body"><div><div class="player" id="p-walk"></div><p class="anim-note">The walk for <span class="m">a a⁻¹ a b b⁻¹ a</span>: two there-and-back detours get erased, leaving the straight path <span class="m">aa</span>.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.3 Homomorphisms and normal subgroups · Homomorphisms</div>
+  <h1>Maps that respect multiplication</h1>
+  <div class="main"><div class="text"><div class="box def"><div class="t">Definition</div>A <b>homomorphism</b> from <span class="m">G</span> to <span class="m">H</span> is a function <span class="m">f : G → H</span> with <span class="m">f(ab) = f(a)f(b)</span> for all <span class="m">a, b</span>. A bijective homomorphism is an <b>isomorphism</b>, and isomorphic groups are the same group with the elements renamed. Two consequences: <span class="m">f(1) = 1</span> and <span class="m">f(g⁻¹) = f(g)⁻¹</span>.</div>
+<p><b>Injective</b> homomorphisms realise <span class="m">G</span> as a subgroup of <span class="m">H</span>: <span class="m">ℤ/nℤ → D<sub>n</sub></span> (rotations), <span class="m">ℤ/2ℤ → S<sub>n</sub></span> (a product of disjoint swaps), <span class="m">ℤ → ℤ²</span> (a line in the lattice), <span class="m">ℤ → F₂</span> (the powers of a word). A homomorphism is injective exactly when only 1 maps to 1.</p>
+<p><b>Non-injective</b> homomorphisms deliberately forget information, keeping only what is consistent with multiplication:</p>
+<table>
+  <tr><th>map</th><th>remembers only</th></tr>
+  <tr><td class="m">ℤ → ℤ/2ℤ</td><td>parity: even or odd</td></tr>
+  <tr><td class="m">det : GL(n,ℝ) → ℝ<sup>×</sup></td><td>the determinant</td></tr>
+  <tr><td class="m">ℝ<sup>×</sup> → ℤ/2ℤ</td><td>the sign</td></tr>
+  <tr><td class="m">S<sub>n</sub> → ℤ/2ℤ</td><td>an even or odd number of crossings</td></tr>
+  <tr><td class="m">D<sub>n</sub> → ℤ/2ℤ</td><td>flipped over or not</td></tr>
+  <tr><td class="m">F₂ → ℤ²</td><td>the exponent sums of a and of b</td></tr>
+</table>
+<div class="box ex"><div class="t">Exercises 7 and 8</div>Find more homomorphisms among today's groups, injective and not. Starters: <span class="m">D₃ → S₃</span> acting on the corners; <span class="m">ℤ² → ℤ</span>, <span class="m">(m, n) ↦ m − n</span>; <span class="m">F₂ → ℤ/2ℤ</span> by the parity of the word length.</div></div><div class="figs"><div class="fig">{{fig:fighom}}<div class="c">Multiply first and then apply f, or apply f to each factor and then multiply: same answer. That is the whole definition.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · two forgetful maps</span></summary><div class="body"><div><div class="player" id="p-forget"></div><p class="anim-note">The integers collapse onto two points, keeping only parity. Then the word <span class="m">a b a⁻¹ b⁻¹</span> is walked in the tree (it ends away from 1) and in the grid (it returns to 1): the map <span class="m">F₂ → ℤ²</span> forgets the order of letters.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.3 · Normal subgroups and kernels</div>
+  <h1>Conjugation, kernels, and why kernels are normal</h1>
+  <div class="main"><div class="text"><div class="box def"><div class="t">Definitions</div>A <b>normal subgroup</b> of <span class="m">G</span> is a subgroup <span class="m">N</span> such that <span class="m">gng⁻¹ ∈ N</span> for every <span class="m">n ∈ N</span> and <span class="m">g ∈ G</span>. The element <span class="m">gng⁻¹</span> is the <b>conjugate</b> of <span class="m">n</span> by <span class="m">g</span>: “<span class="m">n</span>, seen from <span class="m">g</span>'s point of view” (move by <span class="m">g⁻¹</span>, do <span class="m">n</span>, move back).<br>The <b>kernel</b> of a homomorphism <span class="m">f</span> is the set of elements <span class="m">f</span> sends to the identity, as for the null space of a linear map.</div>
+<div class="box why"><div class="t">Kernels are normal</div>If <span class="m">f(n) = 1</span> then <span class="m">f(gng⁻¹) = f(g) · 1 · f(g)⁻¹ = 1</span>, so <span class="m">gng⁻¹</span> is in the kernel too.</div>
+<p><b>Kernels of the forgetful maps:</b> the even integers <span class="m">2ℤ</span>; <span class="m">SL(n, ℝ)</span>; the positive reals; the alternating group <span class="m">A<sub>n</sub></span> (even permutations); the rotations of the polygon; the commutator subgroup <span class="m">[F₂, F₂]</span>, the words whose <span class="m">a</span>-exponents and <span class="m">b</span>-exponents both sum to zero.</p>
+<div class="box warn"><div class="t">Not every subgroup is normal</div>In <span class="m">D₃</span> the rotations are normal (a conjugate of a rotation is a rotation), but <span class="m">{1, s}</span> is not: <span class="m">rsr⁻¹</span> is the reflection in the axis rotated by 120°, which lies outside <span class="m">{1, s}</span>. In an abelian group <span class="m">gng⁻¹ = n</span>, so there every subgroup is normal.</div></div><div class="figs"><div class="fig">{{fig:fighomdots}}<div class="c">The map D₃ = S₃ → ℤ/2ℤ, “flipped or not”, element by element. The kernel is the three rotations; each target point is hit by a whole coset.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · conjugating a reflection in D₃</span></summary><div class="body"><div><div class="player" id="p-conj"></div><p class="anim-note">Do <span class="m">r⁻¹</span>, then <span class="m">s</span>, then <span class="m">r</span>. The net effect is the reflection in the axis rotated by 120°.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.3 · Quotient groups · Exercise 9</div>
+  <h1>Declare every element of <span class="m">N</span> to be trivial</h1>
+  <div class="main"><div class="text"><div class="box def"><div class="t">The quotient group G/N</div>Call <span class="m">g₁ ~ g₂</span> if <span class="m">g₁g₂⁻¹ ∈ N</span>, and write <span class="m">[g]</span> for the class of <span class="m">g</span>. The classes are the <b>cosets</b> <span class="m">Ng</span>; the class of 1 is <span class="m">N</span> itself. <span class="m">G/N</span> is the set of classes with multiplication <span class="m">[g₁][g₂] = [g₁g₂]</span>. Informally: the group obtained from <span class="m">G</span> by declaring every element of <span class="m">N</span> to be trivial.</div>
+<div class="box warn"><div class="t">Exercise 9: the one computation to know</div>Change the representatives: <span class="m">(n₁g₁)(n₂g₂) = n₁ (g₁n₂g₁⁻¹) g₁g₂</span>. This lies in the class of <span class="m">g₁g₂</span> exactly when <span class="m">g₁n₂g₁⁻¹ ∈ N</span>. So the multiplication is well defined precisely when <span class="m">N</span> is normal: the definition of “normal” is exactly what the quotient needs.</div>
+<p>The map <span class="m">g ↦ [g]</span> is a homomorphism <span class="m">G → G/N</span> whose kernel is precisely <span class="m">N</span>. So the loop closes: <b>normal subgroups and surjective homomorphisms are the same thing.</b> Whenever you meet one, the other is hiding behind it.</p></div><div class="figs"><div class="fig sm">{{fig:figwrap}}<div class="c">ℤ coloured by remainder mod 4: each colour is a coset of 4ℤ, and the four colours are the four elements of ℤ/4ℤ.</div></div><div class="fig">{{fig:figcosets}}<div class="c">In D₃: for the normal subgroup of rotations, left and right cosets agree. For {1, s} they do not, and “multiply cosets by multiplying representatives” gives contradictory answers.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · ℤ wrapping onto ℤ/4ℤ</span></summary><div class="body"><div><div class="player" id="p-wrap"></div><p class="anim-note">Each integer slides to its remainder mod 4, and the four piles become the four elements of the quotient.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.3 · The first isomorphism theorem · Exercise 10</div>
+  <h1>Theorem 1.1: if <span class="m">f : G → H</span> is onto with kernel <span class="m">K</span>, then <span class="m">H ≅ G/K</span></h1>
+  <div class="main"><div class="text"><div class="box why"><div class="t">Proof sketch</div>Define <span class="m">φ([g]) = f(g)</span>. Well defined: if <span class="m">[g] = [g′]</span> then <span class="m">g′ = kg</span> with <span class="m">k ∈ K</span>, so <span class="m">f(g′) = f(k)f(g) = f(g)</span>. A homomorphism: <span class="m">φ([g][g′]) = f(gg′) = f(g)f(g′)</span>. Onto because <span class="m">f</span> is. One-to-one: <span class="m">φ([g]) = 1</span> means <span class="m">g ∈ K</span>, i.e. <span class="m">[g] = [1]</span>.</div>
+<p><b>The examples, read as slogans:</b></p>
+<ul>
+  <li><span class="m">ℤ/2ℤ</span> = integers modulo the evens: parity. (This explains the notation.)</li>
+  <li><span class="m">GL(n,ℝ)/SL(n,ℝ) ≅ ℝ<sup>×</sup></span>: matrices modulo “determinant 1” is the determinant.</li>
+  <li><span class="m">S<sub>n</sub>/A<sub>n</sub> ≅ ℤ/2ℤ</span>: even or odd. <span class="m">D<sub>n</sub>/rotations ≅ ℤ/2ℤ</span>: flipped or not.</li>
+  <li><span class="m">F₂/[F₂, F₂] ≅ ℤ²</span>: forcing <span class="m">ab = ba</span> in the free group produces <span class="m">ℤ²</span>. This is the presentation story of the next section.</li>
+</ul>
+<div class="box ex"><div class="t">Exercise 10</div>Build your own: <span class="m">ℤ/6ℤ → ℤ/2ℤ</span> by parity has kernel {0, 2, 4}, so <span class="m">(ℤ/6ℤ)/{0,2,4} ≅ ℤ/2ℤ</span>. What do <span class="m">ℂ<sup>×</sup> → ℝ<sup>×</sup></span>, <span class="m">z ↦ |z|</span>, and <span class="m">ℤ² → ℤ</span>, <span class="m">(m, n) ↦ m − n</span>, give?</div></div><div class="figs"><div class="fig">{{fig:figiso}}<div class="c">The theorem as a triangle: f factors through G/K, and the map [g] ↦ f(g) is an isomorphism.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · D₃ → ℤ/2ℤ, coset by coset</span></summary><div class="body"><div><div class="player" id="p-iso"></div><p class="anim-note">The three rotations land on 0 (the kernel), the three reflections on 1, and the two cosets become the two elements of the quotient.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.4 Group presentations · Exercise 11</div>
+  <h1>Generators plus a few defining equations</h1>
+  <div class="main"><div class="text"><p class="lede">A multiplication table describes a group completely, but is hopeless for big or infinite groups. A generating set is more economical but not enough: <span class="m">F₂</span> and <span class="m">ℤ²</span> both have two generators, and only one is abelian. The way out: some equations imply others (from <span class="m">gh = k</span> and <span class="m">h = pq</span> follows <span class="m">gpq = k</span>), so a short list of <b>defining equations</b> can pin down the whole table.</p>
+<div class="box"><div class="t">Examples</div><span class="m">ℤ/nℤ ≅ ⟨a | aⁿ = 1⟩</span>: every table entry follows from the one rule, e.g. <span class="m">aⁿ⁻³a⁴ = aⁿ⁺¹ = aⁿ·a = a</span>. &nbsp; <span class="m">ℤ² ≅ ⟨x, y | xy = yx⟩</span>: two generators and the single rule that they commute (Exercise 11: every word sorts to <span class="m">x<sup>m</sup>y<sup>n</sup></span>).</div>
+<div class="box def"><div class="t">The formal definition</div>A presentation is a pair <span class="m">(S, R)</span>: an alphabet <span class="m">S</span> and a set <span class="m">R</span> of words in it. The group <span class="m">⟨S | R⟩</span> is the free group <span class="m">F(S)</span> divided by the <b>normal closure</b> of <span class="m">R</span>, the smallest normal subgroup containing <span class="m">R</span>. Elements of <span class="m">S</span> are <b>generators</b>; elements of <span class="m">R</span> are <b>defining relators</b>. A <b>relation</b> <span class="m">u = v</span> becomes the relator <span class="m">uv⁻¹</span>: <span class="m">ab = ba</span> becomes <span class="m">aba⁻¹b⁻¹</span>.</div>
+<div class="box why"><div class="t">Why the normal closure?</div>If a word <span class="m">r</span> is to equal 1, then so must <span class="m">grg⁻¹</span> for every <span class="m">g</span>, and products and inverses of such elements as well. The set of all consequences is therefore a normal subgroup containing <span class="m">R</span>, and the smallest one is the normal closure. Dividing by a non-normal subgroup would not even give a group.</div></div><div class="figs"><div class="fig">{{fig:figcayleytable}}<div class="c">The table of D₃, coloured by rotation (blue) and reflection (red). The 2 × 2 block pattern is the quotient D₃ → ℤ/2ℤ; the whole table follows from s² = 1, r³ = 1 and rs = sr².</div></div><div class="fig sm">{{fig:figpres}}<div class="c">The presentation as a quotient: F(S) maps onto ⟨S | R⟩ with kernel the normal closure of R.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · how the relator aba⁻¹b⁻¹ forces ab = ba</span></summary><div class="body"><div><div class="player" id="p-relator"></div><p class="anim-note">In the quotient you may insert the relator anywhere. Insert it in front of <span class="m">ba</span>, regroup, and the middle cancels: <span class="m">ba</span> has become <span class="m">ab</span>. Repeating sorts any word into <span class="m">a<sup>m</sup>b<sup>n</sup></span>, which is the element <span class="m">(m, n)</span> of ℤ².</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1.4 · What a presentation looks like · Exercises 12 and 13</div>
+  <h1>Relators are the loops in the Cayley graph</h1>
+  <div class="main wide"><div class="text"><p class="lede">One dot per element; from each dot an arrow per generator <span class="m">s</span>, from <span class="m">g</span> to <span class="m">gs</span> (drawn two-way when <span class="m">s = s⁻¹</span>). Reading the labels along a path spells a word, and a closed loop spells a word equal to 1: a relator.</p>
+<div class="box"><div class="t">Every group is a quotient of a free group</div>Take the whole group as alphabet, <span class="m">S = G</span>. The map <span class="m">F(G) → G</span> sending each letter to the element it names is a homomorphism and is onto. By Theorem 1.1, <span class="m">G ≅ F(G)/K</span> with <span class="m">K</span> the kernel, so <span class="m">G ≅ ⟨G | K⟩</span>. Wasteful, but a presentation: this is Exercise 12, and the reason free groups appear everywhere in the book.</div>
+<div class="box ex"><div class="t">Exercise 13: presentations to find</div><span class="m">F<sub>n</sub> = ⟨a₁, …, a<sub>n</sub> | ⟩</span> with no relators. <span class="m">D<sub>n</sub> = ⟨s, t | s², t², (st)ⁿ⟩</span> from the two reflections, or <span class="m">⟨r, s | rⁿ, s², srs⁻¹r⟩</span> from a rotation and a reflection. <span class="m">S<sub>n</sub></span>: generators the neighbour swaps <span class="m">σ<sub>i</sub> = (i i+1)</span>, relators <span class="m">σ<sub>i</sub>²</span>, <span class="m">(σ<sub>i</sub>σ<sub>i+1</sub>)³</span>, and <span class="m">(σ<sub>i</sub>σ<sub>j</sub>)²</span> for <span class="m">|i − j| ≥ 2</span>.</div>
+<div class="box warn"><div class="t">Presentations have limits</div>There is no algorithm that decides whether two finite presentations describe isomorphic groups (Adian, Rabin). Even deciding whether a given word equals 1 is impossible in general (Novikov, Boone). Geometry rescues large classes of groups: Office Hour 9.</div></div><div class="figs"><div class="fig">{{fig:figcayleygallery}}<div class="c">ℤ/6ℤ has the loop a⁶; ℤ has no loop; in D₄ orange is r and blue is s; every square of ℤ² is the relator aba⁻¹b⁻¹; F₂ has no loops at all.</div></div></div></div>
+  <details class="anim"><summary><span class="tag">Animation</span><span class="what">optional · a token walking a word in four Cayley graphs</span></summary><div class="body"><div><div class="player" id="p-cayley"></div><p class="anim-note">Choose a graph, then play. In <span class="m">D₄</span> the word <span class="m">s r s r</span> closes up, showing <span class="m">(sr)² = 1</span>; in <span class="m">ℤ²</span> the word <span class="m">a b a⁻¹ b⁻¹</span> traces a square; in <span class="m">F₂</span> nothing closes.</p></div></div></details>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Summary</div>
+  <h1>Groups lead to symmetries and symmetries lead to groups</h1>
+  <div class="main wide"><div class="text"><table>
+  <tr><th>group</th><th>multiplication</th><th>symmetries of</th></tr>
+  <tr><td class="m">S₄</td><td>compose</td><td>the turns of a cube</td></tr>
+  <tr><td class="m">D<sub>n</sub></td><td>compose</td><td>a regular n-gon</td></tr>
+  <tr><td class="m">S<sub>n</sub></td><td>compose</td><td>n loose points</td></tr>
+  <tr><td class="m">ℤ/nℤ</td><td>add mod n</td><td>an n-gon with arrowed edges</td></tr>
+  <tr><td class="m">ℤ, ℤ²</td><td>add</td><td>the arrowed line, the coloured grid</td></tr>
+  <tr><td class="m">GL(n,ℝ)</td><td>matrix product</td><td>linear maps of ℝⁿ</td></tr>
+  <tr><td class="m">F₂</td><td>concatenate, reduce</td><td>the 4-valent tree</td></tr>
+  <tr><td class="m">⟨S | R⟩</td><td>words modulo relators</td><td>its Cayley graph</td></tr>
+</table>
+<div class="box ex" style="margin-top:12px"><div class="t">Take home</div>
+  <ol style="margin:4px 0">
+    <li>In the cube lab, find two turns that do not commute, and two that do.</li>
+    <li>Write the 120° turn about d1 as a product of two edge half-turns (use the lab and its readout).</li>
+    <li>Prove that neighbour swaps generate <span class="m">S<sub>n</sub></span>; prove that <span class="m">G/N</span> is a group if and only if <span class="m">N</span> is normal.</li>
+    <li>Draw the Cayley graph of <span class="m">D₄</span> with a rotation and a reflection as generators, and read two relators off its loops.</li>
+  </ol>
+</div></div><div class="figs"><div class="fig">{{fig:figmap}}<div class="c">The chapter in one picture. Office Hour 2 adds the dashed corner: every group is the symmetry group of its Cayley graph, and groups themselves become geometric objects.</div></div></div></div>
+</section>
+
+</div>
+<div class="bar">
+  <button id="prev" aria-label="Previous slide">← Prev</button>
+  <div class="progress"><i id="prog"></i></div>
+  <span class="counter" id="counter">1 / 23</span>
+  <button id="next" aria-label="Next slide">Next →</button>
+</div>
+</div>
+{{script}}

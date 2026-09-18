@@ -1,0 +1,539 @@
+% 《Office Hours with a Geometric Group Theorist》第一讲 “Groups” 中文学习笔记
+% 编译: tectonic chapter1_zh.tex   (XeTeX 引擎, 需要 macOS 自带中文字体)
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont{Songti SC}[BoldFont={Songti SC Bold}, ItalicFont={Kaiti SC}]
+\setCJKsansfont{PingFang SC}[BoldFont={PingFang SC Semibold}]
+\setCJKmonofont{PingFang SC}
+\setmainfont{Times New Roman}
+\xeCJKsetup{CJKmath=true}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.4cm}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\sffamily}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\sffamily}{\thesubsection}{1em}{}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\proofname}{证明}
+\setlength{\parskip}{4pt}
+\linespread{1.25}
+
+\theoremstyle{definition}
+\newtheorem{definition}{定义}[section]
+\newtheorem{example}[definition]{例}
+\newtheorem{exercise}{练习}
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{定理}
+\newtheorem{proposition}[definition]{命题}
+\theoremstyle{remark}
+\newtheorem*{remark}{注}
+
+\newtcolorbox{keyidea}[1][]{enhanced,breakable,colback=blue!4,colframe=blue!50!black,
+  title={#1},fonttitle=\bfseries\sffamily,left=6pt,right=6pt,top=4pt,bottom=4pt}
+\newtcolorbox{summarybox}[1][]{enhanced,breakable,colback=gray!6,colframe=gray!60!black,
+  title={#1},fonttitle=\bfseries\sffamily,left=6pt,right=6pt,top=4pt,bottom=4pt}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\ord}{\operatorname{ord}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\gcdop}{gcd}
+
+\title{\sffamily\bfseries 几何群论办公时间 \\ \large 第一讲 \; 群 \quad ——中文学习笔记}
+\author{原著: Matt Clay, Dan Margalit, \emph{Office Hours with a Geometric Group Theorist} (2017)\\
+  笔记整理: 依原书第一章内容以中文重述、归纳}
+\date{2026 年 9 月}
+
+\begin{document}
+\maketitle
+
+\begin{summarybox}[关于本笔记]
+本文是原书第一讲（Office Hour One: \emph{Groups}, 第 3--20 页）的中文\textbf{学习笔记}，
+按原章节顺序，用自己的语言重新整理了其中的全部定义、例子、定理与练习题目，
+并补充了少量推导与图示。它不是原文的逐句翻译；原书的行文、比喻与练习原文请参阅原著。
+\end{summarybox}
+
+\tableofcontents
+
+\section*{引言：从对称说起}
+\addcontentsline{toc}{section}{引言：从对称说起}
+
+数学里一个核心问题是：\textbf{一个对象有哪些对称？}对象可以是平面图形、高维立体、
+函数空间，也可以是群本身。本讲的主线是：\emph{每一个群都应被理解为某个对象的对称的集合}。
+下一讲（第二讲）会把这句话说成严格的定理：每个群都是它的 Cayley 图的对称群。
+
+\begin{keyidea}[热身例子：立方体的旋转对称]
+考虑三维欧氏空间中的正方体。它的一个对称指一个刚体变换（暂不允许反射）：把正方体拿起来转一下，
+再放回原位。绕对面中心的轴转 $\pi/2$ 的整数倍、绕对棱中点的轴、绕对顶点的轴，都给出对称。
+
+\textbf{一共有多少个？} 一个顶点可以送到 8 个位置，固定该顶点后还有 3 种转法，所以共 $8\times 3=24$ 个。
+但这只是计数，没有告诉我们“两个对称复合以后是哪一个”。
+
+\textbf{关键想法：}画出正方体的 4 条体对角线。可以验证
+\begin{itemize}[nosep]
+  \item 正方体的每个对称都诱导 4 条体对角线的一个置换；
+  \item 反过来，4 条体对角线的任一置换恰好来自唯一一个对称。
+\end{itemize}
+后一条的理由：交换两条对角线的置换，可由绕“连接这两条对角线端点的那两条棱的中点”的轴旋转 $\pi$ 实现；
+而任意置换都是若干次两两交换的乘积。于是
+\[
+  \{\text{正方体的对称}\} \;\longleftrightarrow\; \{\,\{1,2,3,4\}\text{ 的置换}\,\} = S_4,
+  \qquad |S_4| = 4! = 24 .
+\]
+更重要的是，置换是集合到自身的双射，两个置换如何“相乘”（复合）我们完全清楚。
+这就把“对称的复合”问题彻底解决了。
+\end{keyidea}
+
+本讲的计划：回顾本科抽象代数里的基本群例，但每个群都从“它是什么东西的对称”这一视角来看。
+全书要建立的，是无限群的代数结构与几何结构之间的一部“词典”。
+
+\section{群}
+
+\subsection{定义}
+
+\begin{definition}[乘法与群]
+集合 $G$ 上的一个\textbf{乘法}是一个映射 $G\times G\to G$，$(g,h)$ 的像记作 $gh$。
+\textbf{群}是一个集合 $G$ 连同一个乘法，满足：
+\begin{enumerate}[nosep,label=(\roman*)]
+  \item \textbf{单位元}：存在 $1\in G$，使得对所有 $g$ 有 $1g=g1=g$；
+  \item \textbf{逆元}：对每个 $g\in G$，存在 $h\in G$ 使 $gh=hg=1$，记 $h=g^{-1}$；
+  \item \textbf{结合律}：$(fg)h=f(gh)$ 对所有 $f,g,h\in G$ 成立。
+\end{enumerate}
+\end{definition}
+
+\begin{keyidea}[为什么这个定义讲的就是“对称”]
+以正方体为例。规定两个对称 $g,h$ 的乘积 $gh$ 为“先做 $h$，再做 $g$”，这与函数复合 $g\circ h$ 的顺序一致。那么
+\begin{itemize}[nosep]
+  \item 单位元 = 什么都不做的变换；
+  \item $g^{-1}$ = 把 $g$ 撤销的那个变换；
+  \item 结合律 = 函数复合的结合律。
+\end{itemize}
+所以“某对象的全部对称”天然构成一个群。本讲的目标是反过来说服你：每个群都是某对象的对称集合。
+\end{keyidea}
+
+\textbf{生成元。} 若 $G$ 的每个元素都可以写成 $S\cup S^{-1}$ 中元素的乘积，就说子集 $S$ \textbf{生成} $G$。
+
+\subsection{二面体群 $D_n$}
+
+$D_n$ 是平面上正 $n$ 边形的对称（刚体变换，此处允许反射）构成的群，乘法同上。
+取 $s$ 为关于“过中心与某顶点的直线”的反射，$t$ 为关于“把前一条直线旋转 $\pi/n$ 所得直线”的反射。
+则 $s,t$ 生成 $D_n$（注意 $s=s^{-1}$，$t=t^{-1}$），
+顺时针转 $m$ 格的旋转为 $(st)^m$。
+以反射生成的群是第 13 讲 Coxeter 群的出发点。
+
+\subsection{对称群 $S_n$}
+
+$S_n$ 是集合 $\{1,\dots,n\}$ 的全部置换（双射）构成的群，乘法为函数复合。它是“$n$ 个点”这个对象的对称群。
+
+\begin{itemize}
+  \item \textbf{轮换}：$i_1\to i_2\to\cdots\to i_k\to i_1$，其余点不动，记作 $(i_1\, i_2\cdots i_k)$。
+        例如 $S_6$ 中 $(1\,2\,4)$ 把 $1\mapsto2$, $2\mapsto4$, $4\mapsto1$，$3,5,6$ 不动。
+  \item \textbf{不交轮换分解}：每个置换都是不交轮换之积，如 $(1\,2\,4)(3\,5)$。
+  \item \textbf{乘法示例}：计算 $(2\,6)\cdot(1\,2\,4)(3\,5)$ 时右边先作用：$1\mapsto 2\mapsto 6$，……最终得
+        $(1\,6\,2\,4)(3\,5)$。
+  \item \textbf{对换}：长度为 2 的轮换。重要事实：$S_n$ 由相邻对换 $(i\;\,i{+}1)$，$1\le i\le n-1$ 生成。
+\end{itemize}
+
+\begin{keyidea}[辫图：用“叠图”做乘法]
+把一个置换画成上下两排点之间的连线图，每个交叉点对应一个相邻对换。
+下面是 $(1\,2\,4)(3\,5)$ 的图，交叉处从上到下依次读出，写成从右到左的乘积：
+\[
+  (1\,2\,4)(3\,5) \;=\; (3\,4)(1\,2)(4\,5)(2\,3)(3\,4).
+\]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, every node/.style={font=\small}]
+  \foreach \i in {1,...,6} {
+    \node at (\i,0.45) {\i};
+    \node at (\i,-3.45) {\i};
+    \fill (\i,0) circle (1.5pt);
+    \fill (\i,-3) circle (1.5pt);
+  }
+  % 1 -> 2, 2 -> 4, 4 -> 1, 3 -> 5, 5 -> 3, 6 -> 6
+  \draw[thick] (1,0) .. controls (1,-1.5) and (2,-1.5) .. (2,-3);
+  \draw[thick] (2,0) .. controls (2,-1) and (4,-2) .. (4,-3);
+  \draw[thick] (4,0) .. controls (4,-1) and (1,-2) .. (1,-3);
+  \draw[thick] (3,0) .. controls (3,-1.5) and (5,-1.5) .. (5,-3);
+  \draw[thick] (5,0) .. controls (5,-1.5) and (3,-1.5) .. (3,-3);
+  \draw[thick] (6,0) -- (6,-3);
+  \node[anchor=west, text=gray] at (6.6,-0.5) {上方交叉 $\leftrightarrow$ 乘积右端};
+  \node[anchor=west, text=gray] at (6.6,-2.5) {下方交叉 $\leftrightarrow$ 乘积左端};
+\end{tikzpicture}
+\end{center}
+两个置换相乘，就是把两张图上下叠起来。总可以把交叉画在不同高度，因此每个置换都是相邻对换之积。
+这种图叫\textbf{辫图}，与第 18 讲的辫群有关。
+\end{keyidea}
+
+\begin{exercise}
+利用叠图的想法证明 $S_n$ 由 $\{(i\;\,i{+}1)\mid 1\le i\le n-1\}$ 生成。
+\end{exercise}
+\begin{exercise}
+$S_4$ 是三维正方体的对称群。其他的 $S_n$ 能否看成高维正方体（或别的形体）的对称群？
+\end{exercise}
+
+\subsection{模 $n$ 整数 $\Z/n\Z$}
+
+设整数 $n>1$。$\Z/n\Z=\{0,1,\dots,n-1\}$，乘法为
+\[
+  (a,b)\mapsto
+  \begin{cases}
+    a+b, & a+b\le n-1,\\
+    a+b-n, & a+b\ge n.
+  \end{cases}
+\]
+单位元是 $0$；$0$ 的逆是 $0$，$m\neq0$ 的逆是 $n-m$。结合律要按“哪些和超过 $n$”分情形验证。
+
+\begin{exercise}
+若 $m\in\{0,\dots,n-1\}$ 且 $\gcd(m,n)=1$，证明 $\{m\}$ 生成 $\Z/n\Z$。
+\end{exercise}
+
+三个熟悉的特例：$n=12$ 是钟面算术；$n=10$ 是“只看末位数字”的记账校验；$n=2$ 是电灯开关算术（$1$ = 拨一次开关，$0$ = 不动）。
+开关算术的推广是第 15 讲的灯夫群。
+
+\begin{keyidea}[$\Z/n\Z$ 是什么东西的对称群？]
+$\Z/n\Z$ 可看作正 $n$ 边形的旋转对称，于是它是 $D_n$ 的\textbf{子群}
+（$D_n$ 的一个子集，且乘法与 $D_n$ 的一致）。由于 $D_n$ 还有反射，这是\textbf{真子群}。
+
+要让 $\Z/n\Z$ 恰好成为“全部”对称，只需修改对象：在 $n$ 边形每条边中点画一个同向的小箭头，
+并规定对称必须保持箭头方向。反射会翻转箭头，于是被排除，剩下的恰好是 $n$ 个旋转。
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \foreach \k in {0,...,4} {
+    \coordinate (P\k) at ({90+72*\k}:1.2);
+  }
+  \draw[thick] (P0)--(P1)--(P2)--(P3)--(P4)--cycle;
+  \foreach \k in {0,...,4} {
+    \pgfmathtruncatemacro{\nk}{mod(\k+1,5)}
+    \draw[-{Stealth[length=5pt]}, very thick, red!70!black]
+      ($(P\k)!0.4!(P\nk)$) -- ($(P\k)!0.6!(P\nk)$);
+  }
+  \node at (0,-1.7) {\small 带箭头的五边形：对称群恰为 $\Z/5\Z$};
+\end{tikzpicture}
+\end{center}
+\end{keyidea}
+
+\section{无限群}
+
+本科课程往往轻视无限群，但几何群论的乐趣正在这里。
+
+\subsection{整数群 $\Z$}
+
+$\Z=\{\dots,-2,-1,0,1,2,\dots\}$，乘法是通常的加法。它由 $\{1\}$ 生成，也由 $\{2,3\}$ 生成。
+
+设 $L$ 为实直线，并把每个整数点标记出来。$L$ 的对称指保持标记点集合的刚体变换：
+向左右平移整数单位、关于整数点反射、关于半整数点反射。
+$\Z$ 中的 $n$ 对应“平移 $n$ 个单位”，因此 $\Z$ 是 $L$ 的对称群的真子群（缺少反射）。
+把 $L$ 看作“$\infty$ 边形”，用与 $\Z/n\Z$ 相同的技巧——在每条单位线段上画向右的箭头——就能让 $\Z$ 成为全部对称：
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[thick] (-3.2,0) -- (3.2,0);
+  \foreach \x in {-3,...,3} { \fill[red!70!black] (\x,0) circle (2pt); }
+  \foreach \x in {-3,...,2} { \draw[-{Stealth[length=5pt]}, very thick, blue!60!black] (\x+0.3,0.25) -- (\x+0.7,0.25); }
+  \node at (0,-0.5) {\small 带箭头的数轴：对称群恰为 $\Z$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{整数格 $\Z^2$}
+
+$\Z^2=\{(m,n): m,n\in\Z\}$，乘法为分量相加，即 $\R^2$ 中整数向量的加法。一个生成集是 $\{(1,0),(0,1)\}$。
+类似地，可以做一张平面方格图：标出整点，横边、竖边分别画箭头并涂不同颜色，
+要求对称同时保持点、箭头与颜色。则 $(m,n)$ 对应“向右平移 $m$、向上平移 $n$”，
+这些恰是全部对称。
+
+\subsection{数的乘法群}
+
+$\R^{\times}$ 与 $\C^{\times}$ 分别是非零实数、非零复数在通常乘法下构成的群，单位元都是 $1$。
+与前面例子的一个重要区别：它们\textbf{不是有限生成的}，即不存在有限生成集。
+四元数（把 $i$ 扩充为 $i,j,k$）的非零元也构成乘法群。
+
+\subsection{矩阵群}
+
+\begin{itemize}
+  \item $\GL(n,\R)$：行列式非零的 $n\times n$ 实矩阵，称为\textbf{一般线性群}。
+        它对乘法封闭是因为 $\det(MN)=\det M\det N$；行列式非零的方阵可逆；矩阵乘法结合；单位矩阵行列式为 $1$。
+  \item $\SL(n,\R)$：行列式为 $1$ 的子群，称\textbf{特殊线性群}。
+  \item $\GL(n,\Z)$：可逆的整数矩阵，恰是行列式为 $\pm1$ 的整数矩阵；$\SL(n,\Z)$ 是其中行列式为 $1$ 者。
+  \item $\GL(n,\C)$、$\SL(n,\C)$ 同理。上述所有群都是 $\GL(n,\C)$ 的子群；$\GL(n,\C)$ 的子群统称\textbf{线性群}。
+\end{itemize}
+$\SL(2,\Z)$ 将在第 3 讲详细研究并给出有限表现。
+
+\begin{exercise}
+构造一个元素取自有限域的矩阵群。
+\end{exercise}
+
+\subsection{秩 2 自由群 $F_2$}
+
+这是本讲最复杂、最有趣的例子，也很可能是本科课上没见过的。
+
+\begin{definition}[字与约化字]
+字母 $a,b$ 上的一个\textbf{字}是由符号 $a,b,a^{-1},b^{-1}$ 组成的有限串，允许\textbf{空字}。
+例如 $abababa$、$aba^{-1}b^{-1}$、$aa^{-1}$。
+两个字的乘法是\textbf{连接}：$(ab,\,b^{-1}a)\mapsto abb^{-1}a$。
+
+一个字是\textbf{约化的}，若其中不出现 $aa^{-1}$、$a^{-1}a$、$bb^{-1}$、$b^{-1}b$ 这样的相邻对。
+非约化字可以删去一对这样的符号而变短：$aa^{-1}abb^{-1}a\rightsquigarrow abb^{-1}a$；
+反复进行终得约化字。上例无论从哪一处开始删，最终都得到 $aa$。
+\end{definition}
+
+\begin{exercise}
+证明 $a,b,a^{-1},b^{-1}$ 上的每个字都可以约化为唯一的约化字。
+\end{exercise}
+
+\begin{definition}[秩 2 自由群]
+\[
+  F_2=\{a,b\text{ 上的约化字}\},\qquad \text{乘法：先连接，再约化。}
+\]
+\end{definition}
+验证群公理：单位元是空字；一个字的逆是把它倒序并把 $a\leftrightarrow a^{-1}$、$b\leftrightarrow b^{-1}$ 互换，
+例如 $(aba^{-1}b)^{-1}=b^{-1}ab^{-1}a^{-1}$，二者以任一顺序连接再约化都得空字；
+结合律由“约化结果唯一”推出——但这一点本身需要证明。由定义，$F_2$ 由 $\{a,b\}$ 生成。
+
+\begin{exercise}
+补全 $F_2$ 构造的细节，尤其是结合律。提示：对（未约化）字的长度归纳，证明若有两种可能的删除，两种选择最终得到同一约化字；
+按两处删除位置是否相邻分两种情形。
+\end{exercise}
+
+自由群是几何群论的核心例子，第 3--6 讲将深入讨论。$F_2$ 是什么对象的对称群？这并不容易，第 2 讲会给出对任意群都有效的构造。
+
+\subsection{一般的自由群 $F(S)$}
+
+给定集合 $S$，为每个 $s\in S$ 人为造一个逆 $s^{-1}$（不允许 $s$ 与 $s^{-1}$ 同时属于 $S$），
+$F(S)$ 的元素是 $S$ 上的约化字，乘法同 $F_2$。当 $|S|=n$ 有限时记作 $F_n$；
+不同的 $S$ 给出的群在下文意义下同构。$S$ 为无限甚至不可数集时 $F(S)$ 仍是良定义的群。$S$ 的基数称为该自由群的\textbf{秩}。
+自由群之所以重要，是因为\textbf{每个群都是某个自由群的商群}（见 \S\ref{sec:pres}）。
+
+\subsection{更多的群}
+
+本书还会出现：Coxeter 群（第 13 讲）、直角 Artin 群（第 14 讲）、灯夫群（第 15 讲）、Thompson 群（第 16 讲）、映射类群（第 17 讲）、辫群（第 18 讲）。
+
+\section{同态与正规子群}
+
+\subsection{同态}
+
+\begin{definition}
+群 $G$ 到群 $H$ 的\textbf{同态}是满足 $f(ab)=f(a)f(b)$（对所有 $a,b\in G$）的映射 $f:G\to H$，即保持乘法的映射。
+双射的同态称为\textbf{同构}；存在同构的两个群称为\textbf{同构的}，本质上是同一个群。
+\end{definition}
+
+\begin{example}
+$\Z$ 与单生成元 $a$ 上的自由群 $F_1$ 同构：$F_1$ 的元素是 $a,a^{-1}$ 上的约化字，即 $a^n$（$n\in\Z$）。
+$n\mapsto a^n$ 是一个同构，$n\mapsto a^{-n}$ 是另一个。
+\end{example}
+
+\begin{keyidea}[单射判据]
+同态 $f$ 是单射 $\iff$ $H$ 中单位元的原像只有 $G$ 的单位元。
+（若 $f(g_1)=f(g_2)$，则 $f(g_1g_2^{-1})=1$，故 $g_1g_2^{-1}=1$。）
+
+任何同态 $f:G\to H$ 都可以把 $H$ 换成 $f(G)$ 而变成满射，因此满射性远不如单射性关键；我们主要区分\textbf{单}同态与\textbf{非单}同态。
+\end{keyidea}
+
+\subsection{单同态：把 $G$ 实现为 $H$ 的子群}
+
+\begin{enumerate}[nosep]
+  \item $\Z/n\Z\to D_n$，$m\mapsto$ 旋转 $2\pi m/n$；
+  \item $\Z/2\Z\to D_n$，非平凡元 $\mapsto$ 任一反射；
+  \item $\Z/2\Z\to S_n$，非平凡元 $\mapsto$ 任一不交对换之积；
+  \item 对整数 $m\ne0$，$\Z\to\Z$，$n\mapsto mn$；
+  \item 对 $(a,b)\neq(0,0)$，$\Z\to\Z^2$，$n\mapsto(na,nb)$；
+  \item 对非平凡 $w\in F_2$，$\Z\to F_2$，$n\mapsto w^n$。
+\end{enumerate}
+
+\begin{exercise}
+在已讨论的群之间还能找到多少单同态？
+\end{exercise}
+
+\subsection{非单同态：只记住我们关心的信息}
+
+非单同态会丢失信息，但由于保持乘法，它“恰好记住”某一类数据：
+
+\begin{enumerate}[nosep]
+  \item $\Z\to\Z/2\Z$，$1\mapsto1$：电灯开关只记住被拨了奇数次还是偶数次；
+  \item $\det:\GL(n,\R)\to\R^{\times}$：乘积的行列式只依赖各因子的行列式；
+  \item $\R^{\times}\to\Z/2\Z$，正数 $\mapsto0$，负数 $\mapsto1$：乘积的正负只依赖各因子的正负；
+  \item 复合 $\GL(n,\R)\to\R^{\times}\to\Z/2\Z$：记住行列式的符号；
+  \item $S_n\to\Z/2\Z$：记住辫图交叉数（即所需对换个数）的奇偶；
+  \item $D_n\to\Z/2\Z$，旋转 $\mapsto0$，反射 $\mapsto1$：记住多边形有没有被翻面；
+  \item $F_2\to\Z^2$，$a\mapsto(1,0)$，$b\mapsto(0,1)$：记住 $a$ 的指数和与 $b$ 的指数和；
+  \item 任何线性映射 $\R^n\to\R^m$，例如投影 $\R^2\to\R$：只记住第一个坐标。
+\end{enumerate}
+
+\begin{exercise}
+在已讨论的群之间还能找到多少非单同态？
+\end{exercise}
+
+\subsection{正规子群与核}
+
+\begin{definition}
+$G$ 的\textbf{正规子群}是 $G$ 的子群 $N$，满足对所有 $n\in N$、$g\in G$ 都有 $gng^{-1}\in N$。
+\end{definition}
+
+\begin{definition}
+同态 $f:G\to H$ 的\textbf{核} $\Ker f$ 是 $G$ 中被送到单位元的元素全体。
+\end{definition}
+
+\begin{proposition}
+同态的核是正规子群。
+\end{proposition}
+\begin{proof}
+设 $n\in\Ker f$，$g\in G$，则
+\[
+  f(gng^{-1}) = f(g)\,f(n)\,f(g^{-1}) = f(g)\cdot 1\cdot f(g^{-1}) = f(gg^{-1}) = f(1) = 1,
+\]
+故 $gng^{-1}\in\Ker f$。
+\end{proof}
+
+上面八个非单同态的核依次是：
+\begin{enumerate}[nosep]
+  \item $2\Z$；
+  \item $\SL(n,\R)$；
+  \item 正实数群 $\R^{+}$；
+  \item 行列式为正的矩阵群 $\GL^{+}(n,\R)$；
+  \item 交错群 $A_n$（偶数个对换之积）；
+  \item $D_n$ 中的旋转子群，同构于 $\Z/n\Z$；
+  \item $F_2$ 中 $a$ 指数和与 $b$ 指数和均为 $0$ 的元素，如 $a^7b^{-5}a^{-10}b^5a^3$；这就是\textbf{换位子群} $[F_2,F_2]$；
+  \item 投影 $\R^2\to\R$ 的核，同构于 $\R$。
+\end{enumerate}
+
+\subsection{商群：从正规子群回到同态}
+
+非单同态给出非平凡正规子群；反过来，给定正规子群 $N\trianglelefteq G$，能否找到一个以 $N$ 为核的同态？能。
+
+\begin{definition}[商群 $G/N$]
+规定 $g_1\sim g_2\iff g_1g_2^{-1}\in N$，记 $[g]$ 为 $g$ 的等价类。
+$G/N$ 的元素是这些等价类（单位元的等价类正是 $N$），乘法定义为 $[g_1][g_2]=[g_1g_2]$。
+直观地说，$G/N$ 就是“把 $N$ 中的元素都宣布为平凡元”后得到的群。
+\end{definition}
+正规性的定义恰好就是使这个乘法\textbf{良定义}所需要的条件。
+
+\begin{exercise}
+证明 $G/N$ 上的乘法良定义当且仅当 $N$ 是正规子群。
+\end{exercise}
+
+自然映射 $G\to G/N$，$g\mapsto[g]$ 是同态，其核恰为 $N$。于是闭环完成：
+\begin{center}
+\textbf{正规子群 与 满同态 是同一回事。}
+\end{center}
+
+\subsection{第一同构定理}
+
+\begin{theorem}[第一同构定理]
+若 $G\to H$ 是核为 $K$ 的满同态，则 $H\cong G/K$。
+\end{theorem}
+
+对应前面的例子，得到如下同构：
+\begin{enumerate}[nosep]
+  \item $\Z/2\Z\cong\Z/2\Z$（这解释了记号 $\Z/2\Z$ 的由来）；
+  \item $\GL(n,\R)/\SL(n,\R)\cong\R^{\times}$；
+  \item $\R^{\times}/\R^{+}\cong\Z/2\Z$；
+  \item $\GL(n,\R)/\GL^{+}(n,\R)\cong\Z/2\Z$；
+  \item $S_n/A_n\cong\Z/2\Z$；
+  \item $D_n/(\Z/n\Z)\cong\Z/2\Z$；
+  \item $F_2/[F_2,F_2]\cong\Z^2$；
+  \item $\R^2/\R\cong\R$。
+\end{enumerate}
+
+\begin{exercise}
+用第一同构定理自己构造一些同构。
+\end{exercise}
+
+\section{群的表现}\label{sec:pres}
+
+\subsection{动机}
+
+描述一个群最笨的办法是列出全部元素并写出乘法表，这对大群或无限群完全不可行。
+列出\textbf{生成元}更经济，但信息不够：$F_2$ 与 $\Z^2$ 都由两个元素生成，却一个非交换、一个交换。
+关键观察：乘法表中的某些等式蕴含其他等式（例如 $gh=k$ 且 $h=pq$ 就推出 $gpq=k$）。
+所以我们希望只写下\textbf{少量定义等式}，让其余等式全部由它们推出。这就是\textbf{群表现}的想法：
+一组生成元，加一组定义等式。
+
+\begin{example}[$\Z/n\Z$]
+把元素改记为 $a^0,\dots,a^{n-1}$，乘法为 $a^ja^k=a^{j+k}$（指数模 $n$），则
+\[
+  \Z/n\Z\cong\langle a\mid a^n=1\rangle .
+\]
+例如乘法表中的条目 $a^{n-3}a^4=a$ 可由唯一的定义等式推出：$a^{n-3}a^4=a^{n+1}=a^na=a$。
+\end{example}
+
+\begin{example}[$\Z^2$]
+$\Z^2\cong\langle x,y\mid xy=yx\rangle$。
+\end{example}
+\begin{exercise}
+说服自己 $\Z^2$ 确实有上述表现。
+\end{exercise}
+
+\subsection{形式定义}
+
+\begin{definition}[群表现]
+一个\textbf{群表现}是一对 $(S,R)$，其中 $S$ 是集合，$R$ 是 $S$ 上的一组字；
+将 $R$ 中的字约化后可视为自由群 $F(S)$ 的元素。$S,R$ 都有限时称该表现\textbf{有限}。
+
+$R$ 的\textbf{正规闭包}是 $F(S)$ 中包含 $R$ 的最小正规子群，等价地，由 $R$ 中元素的全部共轭生成的子群。
+称群 $G$ 具有表现 $\langle S\mid R\rangle$，若 $G$ 同构于 $F(S)$ 模 $R$ 的正规闭包所得的商群，记
+\[
+  G\cong\langle S\mid R\rangle .
+\]
+\end{definition}
+
+直观理解：$G$ 的元素是 $S\cup S^{-1}$ 上的约化字，但附加规定“$R$ 中的字等于空字”。
+取正规闭包的原因是：若 $r$ 代表单位元，那么它的任意共轭以及这些共轭的乘积也都应代表单位元。
+$S$ 的元素叫\textbf{生成元}，正规闭包中的元素叫\textbf{关系子}，$R$ 中的元素叫\textbf{定义关系子}。
+像 $ab=ba$、$aba=bab$ 这样的等式叫\textbf{关系}；把所有项移到一边就得到关系子 $aba^{-1}b^{-1}$、$abab^{-1}a^{-1}a^{-1}$。
+
+\subsection{两种写法为何一致：以 $\Z^2$ 为例}
+
+按形式定义，$\Z^2\cong\langle a,b\mid aba^{-1}b^{-1}\rangle$。其元素是 $F_2$ 中的约化字，
+并允许在字的任何位置插入或删除 $aba^{-1}b^{-1}$。
+
+\textbf{断言}：$F_2$ 中两个字在该商群中相等，当且仅当它们可经一系列 $ab\leftrightarrow ba$ 的交换互相转化。
+理由：对任意 $w\,ba\,w'$，在商群中
+\[
+  w\,ba\,w' = w\,(aba^{-1}b^{-1})\,ba\,w' = w\,ab\,(a^{-1}b^{-1}ba)\,w' = w\,ab\,w' .
+\]
+反复交换即知每个元素都等价于某个 $a^mb^n$，而 $a^mb^n\leftrightarrow(m,n)$ 给出与 $\Z^2$ 的同构。
+所以 $\langle x,y\mid xy=yx\rangle$ 与 $\langle a,b\mid aba^{-1}b^{-1}\rangle$ 说的是同一件事，用关系还是关系子只是习惯问题；本书更常用关系子。
+
+\subsection{每个群都有表现}
+
+\begin{keyidea}[核心事实]
+每个群都可以由某个表现给出。特别地，\textbf{每个群都是某个自由群的商群。}这是自由群如此重要的一个原因。
+几何群论在很大程度上脱胎于\emph{组合群论}——通过表现来研究群的学科。
+\end{keyidea}
+
+\begin{exercise}
+证明每个群都有一个表现。提示：表现不必高效。（可取 $S=G$ 本身，$R$ = 整张乘法表。）
+\end{exercise}
+\begin{exercise}
+为 $F_n$、$D_n$、$S_n$ 找出（漂亮的）群表现。
+\end{exercise}
+
+\begin{remark}
+有了表现，就能写下大量的群。但\textbf{判断两个表现是否给出同构的群，在一般情形下是不可判定的}：
+不存在算法能在有限时间内对任意两个表现作出判断。表现很有用，但有其局限。
+\end{remark}
+
+\section*{小结}
+\addcontentsline{toc}{section}{小结}
+
+\begin{summarybox}[本讲要点]
+\begin{itemize}[nosep]
+  \item 群 = 集合 + 满足单位元、逆元、结合律的乘法；任何对象的对称集合都是群，本书要证明反过来也对（第 2 讲：Cayley 图）。
+  \item 基本例子：$D_n$、$S_n$、$\Z/n\Z$、$\Z$、$\Z^2$、$\R^\times,\C^\times$、$\GL,\SL$、自由群 $F_2$ 与 $F(S)$。
+        用“加箭头、加颜色”的技巧可以把 $\Z/n\Z$、$\Z$、$\Z^2$ 精确实现为某图形的全部对称。
+  \item 同态保持乘法；单同态把 $G$ 嵌入 $H$，非单同态“选择性遗忘”信息。核是正规子群；正规子群与满同态一一对应；第一同构定理 $H\cong G/\Ker f$。
+  \item 群表现 $\langle S\mid R\rangle = F(S)/\langle\!\langle R\rangle\!\rangle$；每个群都是自由群的商；表现的同构问题不可判定。
+\end{itemize}
+\end{summarybox}
+
+初看之下，自由交换群或自由群似乎没什么可研究的；答案是：远比你想象的多。
+下一讲将证明：每个群确实是某个几何对象的对称群。
+
+\end{document}

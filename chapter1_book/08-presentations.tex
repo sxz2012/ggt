@@ -1,0 +1,162 @@
+\section{Presentations}\label{sec:presentations}
+
+Free groups and quotients combine into the most economical way of describing a group: name some
+generators, name the relations they satisfy, and stop.
+
+\begin{defi}
+Let $S$ be a set of letters and let $R$ be a set of words in those letters, called \defn{relators}.
+The group $\langle S \mid R\rangle$ is the quotient of the free group on $S$ by the smallest normal
+subgroup containing $R$. Concretely: elements are words in $S$, and two words are equal exactly when
+one can be turned into the other by inserting or deleting relators and by the forced cancellations
+$xx\inv=1$.
+\end{defi}
+
+The practical content is the ``concretely'' sentence. A relator is a licence: a word you are allowed
+to insert anywhere, or to delete wherever it appears.
+
+\sfig{One relator, one legal move. If $ab a\inv b\inv$ may be inserted and deleted, then wherever a
+$b$ is followed by an $a$ the two may be swapped.}{\figXaz}
+
+\sfig{Using that move repeatedly sorts any word: push every $a$ to the left of every $b$, then
+collect exponents by ordinary cancellation. The result is a normal form $a^mb^n$, which is exactly
+the element $(m,n)$ of $\Z^2$.}{\figXba}
+
+\begin{exa}
+$\langle a,b \mid abab\inv a\inv b\inv \rangle$ is not the usual way to write it; the standard form
+is $\langle a,b \mid aba\inv b\inv\rangle$, and this group is $\Z^2$. The relator says precisely
+$ab=ba$, and the sorting argument above turns every word into a unique $a^mb^n$.
+\end{exa}
+
+\begin{exa}
+$\langle a \mid a^n \rangle \cong \Z/n\Z$: the relator says $n$ steps bring you home.
+\end{exa}
+
+\begin{exa}
+$\langle a,b \mid \; \rangle \cong F_2$: no relators, no rules beyond the forced ones. This is
+what ``free'' means.
+\end{exa}
+
+\begin{exa}
+$\langle s,t \mid s^2, t^2, (st)^n \rangle \cong D_n$, which is the fact promised at the end of
+Section~\ref{sec:dihedral}. The three relators are exactly the three facts observed there.
+\end{exa}
+
+\sfig{The construction behind the notation: start with the free group on $S$, take the smallest
+normal subgroup containing the relators $R$, and pass to the quotient.}{\figpres}
+
+\begin{pitfall}
+Presentations are treacherous. Two different-looking presentations can define isomorphic groups, and
+there is no algorithm that decides in general whether a given presentation defines the trivial
+group. Short presentations can define enormous groups. This is not a defect of the notation; it is a
+genuine feature of the subject, and it is one reason geometric methods are worth having.
+\end{pitfall}
+
+\begin{bigpic}
+Every group has a presentation: take $S$ to be any generating set, take $R$ to be every word in $S$
+that equals the identity, and the definition above returns the group you started with. So
+\emph{every group is a quotient of a free group}. Combined with the Cayley graph construction of
+Section~\ref{sec:cayley}, this is the shape of the whole subject: a group is described by
+generators and relations, the description is turned into a decorated graph, and questions about the
+group become questions about the shape of the graph.
+\end{bigpic}
+
+Every presentation in this chapter, beside the group it defines and the picture that group came
+with. In each case a relator is a closed loop in the Cayley graph, and the shape of that graph is
+what the presentation is really describing.
+
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+presentation & group & its Cayley graph & drawn in\\
+\midrule
+$\langle a \mid a^n\rangle$ & $\Z/n\Z$ & the arrowed $n$-gon & Figure~\ref{fig:arrowgon}\\
+$\langle a \mid \ \rangle$ & $\Z$ & the arrowed line & Figure~\ref{fig:arrowline}\\
+$\langle a,b \mid aba\inv b\inv\rangle$ & $\Z^2$ & the grid with coloured edges & Figure~\ref{fig:grid}\\
+$\langle a,b \mid \ \rangle$ & $F_2$ & the $4$-valent tree & Figure~\ref{fig:tree}\\
+$\langle s,t \mid s^2,\,t^2,\,(st)^n\rangle$ & $D_n$ & a $2n$-gon with two edge colours & Problem~\ref{prob:cayleyD3}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Reading a relator in the Cayley graph makes the definition concrete. A word is a path from the
+identity, as in Figure~\ref{fig:tree}, and saying that a word equals the identity says that its path
+comes back to where it started. So the relators of a presentation are exactly the loops you are
+declaring to be closed, which is why the free group, with no relators, has a graph with no loops at
+all: a tree.
+
+\begin{tryit}
+In $\langle a,b\mid aba\inv b\inv\rangle$, sort the word $b\,a\,b\,a\inv$ into the form $a^mb^n$.
+In $\langle a\mid a^5\rangle$, reduce $a^{13}$ and $a^{-2}$. Then explain why
+$\langle a,b\mid a^2,b^2\rangle$ is infinite, even though both generators have order two.
+\end{tryit}
+
+\section{Looking back: what each idea bought}\label{sec:retro}
+
+This section is a consolidation. It has no new mathematics in it. Read it after Section~\ref{sec:presentations}, and read Figure~\ref{fig:map} again alongside it.
+
+\subsection{What each idea buys}
+
+Every definition in this chapter looks like bookkeeping until you see what becomes possible with it. Here is each one, with the gap it fills, what it buys, and the smallest convincing example.
+
+\paragraph{Symmetry as a rigid motion.} \emph{The gap.} ``Symmetry'' is a feeling until you say exactly which motions count. \emph{What it buys.} A finite, countable, composable collection instead of a vague impression. \emph{Example.} The cube has $24$ rotations, and the number can be checked two independent ways, as $8$ corners times $3$ turns and as $9+8+6+1$ by kind of axis. Two different countings agreeing is evidence the definition is the right one.
+
+\paragraph{The three axioms.} \emph{The gap.} Which collections deserve the name, and which facts hold for all of them at once. \emph{What it buys.} Everything provable without knowing a single element: the identity is unique, inverses are unique, $gx=k$ has exactly one solution, and $gx=gy$ forces $x=y$. \emph{Example.} The six quarter turns of the cube look like a natural family and are not a group, because two of them in a row give a corner turn. Without closure none of the above applies.
+
+\paragraph{Isomorphism.} \emph{The gap.} Two groups built from unrelated material can be the same group. \emph{What it buys.} A dictionary, so every question about one becomes a question about the other and you may work in whichever is easier. \emph{Example.} The rotations of the cube are $S_4$. ``Which turn is this?'' becomes ``which permutation of four things is this?'', and the second question needs no spatial imagination at all.
+
+\paragraph{Cycle notation.} \emph{The gap.} A permutation written as a list of images is unreadable and hopeless to multiply. \emph{What it buys.} A short normal form and a multiplication you can carry out with a pencil. \emph{Example.} $(2\,6)\cdot(1\,2\,4)(3\,5)=(1\,6\,2\,4)(3\,5)$, computed by pushing six numbers through two factors.
+
+\paragraph{Generating sets.} \emph{The gap.} A group can be enormous or infinite, so listing it is not an option. \emph{What it buys.} The whole group described by a handful of elements, and a homomorphism out of it determined by where those few elements go. \emph{Example.} Two reflections generate all ten symmetries of the pentagon, and $n-1$ neighbour swaps generate all $n!$ permutations.
+
+\paragraph{Relations and presentations.} \emph{The gap.} Words in the generators are not unique, so you must say which words are equal. \emph{What it buys.} An entire group compressed into one line of notation. \emph{Example.} $\langle a,b\mid aba\inv b\inv\rangle$ is $\Z^2$; delete that single relator and the same two generators give $F_2$, a completely different group.
+
+\paragraph{The free group.} \emph{The gap.} What if you impose no relations at all? \emph{What it buys.} A universal source, since every group is a free group with relations added. \emph{Example.} Within distance $k$ of the identity, $\Z^2$ has about $k^2$ elements and $F_2$ about $3^k$. Same number of generators, and the only difference is one relation.
+
+\paragraph{Homomorphism, kernel, quotient.} \emph{The gap.} Comparing two groups, and building smaller ones from larger ones. \emph{What it buys.} Structure-preserving maps, the first isomorphism theorem, and the meaning of the slash in $\Z/n\Z$. \emph{Example.} The sign map $S_n\to\Z/2\Z$ turns a question about rearranging $n$ objects into a question about even and odd.
+
+\paragraph{The Cayley graph.} \emph{The gap.} Algebra by itself gives nothing to look at. \emph{What it buys.} One dot per element and one coloured arrow per generator, so that words become paths and relations become closed loops. \emph{Example.} The arrowed polygon, the arrowed line, the coloured grid and the four-valent tree are one construction applied to four groups, and all four appeared in this chapter before the name did.
+
+\subsection{Algebra making geometry computable}
+
+The chapter runs in one direction throughout. Take a question you would otherwise answer by turning an object in your hands, and convert it into a calculation you can finish on paper. Every section supplies an instance.
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=3pt]
+\item \emph{Composing two turns of a cube.} A quarter turn about the vertical axis, then a quarter turn about the left--right axis: which single rotation is that? Each turn is a four-cycle on the long diagonals, the product of the two cycles is a three-cycle, and a three-cycle is a third of a turn about the diagonal it fixes. The algebra found the axis.
+\item \emph{Composing two reflections of a pentagon.} Reflect in one axis, then in another at $36^\circ$ to it. The product is the word $st$, which is one click, so the answer is a rotation by $72^\circ$. The general rule, that reflecting in two lines meeting at $\theta$ rotates by $2\theta$, is read off the word.
+\item \emph{Telling the time.} Four hours after nine o'clock is $9+4=13$, then subtract $12$. Everyone performs this without thinking, which is the point: $\Z/n\Z$ is the arithmetic you already do whenever a quantity wraps round.
+\item \emph{Does a walk return home?} Walk on the four-valent tree by the instructions $a\,b\,a\inv\,b\inv\,b\,a\,b\inv\,a\inv$. You finish where you started exactly when the reduced word is empty, so a question about an infinite picture becomes a finite cancellation.
+\item \emph{The same walk on the grid.} Use the relator $aba\inv b\inv$ to push every $a$ past every $b$ and collect exponents into $a^mb^n$. You are home exactly when $m=n=0$. The same instructions can return home on the grid and not on the tree, which is the difference between $\Z^2$ and $F_2$ in one sentence.
+\item \emph{Even or odd?} Can a given rearrangement of six objects be achieved by an even number of swaps? A $k$-cycle costs $k-1$ swaps, so $(1\,6\,2\,4)(3\,5)$ costs $3+1=4$ and the answer is even. A question that sounds like it needs a search is settled by one addition.
+\end{enumerate}
+
+\begin{bigpic}
+And the axioms alone already pay. Before any example is chosen, the three axioms give: the identity is unique; inverses are unique; $(gh)\inv=h\inv g\inv$; $gx=k$ has exactly one solution, namely $g\inv k$; and $gx=gy$ forces $x=y$. Each is proved in two lines and each holds in every group in this chapter and every group you will meet later.
+\end{bigpic}
+
+\begin{lookahead}
+The next office hour runs the arrow the other way. There one assumes a group acts on a space in some prescribed manner and deduces an algebraic fact about the group, with no geometry left in the conclusion. The two directions together are what the subject is made of.
+\end{lookahead}
+
+\section{Where this is going}
+
+The chapter began with a solid cube and ended with words and graphs, so it is worth saying plainly
+what has been accomplished and what comes next.
+
+Every group in the gallery turned out to be the symmetry group of something, and in three cases the
+something had to be \emph{decorated} to cut the symmetries down to size: arrows on a polygon for
+$\Z/n\Z$, arrows on a line for $\Z$, colours on a grid for $\Z^2$. The Cayley graph of
+Section~\ref{sec:cayley} is the general version of that decoration, built from the group itself
+rather than found by luck. This is the statement the next office hour proves.
+
+\begin{thm}[to come]
+Every group is naturally identified with the group of symmetries of a geometric object, namely its
+own Cayley graph.
+\end{thm}
+
+That theorem is the doorway to geometric group theory. Once a group is a graph, the graph can be
+measured: distances between dots, how fast the number of dots within distance $k$ grows, whether the
+graph looks like a line, a plane or a tree when viewed from far away. The two examples to keep in
+mind are the two with the same number of generators and completely different shapes: $\Z^2$, whose
+graph is a flat grid with about $k^2$ dots within distance $k$, and $F_2$, whose graph is a tree
+with about $3^k$. A single relation, $ab=ba$, is the whole difference.

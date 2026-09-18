@@ -1,0 +1,258 @@
+\section{Symmetries of a cube}
+
+Take a wooden cube, hold it in both hands, turn it, and put it back down in the space it started
+in. The cube looks exactly as it did. Whatever you just did to it is a \defn{symmetry} of the cube.
+That is the whole idea, and the rest of this section is about taking it seriously enough to count
+the symmetries, to name them, and to multiply them together.
+
+\subsection{What counts as a symmetry}
+
+Two restrictions are hidden in the description above, and both matter.
+
+First, the cube was moved \emph{as a solid body}. Distances between its points never changed; it
+was not squashed, stretched or bent. A motion of space with that property is called \defn{rigid},
+and a symmetry of the cube is a rigid motion that carries the cube onto the same region of space it
+occupied before. Because it is rigid, such a motion sends corners to corners, edges to edges and
+faces to faces, and it preserves which corners are joined by an edge.
+
+Second, the motion was carried out \emph{with your hands}. You cannot turn a cube into its mirror
+image by turning it, however cleverly; you would have to pass it through a mirror. Motions you can
+physically perform are the ones that preserve the difference between left-handed and right-handed,
+and they are called \defn{orientation-preserving}. Reflections are exactly the motions that fail
+this test.
+
+\begin{rem}
+Whether to allow reflections is a choice, not a fact, and different books make different choices.
+Allowing them doubles every count below: the cube has $24$ rotations and $48$ rigid symmetries
+altogether. Throughout this chapter, \emph{symmetry of the cube} means rotation.
+\end{rem}
+
+\subsection{Counting the symmetries}
+
+\begin{prop}\label{prop:24}
+A cube has exactly $24$ rotational symmetries.
+\end{prop}
+
+\begin{proof}
+Pick one corner of the cube and call it $A$. A symmetry must send $A$ to a corner, so there are at
+most $8$ choices for the image of $A$. Fix that choice. The three edges meeting at $A$ must go to
+the three edges meeting at the image corner, in some cyclic order, and a symmetry is completely
+determined by where those three edges go. Spinning the cube about the long diagonal through the
+image corner cycles those three edges, and there are exactly $3$ positions available. So each of
+the $8$ choices admits exactly $3$ symmetries, giving $8\cdot 3=24$, and no symmetry is counted
+twice because the image of $A$ together with the spin determines the motion.
+\end{proof}
+
+\begin{bigpic}
+Knowing that the answer is $24$ is much less useful than it looks. A group is not a number; it is a
+set with a multiplication. The interesting question is not how many symmetries there are but
+\emph{how they combine}: which turn followed by which turn gives which. That question is what the
+rest of the chapter is built to answer, and the answer for the cube turns out to be surprisingly
+clean (Theorem~\ref{thm:cubeS4}).
+\end{bigpic}
+
+\subsection{The three families of axes}
+
+Every rotation other than ``do nothing'' turns the cube about a line through its centre, and a
+useful way to see all $24$ is to sort those lines into three families. In each of the three figures
+below, one axis is drawn and the turns about it are shown before and after; a second, smaller
+picture shows how many axes of that kind there are.
+
+\subsubsection{Axes through the centres of two opposite faces}
+
+Stand the cube on a table and spin it about the vertical line through the centres of the top and
+bottom faces. Quarter turns bring it back to the same region of space, so $90^\circ$, $180^\circ$
+and $270^\circ$ are all symmetries; $360^\circ$ is the identity and is counted separately. There
+are three such axes, one for each pair of opposite faces.
+
+\sfigs{0.56}{\label{fig:faceaxes}The three face axes, each joining the centres of two opposite
+faces, with the six face centres dotted and each axis drawn dashed where it passes through the
+inside of the cube. Three axes with three turns about each give $3\cdot3=9$ symmetries.}{\figAxF}
+
+\sfig{\label{fig:facerows}The three turns about one face axis, before and after, with the axis
+vertical. Beside each pair is the same turn seen from directly above, looking down the axis: the
+square of top corners $D,C,G,H$ with the bottom corners hidden beneath them and the axis as the dot
+at the centre.}{\figXbn}
+
+Reading Figure~\ref{fig:facerows} row by row, with corners labelled as in
+Figure~\ref{fig:diagonals} below:
+\begin{itemize}[nosep,leftmargin=1.3em]
+\item \emph{Quarter turn, $90^\circ$.} Each corner of the bottom face moves one place round,
+$A\to B\to F\to E\to A$, and the top face does the same, $D\to C\to G\to H\to D$. In the top view
+the four corners rotate one quarter of the way round the centre.
+\item \emph{Half turn, $180^\circ$.} Every corner jumps to the opposite corner of its face:
+$A\leftrightarrow F$, $B\leftrightarrow E$, $C\leftrightarrow H$, $D\leftrightarrow G$. In the top
+view each corner swaps with the one diagonally across.
+\item \emph{Three-quarter turn, $270^\circ$, which is the same as $-90^\circ$.} The quarter turn
+performed the other way: $A\to E\to F\to B\to A$ and $D\to H\to G\to C\to D$. It is the inverse of
+the first row, which is why the two are listed as $\pm90^\circ$ rather than as two unrelated moves.
+\end{itemize}
+
+\subsubsection{Axes through two opposite corners}
+
+A \defn{long diagonal} joins a corner to the opposite corner, passing through the centre of the
+cube. Balance the cube on one corner and spin: a third of a turn, $120^\circ$, brings it back, and
+so does $240^\circ$. There are four long diagonals, because the eight corners fall into four
+opposite pairs.
+
+\sfigs{0.56}{\label{fig:diagonals}The four long diagonals, each joining two opposite corners through the
+centre. Four axes with two turns about each give $4\cdot2=8$ symmetries. The corner labels used
+throughout are $A,B,C,D$ in front and $E,F,G,H$ behind.}{\figAxD}
+
+\sfig{\label{fig:diagrows}The turns about the long diagonal $AG$, before and after, with the cube
+standing on the corner $A$ so that the axis is vertical. Beside each of the first two pairs is the
+view straight down the diagonal from above $G$: a regular hexagon whose six vertices are the six
+corners other than $A$ and $G$, alternating between the three next to $G$ and the three next to
+$A$. The third row attempts a turn by $60^\circ$ and fails: the turned cube, in colour, does not
+sit on the original, in grey.}{\figXdn}
+
+In Figure~\ref{fig:diagrows} the corners $A$ and $G$ never move, since they lie on the axis. The
+other six split into two rings of three. The $120^\circ$ turn moves the lower ring one step,
+$B\to D\to E\to B$, and the upper ring one step, $C\to H\to F\to C$. The $240^\circ$ turn is the
+same motion performed the other way, and the two are inverse to one another.
+
+\begin{why}
+\emph{Why $60^\circ$ fails.} The top view is a hexagon, so a sixth of a turn looks plausible. But
+the six vertices of that hexagon alternate between two different heights along the axis: three of
+them are the corners next to $G$, and three are the corners next to $A$. A sixth of a turn would
+carry a corner next to $G$ onto a corner next to $A$, that is, it would move a point to a point at a
+different distance along the axis, which no rotation about that axis can do. A third of a turn
+carries each ring to itself and is therefore available. In short, the corners of the cube supply
+only alternate vertices of the hexagon you think you see.
+\end{why}
+
+\sfig{\label{fig:downaxes}Why each kind of axis has the order it does. Looking straight down a face
+axis, the outline of the cube is a square, which comes back to itself after a quarter turn. Down a
+long diagonal the outline is a regular hexagon, but its six vertices alternate between two heights,
+so only a third of a turn is available. Down an edge axis the outline is a rectangle, and only a
+half turn works.}{\figwhypi}
+
+\subsubsection{Axes through the midpoints of two opposite edges}
+
+Take an edge and the edge diametrically opposite it, and run a line through both midpoints.
+A half turn about that line is a symmetry, and nothing else about it is. The twelve edges make six
+opposite pairs, so there are six such axes.
+
+\sfigs{0.46}{\label{fig:edgeaxes}The six edge axes, dashed, with the twelve edge midpoints dotted.
+Each axis joins the midpoints of two opposite edges, and the twelve edges make six opposite pairs.
+Six axes with one turn about each give $6$ symmetries.}{\figAxE}
+
+\sfig{\label{fig:edgerows}The half turn about the axis through the midpoints of $AB$ and $GH$,
+before and after, with the cube standing on the edge $AB$. Every corner swaps with a partner:
+$A\leftrightarrow B$, $G\leftrightarrow H$, $C\leftrightarrow E$ and
+$D\leftrightarrow F$.}{\figXfn}
+
+Two of these half turns deserve attention later: the axis meets the cube only at two edge
+midpoints, so no corner is fixed, and every corner moves. That is what makes this family the one
+that produces a single swap of diagonals in Section~\ref{sec:def}.
+
+\subsubsection{The three families together}
+
+\begin{center}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+kind of axis & how many axes & turns about each & symmetries in all\\
+\midrule
+through two opposite face centres & $3$ & $90^\circ,180^\circ,270^\circ$ & $9$\\
+through two opposite corners & $4$ & $120^\circ,240^\circ$ & $8$\\
+through two opposite edge midpoints & $6$ & $180^\circ$ & $6$\\
+\midrule
+and the identity & --- & $0^\circ$ & $1$\\
+\midrule
+total & & & $24$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The total agrees with Proposition~\ref{prop:24}, which is a genuine check: the two counts
+were made in completely different ways.
+
+\sfigs{0.82}{The three kinds of axis in one picture, for reference.}{\figaxes}
+
+\begin{tryit}
+Hold a cube, or imagine one. Do the $120^\circ$ turn about a long diagonal and then the $240^\circ$
+turn about the same diagonal, and confirm that the cube is back where it started. Then do a quarter
+turn about a vertical face axis followed by a quarter turn about a horizontal one, and do the same
+two turns in the other order. The results are different. Keep that fact; it is the first evidence
+that the multiplication we are about to define is not like multiplication of numbers.
+\end{tryit}
+
+\subsection{From turns to permutations}
+
+Here is the observation that turns the cube from a bag of $24$ motions into an algebraic object.
+
+The cube has four long diagonals. Label them $d_1,d_2,d_3,d_4$. A symmetry sends corners to corners
+and keeps opposite corners opposite, so it sends each long diagonal to a long diagonal: it produces
+a \defn{rearrangement} of the four labels. Rearrangements of four things are much easier to handle
+than motions of space, and there are $4!=24$ of them, which is suspicious.
+
+\sfig{The cube with its four long diagonals in colour: $d_1=AG$, $d_2=BH$, $d_3=CE$,
+$d_4=DF$. Corners $A,B,C,D$ are in front, $E,F,G,H$ behind.}{\figcube{0.85}}
+
+\begin{thm}\label{thm:cubeS4}
+The map that sends a rotation of the cube to the rearrangement it induces on the four long diagonals
+is a bijection from the $24$ rotations to the $24$ rearrangements of four objects.
+\end{thm}
+
+\begin{proof}
+Both sets have $24$ elements, by Proposition~\ref{prop:24} and by $4!=24$, so it is enough to show
+that every rearrangement occurs.
+
+Consider first the rearrangements that swap two diagonals and leave the other two alone. Take
+$d_1=AG$ and $d_2=BH$. The edge $AB$ joins an endpoint of each, and the opposite edge $GH$ joins
+the other two endpoints. The half turn about the axis through the midpoints of $AB$ and $GH$
+exchanges $A$ with $B$ and $G$ with $H$, hence exchanges $d_1$ with $d_2$, and one checks that it
+fixes $d_3$ and $d_4$. The same argument works for any pair of diagonals, since any two of the four
+have a pair of opposite edges joining their endpoints in this way. So all six swaps occur.
+
+Now, any rearrangement of four objects can be achieved by a succession of swaps: move the right
+object into the first place, then the right one into the second place, and so on. Performing the
+corresponding half turns one after another realises any rearrangement. Hence the map is onto, and
+being onto between two sets of the same finite size, it is a bijection.
+\end{proof}
+
+\begin{rem}
+The proof used the fact that a succession of symmetries is again a symmetry, which is obvious for
+physical motions and will be given a name in the next section: \emph{closure}. It also used that
+every rearrangement is a succession of swaps, which is proved carefully in
+Section~\ref{sec:symmetric}.
+\end{rem}
+
+Theorem~\ref{thm:cubeS4} is worth more than the count it repeats. Rearrangements are functions, so
+they can be composed mechanically, on paper, with no geometric imagination at all. Once the
+dictionary is set up, a question about turning a cube becomes a question about composing two
+functions on a four-element set. The table below is that dictionary, family by family; notation for
+the right-hand column comes in Section~\ref{sec:symmetric}, and it is worth returning to this table
+once that notation is available.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.40\linewidth}cp{0.30\linewidth}c@{}}
+\toprule
+rotation of the cube & how many & effect on $d_1,\dots,d_4$ & count\\
+\midrule
+do nothing & $1$ & leaves all four alone & $1$\\
+quarter turn about a face axis, either direction & $6$ & cycles all four & $6$\\
+half turn about a face axis & $3$ & two swaps at once & $3$\\
+third of a turn about a long diagonal, either direction & $8$ & fixes one, cycles three & $8$\\
+half turn about an edge axis & $6$ & swaps two, fixes two & $6$\\
+\midrule
+total & $24$ & & $24$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{why}
+\emph{Why a third of a turn about $d_1$ fixes $d_1$ and cycles the other three.} The axis of the
+motion is the diagonal $d_1$ itself, so its two endpoints stay put and $d_1$ goes to $d_1$. The
+three corners next to $A$ are permuted cyclically by the turn, and the three diagonals starting at
+those corners are $d_2,d_3,d_4$, so those three are cycled. This is also why the count in that row
+is $8$ and not $4$: each of the four diagonals gives two such turns, one in each direction.
+\end{why}
+
+\begin{tryit}
+Check the counts in the two right-hand columns of the table line by line. Then take the two half
+turns about perpendicular edge axes, perform one after the other, and work out which row of the
+table the result belongs to. (You will get a rotation of order three; find its axis.)
+\end{tryit}

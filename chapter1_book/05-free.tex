@@ -1,0 +1,134 @@
+\subsection{The free group of rank two}\label{sec:free}
+
+The last and most important example in the gallery. Every earlier group arrived with its elements
+already in hand: rotations, permutations, remainders, pairs of integers. Here the \emph{set} is
+defined by a condition and the \emph{rule} is a two-step recipe, so even closure has to be argued,
+and associativity becomes a genuine theorem.
+
+\emph{The alphabet.} Four symbols: $a$, $b$, $a\inv$, $b\inv$. At this stage $a\inv$ is nothing but
+a symbol; the notation is chosen because it will turn out to be an inverse once the group exists.
+
+\emph{Words.} A \defn{word} is any finite string of these four symbols, including the
+\defn{empty word}, which has no letters at all. A word is \defn{reduced} if it never has a symbol
+standing next to its partner, that is, no $aa\inv$, $a\inv a$, $bb\inv$ or $b\inv b$ anywhere in it.
+
+\emph{The set.} $F_2=\{\text{reduced words in }a,b\}$.
+
+\emph{The rule.} Write one word after the other, then delete forbidden pairs until none is left.
+
+In the figures each letter is a box, red for the $a$ family and blue for the $b$ family, and a
+shaded pair is the one about to be deleted.
+
+\sfigs{0.86}{A word, a word that is not reduced, and the reduced word left after deleting.}{\figXam}
+
+\subsubsection*{Closure}
+
+Two things need checking here, and both are easy to overlook. First, the deleting \emph{stops}:
+each deletion removes two boxes, so a string of length $k$ can be cut at most $k/2$ times. Second,
+what it stops at is a \emph{reduced} word, because that is precisely the condition for no deletion
+being available. So the answer lands back in $F_2$.
+
+There is also a useful picture of where the cancelling happens. Both factors were already reduced,
+so the only forbidden pair in the concatenation is at the \emph{seam}, and the deleting unzips
+outwards from there.
+
+\sfigs{0.86}{Multiplying $aba\inv$ by $ab$: only the seam can create a forbidden pair.}{\figXan}
+
+\subsubsection*{Identity}
+
+The empty word. Writing nothing in front of or behind a word $w$ changes no letter and creates no
+forbidden pair, so $1w=w1=w$.
+
+\sfigs{0.86}{The identity of $F_2$ is the word with no letters.}{\figXao}
+
+\subsubsection*{Inverses}
+
+Reverse the word and flip every letter, turning $a$ into $a\inv$, $a\inv$ into $a$, and likewise for
+$b$. This is the socks-and-shoes rule again: to undo ``socks, then shoes'' you take the shoes off
+first. The two strings then annihilate from the middle outwards.
+
+\sfigs{0.86}{$w=abb$ against $w\inv=b\inv b\inv a\inv$: the middle pair goes first, then the next, then the
+last, leaving the empty word.}{\figXap}
+
+\subsubsection*{Associativity}
+
+This is the axiom that costs something. $(uv)w$ and $u(vw)$ are two different \emph{orders of
+deleting} inside the one long string $uvw$, and there is no reason on the face of it why different
+orders should reach the same reduced word. Take $u=ab$, $v=b\inv a\inv$, $w=ab$.
+
+\sfigs{0.86}{$(uv)w$: the product $uv$ collapses completely, and the answer is $ab$.}{\figXaq}
+
+\sfigs{0.86}{$u(vw)$: now $vw$ collapses completely, and the answer is again $ab$. The two routes deleted
+different pairs in a different order.}{\figXar}
+
+\begin{thm}\label{thm:unique}
+Every word in $a,b,a\inv,b\inv$ reduces to exactly one reduced word, whatever order the deletions
+are performed in.
+\end{thm}
+
+\begin{proof}[Proof sketch]
+Induct on the length of the word. If two deletions are available at once, they either involve four
+distinct positions, in which case performing one leaves the other still available and the two orders
+lead to the same shorter word; or they overlap in a position, in which case the overlap forces a
+pattern such as $x\,x\inv\,x$, and deleting either pair leaves the same single letter $x$. Either
+way any two first steps can be followed by further deletions reaching a common word, and the
+induction hypothesis applies to it.
+\end{proof}
+
+\sfig{The word $a\,a\inv\,a\,b\,b\inv\,a$ has three places where a deletion is available. Whichever
+you choose, and whatever you do next, the process ends at the same reduced word $aa$.}{\figreduce}
+
+\begin{why}
+\emph{Why Theorem~\ref{thm:unique} gives associativity.} Reduce the single string $uvw$ in any order
+at all. Both $(uv)w$ and $u(vw)$ are such reductions, since each is obtained by deleting pairs
+inside $uvw$, merely in a prescribed order. By the theorem they end at the same reduced word, so
+they are equal, which is (G3). \emph{This is the price of defining a group by strings instead of by
+functions:} for the cube, for $S_n$ and for $D_n$ associativity came free from composition of
+functions.
+\end{why}
+
+\sfigs{0.86}{Multiplying in $F_2$: concatenate, then reduce.}{\figXas}
+
+\sfigs{0.86}{Checking an inverse: $aba\inv b$ against $b\inv ab\inv a\inv$ collapses from the middle
+outwards to the empty word.}{\figXat}
+
+\subsubsection*{The extra properties}
+
+$\{a,b\}$ generates $F_2$ by construction, since every element \emph{is} a word in $a$ and $b$ and
+their inverses. The group is infinite; more precisely there are $4\cdot 3^{\,k-1}$ reduced words of
+length $k$, because after the first letter each new letter may be anything except the partner of the
+one before, so the number of elements grows exponentially with length.
+
+It is not abelian: $ab$ and $ba$ are different reduced words, hence different elements. In fact no
+element except the identity has finite order, since a nonempty reduced word never collapses when
+repeated.
+
+The word \defn{free} means precisely that the only relations holding in $F_2$ are the forced ones
+$xx\inv=1$. Nothing else is ever true there. Two consequences: when you build a homomorphism out of
+$F_2$ you may send $a$ and $b$ absolutely anywhere (Section~\ref{sec:homs}), and every group
+whatever can be obtained from a free group by imposing extra relations
+(Section~\ref{sec:presentations}).
+
+\begin{pitfall}
+Compare $\Z^2$ of Section~\ref{sec:Z2}: the same two generators, one extra rule $ab=ba$, and a
+completely different group. In $\Z^2$ there are about $k^2$ elements of length $k$; in $F_2$ there
+are about $3^k$. Adding one relation changed polynomial growth into exponential growth.
+\end{pitfall}
+
+\sfig{The words $ab$ and $ba$ as paths, and why they end at different places.}{\figabba}
+
+\sfigs{0.80}{\label{fig:tree}The object whose symmetry group is $F_2$, drawn the same way as every
+other picture in this chapter: one dot per group element, and one coloured arrow per generator.
+Start at the dot marked $1$ and read a word left to right, taking a red edge rightwards for $a$ and
+backwards along a red edge for $a^{-1}$, a blue edge upwards for $b$ and backwards for $b^{-1}$. The
+shaded path is the word $ab$: right, then up. Edges are drawn shorter at each step outwards, so that
+the whole tree fits; every dot really has four edges at it. Because a reduced word never doubles
+back, distinct reduced words end at distinct dots, which is why $F_2$ is infinite and why the
+picture is a tree rather than a grid.}{\figTree}
+
+\begin{tryit}
+Reduce $b\,a\,a\inv\,b\inv\,b\,a$ in two different orders and confirm that both give $ba$. Write
+down the inverse of $a\inv bab\inv$ and check the collapse. How many reduced words have length $3$?
+Finally, decide which axiom would fail if the set were taken to be \emph{all} words, not just the
+reduced ones, with plain concatenation as the rule.
+\end{tryit}

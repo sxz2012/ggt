@@ -1,0 +1,159 @@
+\section{Comparing groups: homomorphisms}\label{sec:homs}
+
+Two groups can be built from completely different material and still behave identically, and a group
+can contain a smaller group inside it, or shadow a smaller one. The language for all three
+situations is the same.
+
+\sfig{The three notions this chapter connects, and the arrows between them. A group is a set with a
+multiplication; a symmetry group is the collection of motions preserving an object; and a
+homomorphism is a map between groups that respects multiplication.}{\figmap}
+
+\begin{defi}\label{def:hom}
+Let $G$ and $H$ be groups. A function $f:G\to H$ is a \defn{homomorphism} if
+\[f(gh)=f(g)f(h)\qquad\text{for all }g,h\in G.\]
+It is an \defn{isomorphism} if in addition it is a bijection, and then $G$ and $H$ are called
+\defn{isomorphic}, written $G\cong H$.
+\end{defi}
+
+The defining equation deserves to be read slowly, because the two multiplications in it are
+different. On the left, $gh$ is computed in $G$; on the right, $f(g)f(h)$ is computed in $H$. The
+condition says these two ways of combining give the same answer: \emph{multiply first and then
+translate, or translate first and then multiply}.
+
+\sfig{The two routes a homomorphism must make agree.}{\fighom}
+
+\begin{exa}
+$f:\Z\to\Z/2\Z$ sending even numbers to $0$ and odd numbers to $1$. Adding two integers and then
+taking parity gives the same answer as taking parities and then adding modulo $2$: odd plus odd is
+even, and $1+1=0$.
+\end{exa}
+
+\sfig{Parity as a homomorphism $\Z\to\Z/2\Z$: add first and take parity, or take parities and add in
+$\Z/2\Z$.}{\figXaw}
+
+\begin{exa}
+$\mathrm{sign}:S_n\to\Z/2\Z$, sending a permutation to $0$ if it is a product of an even number of
+swaps and to $1$ if odd. That this is well defined is a theorem, and the parity of the number of
+swaps can be computed as the parity of the number of crossings in a strand diagram, or of the number
+of pairs whose order is reversed.
+\end{exa}
+
+\sfig{The sign homomorphism on the product computed in Section~\ref{sec:symmetric}, counted by
+crossings.}{\figXax}
+
+\begin{exa}
+$n\mapsto 2n$ is an injective homomorphism $\Z\to\Z$ which is not onto; its image is the subgroup of
+even integers. So $\Z$ contains a copy of itself as a proper subgroup, which is impossible for a
+finite group.
+\end{exa}
+
+\begin{exa}
+The bijection of Theorem~\ref{thm:cubeS4} is an isomorphism from the rotation group of the cube to
+$S_4$: performing two rotations one after another corresponds to composing the two rearrangements of
+the diagonals. This is the sentence that makes the theorem useful rather than merely a count.
+\end{exa}
+
+
+
+\sfig{A homomorphism drawn element by element. The fibres above each point of the target all have
+the same size, and the fibre above the identity is the kernel.}{\fighomdots}
+
+\begin{prop}\label{prop:homfacts}
+Let $f:G\to H$ be a homomorphism. Then $f(1)=1$ and $f(g\inv)=f(g)\inv$ for every $g$.
+\end{prop}
+
+\begin{proof}
+From $f(1)=f(1\cdot1)=f(1)f(1)$, multiply both sides by $f(1)\inv$ to get $1=f(1)$. Then
+$1=f(1)=f(gg\inv)=f(g)f(g\inv)$, so $f(g\inv)$ is the inverse of $f(g)$.
+\end{proof}
+
+\begin{pitfall}
+A homomorphism need not be injective or onto, and most are neither. Parity is onto but very far from
+injective; doubling is injective but not onto. The two special cases have names, but they are
+special.
+\end{pitfall}
+
+\begin{bigpic}
+Generating sets and homomorphisms interact in the way that makes free groups important. If $S$
+generates $G$, a homomorphism out of $G$ is completely determined by what it does to $S$, because
+every element is a word in $S$ and the homomorphism property forces the value on the word. For a
+\emph{free} group there is no constraint at all on those choices: any assignment of the generators
+to elements of $H$ extends to a homomorphism $F_2\to H$. For any other group, the choices must
+respect the relations, which is exactly the subject of Section~\ref{sec:presentations}.
+\end{bigpic}
+
+\begin{tryit}
+Is $n\mapsto n+1$ a homomorphism $\Z\to\Z$? (Check Proposition~\ref{prop:homfacts} first.) Is
+$n\mapsto -n$? Find a homomorphism from $D_n$ onto $\Z/2\Z$, and describe which elements it sends to
+$0$.
+\end{tryit}
+
+\section{Subgroups, cosets and quotients}\label{sec:quot}
+
+\begin{defi}
+A subset $H$ of a group $G$ is a \defn{subgroup} if it contains the identity, is closed under the
+multiplication of $G$, and contains the inverse of each of its elements. It is then a group in its
+own right.
+\end{defi}
+
+Subgroups have appeared throughout: the rotations inside $D_n$, the even integers inside $\Z$, the
+inscribed polygons inside $\Z/n\Z$, the four rotations about one face axis inside the cube group.
+The kernel of a homomorphism, meaning the set of elements sent to the identity, is always a
+subgroup.
+
+\begin{defi}
+For a subgroup $H\le G$ and an element $g\in G$, the set $gH=\{gh: h\in H\}$ is a \defn{left coset}
+of $H$.
+\end{defi}
+
+\sfig{Cosets of a subgroup of order $3$ inside a group of order $6$: two cosets, each of size
+three, and together they exhaust the group. Multiplying on the left by a fixed element permutes the
+cosets.}{\figXay}
+
+\begin{prop}
+The cosets of $H$ partition $G$, and all have the same size as $H$. Consequently, if $G$ is finite
+then $|H|$ divides $|G|$.
+\end{prop}
+
+\begin{proof}
+Every $g$ lies in $gH$, since $1\in H$. If two cosets $gH$ and $g'H$ share an element, then
+$gh=g'h'$ for some $h,h'\in H$, whence $g'=gh(h')\inv\in gH$ and therefore $g'H\subseteq gH$; by
+symmetry the two cosets coincide. The map $h\mapsto gh$ is a bijection from $H$ to $gH$, since it is
+undone by multiplication by $g\inv$. So the cosets are disjoint, cover $G$, and all have $|H|$
+elements.
+\end{proof}
+
+\sfig{The same picture, drawn as a partition.}{\figcosets}
+
+It is tempting to make the set of cosets into a group by declaring $(gH)(g'H)=gg'H$. Sometimes this
+works and sometimes it does not, and the difference is important.
+
+\begin{pitfall}
+Take $G=D_3$ and $H=\{1,s\}$, a subgroup of order $2$. Using the representative $s$ for the coset
+$sH$ gives $s\cdot r=sr$, while using the representative $1$ for the same coset gives a different
+answer, so the proposed product depends on which representative you pick. The recipe is not a
+well-defined rule on cosets.
+\end{pitfall}
+
+\begin{defi}
+A subgroup $N\le G$ is \defn{normal} if $gNg\inv=N$ for every $g\in G$. When $N$ is normal, the
+recipe above is well defined, the set of cosets becomes a group called the \defn{quotient}
+$G/N$, and the map $g\mapsto gN$ is a surjective homomorphism $G\to G/N$ with kernel $N$.
+\end{defi}
+
+\begin{thm}[First isomorphism theorem]
+If $f:G\to H$ is a homomorphism with kernel $N$ and image $I$, then $N$ is normal in $G$ and
+$G/N\cong I$.
+\end{thm}
+
+\sfig{The first isomorphism theorem as a diagram: the homomorphism $f$ factors through the quotient,
+and the induced map $[g]\mapsto f(g)$ is an isomorphism onto the image.}{\figiso}
+
+\noindent The notation $\Z/n\Z$ can now be read as what it is: the quotient of the group $\Z$ by the
+subgroup $n\Z$ of multiples of $n$. Two integers give the same coset exactly when they differ by a
+multiple of $n$, which is exactly the colouring of Section~\ref{sec:modn}.
+
+
+
+\sfig{Wrapping the line round the circle: the quotient map $\Z\to\Z/n\Z$ drawn as the decoration of
+Section~\ref{sec:arrowgon}.}{\figwrap}

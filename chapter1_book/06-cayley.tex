@@ -1,0 +1,101 @@
+\section{Generators and the Cayley graph}\label{sec:cayley}
+
+Three of the examples above were built by the same trick: take a geometric object, decorate it so
+that unwanted symmetries are spoiled, and read off the group that survives. This section turns the
+trick round. Instead of starting with an object and finding its group, start with a group and
+\emph{build} an object.
+
+\subsection{Generating sets}
+
+\begin{defi}\label{def:gen}
+A subset $S$ of a group $G$ \defn{generates} $G$ if every element of $G$ can be written as a product
+of finitely many elements of $S$ and inverses of elements of $S$. Such a product is called a
+\defn{word} in $S$, and $S$ is a \defn{generating set}.
+\end{defi}
+
+Every example so far came with one.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+group & a generating set & typical element as a word\\
+\midrule
+$\Z$ & $\{1\}$ & $5=1+1+1+1+1$\\
+$\Z/n\Z$ & $\{1\}$ & every element, by repeated addition\\
+$\Z^2$ & $\{(1,0),(0,1)\}$ & $(2,1)=$ right, right, up\\
+$D_n$ & $\{s,t\}$, two reflections & $(st)^m$ and $s(st)^m$\\
+$S_n$ & the $n-1$ neighbour swaps & any permutation, by sorting\\
+rotations of the cube & two quarter turns about different axes & every one of the $24$\\
+$F_2$ & $\{a,b\}$ & the word itself\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A group can have many generating sets of very different sizes, and finding a small one is often the
+first step in understanding it. Note that $S$ generating $G$ says nothing about \emph{uniqueness}:
+in $\Z$ the element $0$ is both the empty product and $1+(-1)$.
+
+\begin{tryit}
+Show that $\{2,3\}$ generates $\Z$ but $\{2\}$ does not. Show that $\{4\}$ does not generate
+$\Z/12\Z$ but $\{5\}$ does. Then convince yourself that the three face half turns of the cube
+together with the identity form a group that no single element generates.
+\end{tryit}
+
+\subsection{The Cayley graph}
+
+\begin{defi}\label{def:cayley}
+Let $G$ be a group and $S$ a generating set. The \defn{Cayley graph} of $G$ with respect to $S$ is
+the following decorated object. Put one dot for each element of $G$. For each element $g$ and each
+generator $s\in S$, draw an arrow from the dot $g$ to the dot $gs$, coloured according to which
+generator $s$ it came from.
+\end{defi}
+
+Three features of the definition deserve a sentence each. The dots are the group elements, so the
+graph is as big as the group. The arrows are labelled by generators, so the same picture with a
+different generating set looks different. And the arrows are coloured and directed, which is exactly
+the decoration that spoils unwanted symmetries, as in Sections~\ref{sec:arrowgon} and \ref{sec:Z2}.
+
+Every picture in the list below has already appeared in this chapter, without the name.
+
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+group & generating set & Cayley graph & drawn in\\
+\midrule
+$\Z/n\Z$ & $\{1\}$ & the arrowed $n$-gon & Figure~\ref{fig:arrowgon}\\
+$\Z$ & $\{1\}$ & the arrowed line & Figure~\ref{fig:arrowline}\\
+$\Z^2$ & $\{(1,0),(0,1)\}$ & the grid with coloured edges & Figure~\ref{fig:grid}\\
+$F_2$ & $\{a,b\}$ & the $4$-valent tree & Figure~\ref{fig:tree}\\
+$D_n$ & $\{s,t\}$ & a $2n$-gon with two edge colours & Problem~\ref{prob:cayleyD3}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{why}
+\emph{Why the arrow goes from $g$ to $gs$ and not to $sg$.} Because of the convention of
+Definition~\ref{def:order}. Walking along an $s$-arrow means multiplying on the \emph{right} by $s$.
+Reading a path from the base dot $1$ then spells out a word in the generators from left to right,
+which is exactly how words are written. If the arrows ran to $sg$ instead, reading a path would
+spell words backwards.
+\end{why}
+
+\sfig{A group's multiplication table and its Cayley graph carry the same information. The table is
+what you compute with; the graph is what you can look at.}{\figcayleytable}
+
+\begin{bigpic}
+\emph{The punchline of the office hour.} Take a group $G$, choose a generating set, and build the
+Cayley graph. That graph is a decorated object, and one can ask for its symmetries: the motions of
+the graph sending dots to dots, arrows to arrows, and respecting the colours. The answer is that
+these symmetries are exactly the elements of $G$ again, with $g$ acting by sending each dot $x$ to
+the dot $gx$. So \emph{every group is the symmetry group of some object}, and the object can be
+manufactured from the group itself. The formal statement and proof belong to the next office hour;
+what matters here is that the slogan ``groups are symmetries'' is a theorem, not a slogan.
+\end{bigpic}
+
+\begin{tryit}
+Draw the Cayley graph of $\Z/6\Z$ with the generating set $\{1\}$, and then with $\{2,3\}$. The two
+pictures look nothing alike, yet they describe the same group. Then draw the Cayley graph of $S_3$
+with its two neighbour swaps; you should get a hexagon with two colours of edge.
+\end{tryit}

@@ -1,0 +1,743 @@
+% Handout slides: Office Hour One "Groups" (Clay & Margalit), written to be read on its own.
+% Build: tectonic ch1_groups_slides.tex
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{fontspec}
+\setsansfont{Helvetica Neue}
+\setmainfont{Times New Roman}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.misc,decorations.markings,patterns}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+
+\definecolor{mkc}{RGB}{214,90,0}
+\definecolor{why}{RGB}{30,120,60}
+\definecolor{pit}{RGB}{180,30,40}
+\definecolor{try}{RGB}{160,110,0}
+\definecolor{ahead}{RGB}{90,50,160}
+\definecolor{big}{RGB}{20,70,150}
+\setbeamercolor{structure}{fg=big}
+\setbeamercolor{palette primary}{bg=big,fg=white}
+\setbeamercolor{palette secondary}{bg=big!80!black,fg=white}
+\setbeamercolor{palette tertiary}{bg=big!60!black,fg=white}
+\setbeamercolor{block title}{bg=big!15,fg=big!60!black}
+\setbeamercolor{block body}{bg=big!4}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamersize{text margin left=6mm,text margin right=6mm}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\inv}{^{-1}}
+\DeclareMathOperator{\Ker}{Ker}
+
+\tcbset{hbox/.style={enhanced,boxrule=0.6pt,arc=2pt,left=4pt,right=4pt,top=3pt,bottom=3pt,boxsep=1pt,fontupper=\footnotesize,fonttitle=\scriptsize\bfseries,coltitle=white,attach boxed title to top left={xshift=4pt,yshift=-2pt},boxed title style={size=small,arc=1pt,boxrule=0pt}}}
+\newtcolorbox{whybox}{hbox,colback=why!5,colframe=why,colbacktitle=why,title={Why?}}
+\newtcolorbox{pitbox}{hbox,colback=pit!5,colframe=pit,colbacktitle=pit,title={Watch out}}
+\newtcolorbox{trybox}{hbox,colback=try!6,colframe=try,colbacktitle=try,title={Try it}}
+\newtcolorbox{bigbox}{hbox,colback=big!5,colframe=big,colbacktitle=big,title={Big picture}}
+\newtcolorbox{defbox}{hbox,colback=gray!6,colframe=gray!55!black,colbacktitle=gray!55!black,title={Definition}}
+\newtcolorbox{exbox}[1]{hbox,colback=ahead!5,colframe=ahead,colbacktitle=ahead,title={#1}}
+
+\input{figs1.tex}
+
+\title[Groups]{Groups}
+\institute[]{}
+\subtitle{Every group is the symmetries of something}
+\author[Office Hour One · handout]{A self-contained handout for Office Hour One of \emph{Office Hours with a Geometric Group Theorist}}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\begin{center}\scalebox{0.85}{\figtriangle}\end{center}
+\end{frame}
+
+\begin{frame}{Where we are going}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\small A \textbf{symmetry} of an object is a move that leaves it looking exactly as it did. To understand an object, find its symmetries. This handout follows the first chapter of the book and is written so that it can be read without it.
+\begin{enumerate}\small
+\item \textbf{A puzzle.} How many ways can you turn a cube, and how do the turns combine?
+\item \textbf{What a group is}, and why every collection of symmetries is one.
+\item \textbf{A tour of examples:} polygons ($D_n$), permutations ($S_n$), clocks ($\Z/n\Z$), the integers, the grid, matrices, free groups. Each comes with the picture it is the symmetries of.
+\item \textbf{Maps between groups:} homomorphisms, kernels, normal subgroups, quotients, the first isomorphism theorem.
+\item \textbf{Writing a group down:} generators, relations, and the Cayley graph as the picture of a presentation.
+\end{enumerate}
+\column{0.41\textwidth}
+\begin{bigbox}
+\textbf{The one sentence.} ``Group'' and ``the symmetries of something'' are the same idea seen from two sides. Symmetries can be \emph{combined} (do one, then another) and \emph{undone}; a group is exactly a set with those two features. Every example here is both a group and a set of symmetries.
+\end{bigbox}
+\begin{trybox}
+Boxes like this one contain things to check by hand and hints for the chapter's thirteen exercises. Green boxes give the reason behind a claim; red boxes flag the usual misreadings.
+\end{trybox}
+\end{columns}
+\end{frame}
+
+\section{Symmetry}
+
+\begin{frame}{A warm-up: the triangle}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering\scalebox{0.82}{\figtriangle}
+\column{0.47\textwidth}
+\small The equilateral triangle has six symmetries: three rotations (by $0^\circ$, $120^\circ$, $240^\circ$) and three reflections (in the dashed axes). Number the corners $1,2,3$. Each symmetry moves corners to corners, so it \emph{rearranges} $\{1,2,3\}$, and the six symmetries give the six possible rearrangements, each exactly once.
+\vspace{4pt}
+
+Two things you can always do with symmetries:
+\begin{itemize}
+\item \textbf{combine} them: do one, then another; the result is again a symmetry;
+\item \textbf{undo} them: every symmetry has a reverse move.
+\end{itemize}
+These two features are all that ``group'' will mean.
+\end{columns}
+\end{frame}
+
+\begin{frame}{A puzzle: how many ways can you turn a cube?}
+\begin{columns}[T]
+\column{0.4\textwidth}
+\centering\scalebox{0.85}{\figcube{0.9}}\par
+{\scriptsize Corners $A$--$H$; long diagonals $d_1=AG$, $d_2=BH$, $d_3=CE$, $d_4=DF$.}
+\column{0.57\textwidth}
+A \textbf{symmetry of the cube} is what you get by picking the cube up, turning it, and putting it back in exactly the same place. Mirror images are not allowed: you cannot do those with your hands.
+\begin{itemize}
+\item Skewer the cube through the centres of two opposite faces and turn by a multiple of $90^\circ$.
+\item Or skewer it through the midpoints of two opposite edges, or through two opposite corners.
+\item \textbf{Counting:} corner $A$ can be sent to any of the 8 corners, and once you have chosen, the cube can still spin about that corner in 3 ways. So there are $8\times3=\mathbf{24}$ symmetries.
+\end{itemize}
+\begin{pitbox}
+Counting is not understanding. What is a good way to \emph{list} the 24? And if we do one turn and then another, we get a third turn: where is it on the list? The next three slides answer this.
+\end{pitbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Why the angles are $90^\circ$, $120^\circ$, $180^\circ$}
+Why can you turn by $90^\circ$ about a face axis but not by $45^\circ$? Look straight down the axis you are turning about. The cube's outline becomes a flat shape, and a turn is a symmetry of the cube exactly when it is a symmetry of that outline.
+\begin{center}\scalebox{0.78}{\figwhypi}\end{center}
+\begin{columns}[T]
+\column{0.6\textwidth}
+\footnotesize Down a \textbf{face axis} the outline is a square: it returns to itself after $90^\circ$, and after $45^\circ$ its corners stick out (red dashed). Down a \textbf{long diagonal} the outline is a regular hexagon centred on the near corner, whose three edges make $120^\circ$ angles. Down an \textbf{edge axis} the outline is a rectangle with sides $1$ and $\sqrt2$, not a square, so only the half turn works.
+\column{0.37\textwidth}
+\begin{whybox}
+Count again: $1$ identity $+\,3\cdot3$ (face axes) $+\,4\cdot2$ (long diagonals) $+\,6\cdot1$ (edge axes) $=24$.
+\end{whybox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The idea that solves the puzzle: four long diagonals}
+\begin{columns}[T]
+\column{0.38\textwidth}
+\centering\scalebox{0.8}{\figcube{0.9}}
+\column{0.6\textwidth}
+Draw the four long diagonals (corner to opposite corner through the centre). Two facts:
+\begin{enumerate}
+\item Every turn moves long diagonals to long diagonals, so it \textbf{permutes} $d_1,d_2,d_3,d_4$.
+\item Every permutation of the four diagonals comes from \textbf{exactly one} turn.
+\end{enumerate}
+\begin{whybox}
+Fact 2: swapping $d_1=AG$ with $d_2=BH$ is the half turn about the axis through the midpoints of the edges $AB$ and $GH$, which swaps $A\leftrightarrow B$ and $G\leftrightarrow H$. So every swap of two diagonals is a turn, and any permutation is a product of swaps. Both sides have 24 elements, so no two turns give the same permutation.
+\end{whybox}
+\begin{bigbox}
+A permutation is a bijection, so ``do one turn, then another'' is composition of functions: mechanical. The 24 moves have become the \textbf{symmetric group} $S_4$.
+\end{bigbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The dictionary: each kind of turn is a kind of permutation}
+\begin{columns}[T]
+\column{0.66\textwidth}
+\scriptsize
+\begin{tabular}{@{}p{2.9cm}cp{3.2cm}c@{}}
+\toprule
+rotation of the cube & how many & permutation of $d_1,\dots,d_4$ & how many\\
+\midrule
+do nothing & 1 & identity $()$ & 1\\
+$\pm90^\circ$ about a face axis & 6 & 4-cycle, e.g.\ $(d_1\,d_2\,d_3\,d_4)$ & 6\\
+$180^\circ$ about a face axis & 3 & two swaps, e.g.\ $(d_1\,d_2)(d_3\,d_4)$ & 3\\
+$\pm120^\circ$ about a long diagonal & 8 & 3-cycle, e.g.\ $(d_2\,d_3\,d_4)$ & 8\\
+$180^\circ$ about an edge axis & 6 & one swap, e.g.\ $(d_1\,d_2)$ & 6\\
+\midrule
+total & 24 & & 24\\
+\bottomrule
+\end{tabular}
+\vspace{6pt}
+\begin{whybox}
+Why a $120^\circ$ turn about $d_1$ is a 3-cycle: the axis is $d_1$ itself, so $d_1$ stays. The three corners next to $A$ are $B,D,E$ and the turn cycles them; $d_2,d_4,d_3$ start at those corners, so they are cycled. (Cycle notation is explained on the $S_n$ slide.)
+\end{whybox}
+\column{0.31\textwidth}
+\centering\scalebox{0.48}{\figaxes}\par
+{\scriptsize The three kinds of axis. Face axes: 3, quarter turns. Corner axes: 4, third turns. Edge axes: 6, half turns.}
+\end{columns}
+\end{frame}
+
+\section{Groups}
+
+\begin{frame}{Definition of a group}
+\begin{defbox}\footnotesize
+A \textbf{multiplication} on a set $G$ is a function $G\times G\to G$; the image of $(g,h)$ is written $gh$. A \textbf{group} is a set $G$ with a multiplication such that
+\begin{enumerate}
+\item[(i)] \textbf{identity}: there is $1\in G$ with $1g=g1=g$ for all $g$;
+\item[(ii)] \textbf{inverses}: for each $g$ there is $g\inv$ with $gg\inv=g\inv g=1$;
+\item[(iii)] \textbf{associativity}: $(fg)h=f(gh)$ for all $f,g,h$.
+\end{enumerate}
+\end{defbox}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{whybox}
+For the symmetries of the cube define $gh$ as ``do $h$, then do $g$'', like the composition $g\circ h$. The identity is ``leave it alone''; $g\inv$ is ``undo $g$''; associativity holds because composing functions is associative. So the symmetries of anything form a group. The symbol $1$ is a name, not the number one: in $\Z$ the identity is $0$.
+\end{whybox}
+\column{0.47\textwidth}
+\begin{pitbox}
+Nothing says $gh=hg$. Groups where it always holds are \textbf{abelian}. The cube's group is not: a quarter turn about a vertical axis followed by a half turn about an edge axis differs from the same two moves in the other order.
+\end{pitbox}
+\textbf{Generators.} A subset $S$ \emph{generates} $G$ if every element of $G$ is a product of elements of $S$ and their inverses.
+\end{columns}
+\end{frame}
+
+\begin{frame}{The dihedral group $D_n$: symmetries of a regular polygon}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\centering\scalebox{0.55}{\figsquares}\par
+{\scriptsize The eight symmetries of a square, $D_4$: four rotations and four reflections. Corners are numbered so you can see where each goes.}
+\column{0.5\textwidth}
+\footnotesize $D_n$ is the set of symmetries of a regular $n$-gon in the plane, now including reflections (you can flip a flat polygon over). It has $n$ rotations and $n$ reflections, so $|D_n|=2n$.
+\begin{itemize}
+\item $s$: reflection in a line through the centre and a vertex.
+\item $t$: reflection in the line rotated from it by $\pi/n$.
+\item $s$ and $t$ \textbf{generate} $D_n$: every symmetry is a product of $s$'s and $t$'s. A rotation by $m$ clicks is $(st)^m$; each reflection is a rotation followed by $s$.
+\item $s^2=1$: reflecting twice puts everything back, so $s$ is its own inverse.
+\end{itemize}
+\begin{pitbox}
+Some books call this group $D_{2n}$, naming it by its size. This book names it by the polygon.
+\end{pitbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Why $st$ is one click}
+\begin{columns}[T]
+\column{0.4\textwidth}
+\centering\scalebox{0.95}{\figpent}
+\column{0.57\textwidth}
+\begin{whybox}
+Reflecting in two lines that meet at angle $\theta$ is the same as rotating by $2\theta$ about their intersection. Here $\theta=\pi/n$, so $st$ is the rotation by $2\pi/n$.
+\end{whybox}
+Consequences: $(st)^m$ is $m$ clicks, so all $n$ rotations are $(st)^m$ for $m=0,\dots,n-1$; every reflection is (rotation)$\cdot s$; hence $s$ and $t$ generate everything. In $D_5$, $(st)^5=1$.
+\begin{trybox}
+Take a square and number its corners. Compose two of the pictures on the previous slide: do $r$ then $s$, and do $s$ then $r$. You land on two \emph{different} reflections. That is $sr\neq rs$: $D_4$ is not abelian.
+\end{trybox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The symmetric group $S_n$: all permutations of $\{1,\dots,n\}$}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\small $S_n$ is the set of permutations (bijections) of $\{1,\dots,n\}$, with multiplication given by composition. It is the symmetry group of $n$ loose points: nothing to respect but the points, so every rearrangement counts, and $|S_n|=n!$.
+\vspace{3pt}
+
+\textbf{Cycle notation.} $(i_1\,i_2\,\cdots\,i_k)$ sends each listed number to the next, the last back to the first, and fixes everything else: $(1\,2\,4)$ sends $1\to2$, $2\to4$, $4\to1$. Every permutation is a product of \emph{disjoint} cycles, e.g.\ $(1\,2\,4)(3\,5)$ in $S_6$.
+\vspace{3pt}
+
+\textbf{Multiplying} is composing, right factor first. For $(2\,6)\cdot(1\,2\,4)(3\,5)$:
+\begin{center}\footnotesize
+\begin{tabular}{c|cccccc}
+$x$ & 1 & 2 & 3 & 4 & 5 & 6\\ \hline
+after $(1\,2\,4)(3\,5)$ & 2 & 4 & 5 & 1 & 3 & 6\\
+after $(2\,6)$ & 6 & 4 & 5 & 1 & 3 & 2\\
+\end{tabular}
+\end{center}
+Reading the last row: $1\to6\to2\to4\to1$ and $3\leftrightarrow5$, so the product is $(1\,6\,2\,4)(3\,5)$.
+\column{0.42\textwidth}
+\centering\scalebox{0.7}{\figcyclearrows}
+\begin{pitbox}
+Apply the left factor first and you get $(1\,2\,4\,6)(3\,5)$, a different element. Order matters; the convention is ``right factor first'', matching $gh$ = ``$h$, then $g$''.
+\end{pitbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Multiplying by stacking diagrams}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\centering\scalebox{0.9}{\figstack}
+\column{0.42\textwidth}
+Draw a permutation as strands from a top row to a bottom row: strand $i$ runs from position $i$ to position $\sigma(i)$.
+\vspace{4pt}
+
+To multiply, \textbf{stack}: the first-applied permutation on top, the second underneath. Follow each colour through both blocks. The red strand starts at 1, reaches 2 in the top block, then 6 in the bottom block: $1\mapsto6$. Reading all six strands gives $(1\,6\,2\,4)(3\,5)$, the same answer as the table.
+\begin{whybox}
+Why is the first-applied permutation on top? Strands are read top to bottom, and $\sigma$ is applied first. This matches ``do $h$, then $g$'' $=gh$.
+\end{whybox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Transpositions: neighbour swaps generate $S_n$}
+\begin{columns}[T]
+\column{0.45\textwidth}
+\centering\scalebox{0.72}{\figbraid}\par
+{\scriptsize The strand diagram of $(1\,2\,4)(3\,5)$; each crossing is a swap of two neighbouring positions.}
+\column{0.52\textwidth}
+\small A \textbf{transposition} is a 2-cycle such as $(3\,5)$: it swaps two things and fixes the rest. Important fact: $S_n$ is generated by the \emph{adjacent} transpositions $(i\;\,i{+}1)$, $1\le i\le n-1$. (We used this on the cube: every permutation of the diagonals is a product of swaps.)
+\vspace{4pt}
+
+In a strand diagram, each crossing swaps two neighbouring positions, so it is an adjacent transposition. Read the crossings top to bottom and write them right to left (top crossing = applied first = rightmost factor):
+\[
+(1\,2\,4)(3\,5)=(3\,4)(1\,2)(4\,5)(2\,3)(3\,4).
+\]
+\begin{whybox}
+Multiplying by stacking (previous slide) means the diagram of a product is the stack of the diagrams of its factors. The five crossings, each at its own height, are five one-crossing diagrams stacked: five adjacent transpositions.
+\end{whybox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 1 and 2}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{exbox}{Exercise 1, as an algorithm}
+Any strand diagram can be drawn with its crossings at different heights, and then it \emph{is} a product of adjacent transpositions. Equivalently, bubble sort: start from the arrangement $2,4,5,1,3,6$ that the permutation $(1\,2\,4)(3\,5)$ produces and sort it back into order using only swaps of neighbours. Each swap is an adjacent transposition, and the list of swaps is a factorisation of the inverse permutation; read it in reverse to get the permutation itself.
+\end{exbox}
+\begin{trybox}
+Sort $2,4,5,1,3,6$ by hand. The first pass swaps positions 3--4, then 4--5; keep going until sorted and count the swaps.
+\end{trybox}
+\column{0.47\textwidth}
+\begin{exbox}{Exercise 2}
+Which other $S_n$ are the symmetries of a shape? The regular tetrahedron has 4 corners; its rotations form a group of 12 elements, and rotations together with reflections give all $4!=24$ permutations of the corners, i.e.\ $S_4$. In general the regular \emph{simplex} with $n$ corners (segment, triangle, tetrahedron, \dots) has full symmetry group $S_n$, because any rearrangement of its corners extends to a symmetry. Higher cubes do \emph{not} give symmetric groups: the 4-dimensional cube has 192 rotations, while $5!=120$ and $6!=720$.
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{$\Z/n\Z$: add, then wrap around}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{defbox}
+For an integer $n>1$, $\Z/n\Z=\{0,1,\dots,n-1\}$ with the multiplication ``add $a$ and $b$, and subtract $n$ if the result is $n$ or more''. The identity is $0$; the inverse of $m\neq0$ is $n-m$.
+\end{defbox}
+Three familiar cases: $n=12$ is clock arithmetic (9 o'clock plus 4 hours is 1 o'clock); $n=10$ is ``only keep the last digit''; $n=2$ is light-switch arithmetic, where $1$ means flip and flip plus flip is nothing.
+\begin{whybox}
+Associativity: the definition is by cases, but $(a+b)+c$ and $a+(b+c)$ are both the remainder of the ordinary integer $a+b+c$ on division by $n$, and taking remainders is consistent with integer addition.
+\end{whybox}
+\column{0.42\textwidth}
+\centering\scalebox{0.82}{\figclock}
+\vspace{4pt}
+
+\textbf{Subgroups.} A \emph{subgroup} of $G$ is a subset containing $1$ that is closed under products and inverses; it is a group in its own right. ``Proper'' means not the whole group.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Generators of $\Z/n\Z$ (Exercise 3), and subgroups you can see}
+\begin{center}
+\scalebox{0.72}{\figclocksub{6}{$\{0,6\}\cong\Z/2\Z$}}\hspace{2pt}
+\scalebox{0.72}{\figclocksub{4}{$\{0,4,8\}\cong\Z/3\Z$}}\hspace{2pt}
+\scalebox{0.72}{\figclocksub{3}{$\{0,3,6,9\}\cong\Z/4\Z$}}\hspace{2pt}
+\scalebox{0.72}{\figclocksub{2}{$\{0,2,\dots,10\}\cong\Z/6\Z$}}
+\end{center}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\begin{exbox}{Exercise 3}
+If $\gcd(m,n)=1$ then $\{m\}$ generates $\Z/n\Z$. Why: there are integers $u,v$ with $um+vn=1$ (B\'ezout), so $u\cdot m\equiv1$, and from $1$ you reach everything. Conversely if $d=\gcd(m,n)>1$, every multiple of $m$ is a multiple of $d$ on the clock, so $1$ is never reached.
+\end{exbox}
+\column{0.45\textwidth}
+\begin{trybox}
+On the 12-clock start at $0$ and keep adding $5$: $0,5,10,3,8,1,6,11,4,9,2,7$, every hour visited, because $\gcd(5,12)=1$. Keep adding $4$ instead: only $0,4,8$, the triangle above; $\gcd(4,12)=4$.
+\end{trybox}
+Each highlighted set is closed under ``add and wrap'', so each is a subgroup, and each is a regular polygon inscribed in the clock.
+\end{columns}
+\end{frame}
+
+\begin{frame}{What is $\Z/n\Z$ the symmetries of? Decorate the polygon}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\centering\scalebox{0.9}{\figarrowgon}
+\column{0.5\textwidth}
+Using the clock, we might guess that $\Z/n\Z$ is the symmetries of a regular $n$-gon. Not quite: it is the \textbf{rotations}, a proper subgroup of $D_n$, because the reflections are missing.
+\vspace{3pt}
+
+The trick: draw a small arrow on every edge and insist that a symmetry keeps the arrows pointing the same way round. Reflections reverse the sense of travel, so they are no longer symmetries; the $n$ rotations remain, and they compose exactly like $\Z/n\Z$: turn $j$ clicks, then $k$ clicks, is $j+k$ clicks, wrapped.
+\begin{bigbox}
+This decorated polygon is the \textbf{Cayley graph} of $\Z/n\Z$: one dot per element, one arrow per ``add 1''. The same recipe builds an object for every group, and Office Hour 2 proves the group is exactly its symmetry group.
+\end{bigbox}
+\end{columns}
+\end{frame}
+
+\section{Infinite groups}
+
+\begin{frame}{$\Z$: the integers and the arrowed line}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering\scalebox{0.95}{\figline}
+\column{0.47\textwidth}
+Many first courses skip infinite groups. This is where the fun is, and where pictures earn their keep: you cannot write an infinite multiplication table, but you can draw the group's object.
+\vspace{3pt}
+
+$\Z$ under addition: identity $0$, inverse of $n$ is $-n$. Generated by $\{1\}$, and also by $\{2,3\}$ since $3-2=1$; by $\{2\}$ alone you get only the even numbers, a proper subgroup.
+\vspace{3pt}
+
+Mark the integer points on a line. Its symmetries are translations by an integer and reflections about integer or half-integer points. $\Z$ is the translations: $n$ acts as ``slide by $n$'', and slide $m$ then slide $n$ is slide $m+n$. Draw arrows on the segments and the reflections disappear, so $\Z$ becomes the \emph{full} symmetry group.
+\end{columns}
+\end{frame}
+
+\begin{frame}{$\Z^2$: the integer grid}
+\begin{columns}[T]
+\column{0.45\textwidth}
+\centering\scalebox{0.85}{\figlattice}
+\column{0.52\textwidth}
+$\Z^2$ is the set of pairs $(m,n)$ of integers, added coordinate by coordinate. Identity $(0,0)$; generated by $(1,0)$ and $(0,1)$, since $(m,n)=m(1,0)+n(0,1)$.
+\vspace{3pt}
+
+Colour the horizontal edges blue and the vertical edges green, add arrows, and demand that a symmetry preserves points, colours and arrows. A quarter turn would swap blue and green, a reflection would flip arrows, so only translations by lattice vectors survive: the symmetries are exactly $\Z^2$.
+\begin{pitbox}
+$\Z^2$ is abelian: $(m,n)+(m',n')=(m',n')+(m,n)$. The free group two slides on also has two generators but is \emph{not} abelian. Two generators, two very different groups.
+\end{pitbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Numbers under multiplication, and matrix groups}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\textbf{Multiplicative groups.} $\R^\times$ and $\C^\times$ are the nonzero real and complex numbers under ordinary multiplication, identity $1$. Zero is left out because it has no inverse.
+\begin{whybox}
+Not finitely generated: finitely many numbers $r_1,\dots,r_k$ produce only the products $r_1^{e_1}\cdots r_k^{e_k}$ with integer exponents, countably many. But $\R^\times$ is uncountable. Every group so far had a finite generating set; these do not.
+\end{whybox}
+\column{0.48\textwidth}
+\textbf{Matrix groups.} $\GL(n,\R)$, the \emph{general linear group}, is the set of real $n\times n$ matrices with nonzero determinant. It is a group because:
+\begin{itemize}
+\item closed: $\det(MN)=\det M\cdot\det N\neq0$;
+\item the identity matrix has determinant $1$;
+\item nonzero determinant means invertible;
+\item matrix multiplication is associative (it is composition of linear maps).
+\end{itemize}
+Relatives: $\SL(n,\R)$ (determinant $1$), $\GL(n,\Z)$ (integer entries, which forces $\det=\pm1$), $\SL(n,\Z)$, and the complex versions.
+\begin{exbox}{Exercise 4}
+Over a finite field: $\GL(2,\Z/2\Z)$, the invertible $2\times2$ matrices with entries $0,1$, has 6 elements and behaves like $S_3$.
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The free group $F_2$: words with no rules except cancellation}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{defbox}
+A \textbf{word} in $a,b$ is any finite string of the symbols $a,b,a\inv,b\inv$ (the empty word included); words are multiplied by \textbf{concatenation}. A word is \textbf{reduced} if no $a$ stands next to an $a\inv$ and no $b$ next to a $b\inv$; deleting such a pair shortens a word, and repeating this reaches a reduced word.\\
+$F_2$ is the set of reduced words with multiplication ``\textbf{concatenate, then reduce}''.
+\end{defbox}
+\begin{itemize}
+\item Identity: the empty word. Inverse: reverse the word and invert each letter, $(aba\inv b)\inv=b\inv ab\inv a\inv$ (socks and shoes).
+\item $F_2$ is generated by $\{a,b\}$. Not abelian: $ab$ and $ba$ are different reduced words, hence different elements.
+\end{itemize}
+\column{0.42\textwidth}
+\centering\scalebox{0.9}{\figreduce}\par
+{\scriptsize Three possible first steps, one final answer.}
+\begin{exbox}{Exercises 5 and 6}
+Reduction always ends at the \emph{same} word, by induction on length: if two cancelling pairs do not overlap, cancel both in either order; if they overlap, the word contains $x\,x\inv\,x$ and either cancellation leaves $x$. This is what makes $(uv)w=u(vw)$: both are reductions of the one string $uvw$.
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Words are walks in a tree}
+\begin{columns}[T]
+\column{0.36\textwidth}
+\centering\scalebox{0.58}{\figtree}\par\vspace{2pt}
+\centering\scalebox{0.46}{\figwordpath}\par
+{\scriptsize The walk for $a\,a\inv\,a\,b\,b\inv\,a$: steps 1--2 and 4--5 go out and straight back; what remains is the straight path $aa$.}
+\column{0.61\textwidth}
+\small
+Read a word letter by letter from the centre: right for $a$, up for $b$, left for $a\inv$, down for $b\inv$. Cancelling $xx\inv$ is erasing a there-and-back. A reduced word is a walk that never backtracks.
+\vspace{4pt}
+
+The picture continues forever, every vertex has four neighbours, and there are no loops: an infinite tree. Distinct reduced words reach distinct vertices, because in a tree there is only one non-backtracking route to each vertex. (That is another way to see the uniqueness of the reduced word.)
+\begin{bigbox}
+This tree is the Cayley graph of $F_2$, and Office Hour 2 shows that $F_2$ is exactly its group of symmetries preserving the letters and arrows. Compare the arrowed polygon ($\Z/n\Z$), the arrowed line ($\Z$) and the coloured grid ($\Z^2$): the same construction, different groups.
+\end{bigbox}
+\textbf{Other free groups.} The same construction on any alphabet $S$ gives $F(S)$; its \emph{rank} is $|S|$. $F_1$ is the powers of one letter, a copy of $\Z$. Every group turns out to be a quotient of a free group (Section 1.4).
+\end{columns}
+\end{frame}
+
+\section{Homomorphisms}
+
+\begin{frame}{Homomorphisms: maps that respect multiplication}
+\begin{defbox}
+A \textbf{homomorphism} from $G$ to $H$ is a function $f:G\to H$ with $f(ab)=f(a)f(b)$ for all $a,b$. A bijective homomorphism is an \textbf{isomorphism}; isomorphic groups are the same group with the elements renamed (e.g.\ $\Z\to F_1$, $n\mapsto a^n$).
+\end{defbox}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\centering\scalebox{0.85}{\fighom}\par
+{\scriptsize Multiply then map, or map then multiply: same answer.}
+\column{0.47\textwidth}
+Two consequences: $f(1)=1$ (since $f(1)=f(1\cdot1)=f(1)f(1)$, then cancel) and $f(g\inv)=f(g)\inv$ (since $f(g)f(g\inv)=f(1)=1$).
+\vspace{4pt}
+
+A homomorphism is \textbf{injective} exactly when only $1$ maps to $1$: if $f(g)=f(h)$ then $f(gh\inv)=1$, so $gh\inv=1$.
+\vspace{4pt}
+
+Any homomorphism becomes onto by shrinking the target to its image, so what matters is injective versus non-injective.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Injective homomorphisms: embedding one group in another}
+An injective homomorphism $f:G\to H$ realises $G$ as a subgroup of $H$, namely its image $f(G)$. Examples:
+\begin{itemize}
+\item $\Z/n\Z\to D_n$, $m\mapsto$ rotation by $2\pi m/n$: the clock is the rotations of the polygon.
+\item $\Z/2\Z\to D_n$ (nontrivial element to a reflection) and $\Z/2\Z\to S_n$ (to a product of disjoint swaps): both square to $1$, so each is a copy of $\Z/2\Z$.
+\item $\Z\to\Z$, $n\mapsto mn$ for $m\neq0$: injective, with image $m\Z$. So $\Z$ contains proper copies of itself, something no finite group can do.
+\item $\Z\to\Z^2$, $n\mapsto(na,nb)$ for $(a,b)\neq(0,0)$: a line inside the lattice.
+\item $\Z\to F_2$, $n\mapsto w^n$ for a nontrivial reduced word $w$: the powers of a word never fully cancel.
+\end{itemize}
+\begin{exbox}{Exercise 7}
+Find more: $D_3\to S_3$ (a symmetry of the triangle permutes its 3 corners); $\Z/m\Z\to\Z/mk\Z$, $1\mapsto k$; $F_2\to F_3$ (use two of the three letters); $\Z^2\to\Z^3$.
+\end{exbox}
+\end{frame}
+
+\begin{frame}{Non-injective homomorphisms: forgetting on purpose (Exercise 8)}
+\begin{columns}[T]
+\column{0.5\textwidth}
+A non-injective homomorphism sends several elements to the same place, so it loses information. Because it respects multiplication, what it keeps is \emph{consistent}: to know the property of a product, it is enough to know the property of the factors.
+\begin{center}\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+map & remembers only\\
+\midrule
+$\Z\to\Z/2\Z$ & parity\\
+$\det:\GL(n,\R)\to\R^\times$ & the determinant\\
+$\R^\times\to\Z/2\Z$ & the sign\\
+$S_n\to\Z/2\Z$ & even or odd number of crossings\\
+$D_n\to\Z/2\Z$ & flipped over or not\\
+$F_2\to\Z^2$ & the exponent sums of $a$ and of $b$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\column{0.47\textwidth}
+\begin{whybox}
+Example: the sign of a product of nonzero reals depends only on the signs of the factors. That sentence \emph{is} the statement that $\R^\times\to\Z/2\Z$ is a homomorphism. Likewise $\det(MN)=\det M\det N$ says the determinant is one.
+\end{whybox}
+\begin{pitbox}
+For $S_n\to\Z/2\Z$ there is a hidden claim: the same permutation can be drawn with different numbers of crossings, so why is the \emph{parity} always the same? Count inversions (pairs $i<j$ with $\sigma(i)>\sigma(j)$): each adjacent swap changes the count by exactly $\pm1$.
+\end{pitbox}
+\begin{exbox}{Exercise 8}
+More: $\Z\to\Z/n\Z$ (remainder); $\Z^2\to\Z$, $(m,n)\mapsto m-n$; $F_2\to\Z/2\Z$ by the parity of the word length.
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Normal subgroups and kernels}
+\begin{defbox}
+A \textbf{normal subgroup} of $G$ is a subgroup $N$ with $gng\inv\in N$ for every $n\in N$ and $g\in G$. The element $gng\inv$ is the \textbf{conjugate} of $n$ by $g$: ``$n$, seen from $g$'s point of view'' (move by $g\inv$, do $n$, move back). The \textbf{kernel} of a homomorphism $f$ is the set of elements sent to the identity.
+\end{defbox}
+\begin{columns}[T]
+\column{0.44\textwidth}
+\centering\scalebox{0.64}{\fighomdots}
+\column{0.53\textwidth}
+\footnotesize
+\begin{whybox}
+Kernels are normal: if $f(n)=1$ then $f(gng\inv)=f(g)\cdot1\cdot f(g)\inv=1$.
+\end{whybox}
+Kernels of the forgetful maps: $2\Z$; $\SL(n,\R)$; the positive reals; the alternating group $A_n$ (even permutations); the rotations of the polygon; the commutator subgroup $[F_2,F_2]$, the words whose $a$-exponents and $b$-exponents both sum to zero.
+\begin{pitbox}
+Not every subgroup is normal. In $D_3$ the rotations are normal (a conjugate of a rotation is a rotation), but $\{1,s\}$ is not: $rsr\inv$ is the reflection in the axis rotated by $120^\circ$. In an abelian group $gng\inv=n$, so every subgroup is normal.
+\end{pitbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Quotient groups: declare every element of $N$ trivial (Exercise 9)}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{defbox}
+Call $g_1\sim g_2$ if $g_1g_2\inv\in N$, and write $[g]$ for the class of $g$. The classes are the \textbf{cosets} $Ng$; the class of $1$ is $N$. $G/N$ is the set of classes with multiplication $[g_1][g_2]=[g_1g_2]$.
+\end{defbox}
+\begin{pitbox}
+The one computation to know. Change representatives: $(n_1g_1)(n_2g_2)=n_1\,(g_1n_2g_1\inv)\,g_1g_2$. This lies in the class of $g_1g_2$ exactly when $g_1n_2g_1\inv\in N$. So the multiplication is well defined precisely when $N$ is normal: the definition of ``normal'' is what the quotient needs.
+\end{pitbox}
+\small The map $g\mapsto[g]$ is a homomorphism $G\to G/N$ with kernel $N$. So the loop closes: \textbf{normal subgroups and surjective homomorphisms are the same thing.}
+\column{0.42\textwidth}
+\centering\scalebox{0.6}{\figwrap}\par\vspace{-4pt}
+{\scriptsize $\Z$ coloured by remainder mod 4: the colours are the cosets of $4\Z$, i.e.\ the elements of $\Z/4\Z$.}\par\vspace{6pt}
+\centering\scalebox{0.5}{\figcosets}\par\vspace{-2pt}
+{\scriptsize For the rotations of $D_3$ left and right cosets agree; for $\{1,s\}$ they do not.}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The First Isomorphism Theorem (Exercise 10)}
+\begin{block}{Theorem 1.1}
+If $f:G\to H$ is a surjective homomorphism with kernel $K$, then $H\cong G/K$.
+\end{block}
+\begin{columns}[T]
+\column{0.42\textwidth}
+\centering\scalebox{0.62}{\figiso}
+\begin{whybox}
+Define $\phi([g])=f(g)$. Well defined: if $[g]=[g']$ then $g'=kg$ with $k\in K$, so $f(g')=f(k)f(g)=f(g)$. Homomorphism: $\phi([g][g'])=f(gg')=f(g)f(g')$. Onto because $f$ is. One-to-one: $\phi([g])=1$ means $g\in K$, i.e.\ $[g]=[1]$.
+\end{whybox}
+\column{0.55\textwidth}
+\footnotesize The examples, read as slogans:
+\begin{itemize}
+\item $\Z/2\Z$ = integers modulo the evens: parity. (This explains the notation.)
+\item $\GL(n,\R)/\SL(n,\R)\cong\R^\times$: matrices modulo ``determinant 1'' is the determinant.
+\item $S_n/A_n\cong\Z/2\Z$: even or odd. $D_n/\text{rotations}\cong\Z/2\Z$: flipped or not.
+\item $F_2/[F_2,F_2]\cong\Z^2$: forcing $ab=ba$ in the free group produces $\Z^2$. This is the presentation story of the next section.
+\end{itemize}
+\begin{exbox}{Exercise 10}
+$\Z/6\Z\to\Z/2\Z$ by parity has kernel $\{0,2,4\}$, so $(\Z/6\Z)/\{0,2,4\}\cong\Z/2\Z$. What do $\C^\times\to\R^\times$, $z\mapsto|z|$, and $\Z^2\to\Z$, $(m,n)\mapsto m-n$, give?
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\section{Presentations}
+
+\begin{frame}{How do you write a group down? (Exercise 11)}
+\begin{columns}[T]
+\column{0.4\textwidth}
+\centering\scalebox{0.8}{\figcayleytable}\par
+{\scriptsize The multiplication table of $D_3$: rotations blue, reflections red. The whole table follows from $s^2=1$, $r^3=1$, $rs=sr^2$.}
+\column{0.57\textwidth}
+A multiplication table describes a group completely but is hopeless for big or infinite groups. A generating set is more economical but not enough: $F_2$ and $\Z^2$ both have two generators, and only one is abelian.
+\vspace{3pt}
+
+The way out: some equations imply others (from $gh=k$ and $h=pq$ follows $gpq=k$), so a short list of \textbf{defining equations} can pin down the whole table.
+\begin{bigbox}
+$\Z/n\Z\cong\langle a\mid a^n=1\rangle$: every entry follows from the one rule, e.g.\ $a^{n-3}a^4=a^{n+1}=a^n\cdot a=a$.\\[2pt]
+$\Z^2\cong\langle x,y\mid xy=yx\rangle$: two generators and the single rule that they commute.
+\end{bigbox}
+\begin{exbox}{Exercise 11}
+Using $xy=yx$ you can move every $x$ to the left past every $y$, so any word becomes $x^my^n$, and different $(m,n)$ give different elements: that is $\Z^2$.
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The formal definition of a presentation}
+\begin{defbox}
+A presentation is a pair $(S,R)$: an alphabet $S$ and a set $R$ of words in it. The group $\langle S\mid R\rangle$ is the free group $F(S)$ divided by the \textbf{normal closure} of $R$, the smallest normal subgroup containing $R$. Elements of $S$ are \textbf{generators}; elements of $R$ are \textbf{defining relators}. A \textbf{relation} $u=v$ becomes the relator $uv\inv$: $ab=ba$ becomes $aba\inv b\inv$.
+\end{defbox}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\centering\scalebox{0.72}{\figpres}
+\begin{whybox}
+Why the normal closure? If a word $r$ is to equal $1$, then so must $grg\inv$ for every $g$, and products and inverses of such elements as well. The set of all consequences is a normal subgroup containing $R$, and the smallest one is the normal closure. Dividing by a non-normal subgroup would not even give a group.
+\end{whybox}
+\column{0.49\textwidth}
+So the elements of $\langle S\mid R\rangle$ are reduced words, with two words equal exactly when one turns into the other by inserting or deleting conjugates of relators.
+\begin{pitbox}
+A slip to avoid: from $aba=bab$ the relator is $aba(bab)\inv=aba\,b\inv a\inv b\inv$. (Socks and shoes: $(bab)\inv=b\inv a\inv b\inv$.)
+\end{pitbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Worked example: why $\langle a,b\mid aba\inv b\inv\rangle$ is $\Z^2$}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\small In the quotient you may insert the relator anywhere, because $wrw'=(wrw\inv)\,ww'$ and $wrw\inv$ is a conjugate of $r$. Insert it in front of $ba$ and regroup:
+\begin{align*}
+w\,ba\,w' &= w\,(aba\inv b\inv)\,ba\,w'\\
+&= w\,ab\,\underbrace{(a\inv b\inv b a)}_{=\,1}\,w' = w\,ab\,w'.
+\end{align*}
+So $ba$ has become $ab$: the single relator lets $a$ and $b$ pass through each other. Repeating sorts any word into $a^mb^n$, which is the element $(m,n)$ of $\Z^2$; different $(m,n)$ stay different because the exponent-sum map $F_2\to\Z^2$ separates them.
+\vspace{4pt}
+
+Relations and relators say the same thing: $\langle x,y\mid xy=yx\rangle$ and $\langle a,b\mid aba\inv b\inv\rangle$ are two descriptions of one group. The book prefers relators.
+\column{0.45\textwidth}
+\centering\scalebox{0.58}{\figabba}
+\begin{bigbox}
+In the tree of $F_2$ the walks $ab$ and $ba$ end at different vertices. Imposing the relator declares the walk $a,b,a\inv,b\inv$ a closed loop; gluing the tree along all such loops folds it into the square grid, the picture of $\Z^2$. That is what ``quotient of a free group'' looks like.
+\end{bigbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{What presentations look like: Cayley graphs (Exercise 12)}
+\begin{center}\scalebox{0.5}{\figcayleygallery}\end{center}
+\begin{columns}[T]
+\column{0.5\textwidth}
+One dot per element; from each dot an arrow per generator $s$, from $g$ to $gs$ (two-way when $s=s\inv$). Reading the labels along a path spells a word; a closed loop spells a word equal to $1$, a relator. Office Hour 2 proves that every group is \emph{exactly} the symmetry group of its own graph.
+\column{0.47\textwidth}
+\begin{exbox}{Exercise 12: every group is a quotient of a free group}
+Take $S=G$, the whole group as alphabet. The map $F(G)\to G$ sending each letter to the element it names is a homomorphism and is onto. By Theorem 1.1, $G\cong F(G)/K$ with $K$ its kernel, so $G\cong\langle G\mid K\rangle$. Wasteful, but a presentation.
+\end{exbox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Presentations to find (Exercise 13), and the limits of presentations}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\begin{exbox}{Exercise 13}
+\begin{itemize}
+\item $F_n=\langle a_1,\dots,a_n\mid\ \rangle$: no relators.
+\item $D_n=\langle s,t\mid s^2,\ t^2,\ (st)^n\rangle$ from the two reflections; or $\langle r,s\mid r^n,\ s^2,\ srs\inv r\rangle$ from a rotation $r$ and a reflection $s$ (the last relator says $srs\inv=r\inv$: a reflection reverses the direction of rotation).
+\item $S_n$: generators the neighbour swaps $\sigma_i=(i\;\,i{+}1)$; relators $\sigma_i^2$, $(\sigma_i\sigma_{i+1})^3$, and $(\sigma_i\sigma_j)^2$ for $|i-j|\ge2$. The middle one encodes $\sigma_i\sigma_{i+1}\sigma_i=\sigma_{i+1}\sigma_i\sigma_{i+1}$, the braid relation.
+\end{itemize}
+Writing these down is easy; proving that nothing is missing is harder.
+\end{exbox}
+\column{0.45\textwidth}
+\begin{pitbox}
+There is no algorithm that decides whether two finite presentations describe isomorphic groups (Adian, Rabin). Even deciding whether a given word equals $1$ in $\langle S\mid R\rangle$ is impossible in general (Novikov, Boone). Presentations are useful but have limits; geometry rescues large classes of groups (Office Hour 9).
+\end{pitbox}
+\begin{trybox}
+Draw the Cayley graph of $D_4$ with generators $r$ and $s$ (it is on the previous slide), start at $1$, and read the word $srsr$ along the arrows. You return to $1$: that is the relator $(sr)^2$.
+\end{trybox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Summary: groups lead to symmetries and symmetries lead to groups}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\scriptsize
+\begin{tabular}{@{}lll@{}}
+\toprule
+group & multiplication & symmetries of\\
+\midrule
+$S_4$ & compose & the turns of a cube\\
+$D_n$ & compose & a regular $n$-gon\\
+$S_n$ & compose & $n$ loose points\\
+$\Z/n\Z$ & add mod $n$ & an $n$-gon with arrowed edges\\
+$\Z$, $\Z^2$ & add & arrowed line, coloured grid\\
+$\GL(n,\R)$ & matrix product & linear maps of $\R^n$\\
+$F_2$ & concatenate, reduce & the 4-valent tree\\
+$\langle S\mid R\rangle$ & words modulo relators & its Cayley graph\\
+\bottomrule
+\end{tabular}
+\vspace{6pt}
+\begin{bigbox}
+Next: Office Hour 2 proves every group is the symmetry group of its Cayley graph, and turns groups themselves into geometric objects.
+\end{bigbox}
+\column{0.45\textwidth}
+\centering\scalebox{0.52}{\figmap}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Glossary}
+\footnotesize
+\begin{columns}[T]
+\column{0.5\textwidth}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}@{}}
+symmetry & a move returning an object to its place\\
+group & set with an associative multiplication, identity, inverses\\
+abelian & $gh=hg$ for all $g,h$\\
+generate & every element is a product of the generators and inverses\\
+subgroup & subset closed under product and inverse, containing $1$\\
+$D_n$ & symmetries of the regular $n$-gon; $2n$ elements\\
+$S_n$ & all permutations of $n$ things; $n!$ elements\\
+cycle, transposition & $(i_1\cdots i_k)$; a 2-cycle\\
+$\Z/n\Z$ & remainders mod $n$ under addition\\
+word, reduced word & string over $S\cup S\inv$; no adjacent $xx\inv$\\
+free group $F(S)$ & reduced words, concatenate then reduce\\
+\end{tabular}
+\column{0.5\textwidth}
+\begin{tabular}{@{}p{2.6cm}p{4.2cm}@{}}
+homomorphism & $f(ab)=f(a)f(b)$\\
+isomorphism & bijective homomorphism; ``same group''\\
+kernel & elements sent to $1$\\
+normal subgroup & $gng\inv\in N$ for all $g\in G$, $n\in N$\\
+conjugate & $gng\inv$\\
+coset, quotient $G/N$ & classes $[g]$; $[g_1][g_2]=[g_1g_2]$\\
+First Isomorphism Theorem & $f:G\twoheadrightarrow H$ with kernel $K$ gives $H\cong G/K$\\
+presentation $\langle S\mid R\rangle$ & $F(S)$ modulo the normal closure of $R$\\
+relation / relator & $u=v$ / the word $uv\inv$\\
+normal closure & smallest normal subgroup containing $R$\\
+Cayley graph & one vertex per element, one arrow per generator\\
+\end{tabular}
+\end{columns}
+\end{frame}
+
+\end{document}

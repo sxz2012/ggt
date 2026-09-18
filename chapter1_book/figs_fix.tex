@@ -1,0 +1,1282 @@
+\newcommand{\figXbn}{%
+\begin{tikzpicture}[scale=0.58,line join=round]
+\begin{scope}[shift={(0,0)}]
+  \draw[thick] (0,0)--(3,0)--(3,3)--(0,3)--cycle; \draw[thick] (3,0)--(4.3,1.3)--(4.3,4.3)--(3,3); \draw[thick] (0,3)--(1.3,4.3)--(4.3,4.3);
+  \draw[thick,dashed,gray] (0,0)--(1.3,1.3)--(4.3,1.3); \draw[thick,dashed,gray] (1.3,1.3)--(1.3,4.3);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.1);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (3.15,3.65) arc (0:300:1.0 and 0.35);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (0,0) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3,0) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (3,3) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0,3) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (1.3,1.3) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.3,1.3) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (4.3,4.3) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.3,4.3) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,2.15) -- node[above,font=\scriptsize,mkc,align=center] {quarter turn\\$90^\circ$} (7.0,2.15);
+\begin{scope}[shift={(7.6,0)}]
+  \draw[thick] (0,0)--(3,0)--(3,3)--(0,3)--cycle; \draw[thick] (3,0)--(4.3,1.3)--(4.3,4.3)--(3,3); \draw[thick] (0,3)--(1.3,4.3)--(4.3,4.3);
+  \draw[thick,dashed,gray] (0,0)--(1.3,1.3)--(4.3,1.3); \draw[thick,dashed,gray] (1.3,1.3)--(1.3,4.3);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.1);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (3,0) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (4.3,1.3) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (1.3,1.3) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (0,0) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (3,3) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (4.3,4.3) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.3,4.3) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (0,3) {$H$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-0.7) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-0.7) {after};
+\begin{scope}[shift={(15.6,2.15)}]
+  \draw[thick] (-1.55,-1.55) rectangle (1.55,1.55);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (0.85,0) arc (0:290:0.85);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.55,-1.55) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.55,-1.55) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.55,1.55) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.55,1.55) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (18.2,2.15) -- (19.6,2.15);
+\begin{scope}[shift={(22.2,2.15)}]
+  \draw[thick] (-1.55,-1.55) rectangle (1.55,1.55);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.55,-1.55) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (1.55,-1.55) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.55,1.55) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (-1.55,1.55) {$G$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north] at (18.9,-0.7) {top view, looking down the axis: before $\to$ after};
+  
+\begin{scope}[shift={(0,-8.6)}]
+  \draw[thick] (0,0)--(3,0)--(3,3)--(0,3)--cycle; \draw[thick] (3,0)--(4.3,1.3)--(4.3,4.3)--(3,3); \draw[thick] (0,3)--(1.3,4.3)--(4.3,4.3);
+  \draw[thick,dashed,gray] (0,0)--(1.3,1.3)--(4.3,1.3); \draw[thick,dashed,gray] (1.3,1.3)--(1.3,4.3);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.1);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (3.15,3.65) arc (0:170:1.0 and 0.35);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (0,0) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3,0) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (3,3) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0,3) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (1.3,1.3) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.3,1.3) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (4.3,4.3) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.3,4.3) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,-6.45) -- node[above,font=\scriptsize,mkc,align=center] {half turn\\$180^\circ$} (7.0,-6.45);
+\begin{scope}[shift={(7.6,-8.6)}]
+  \draw[thick] (0,0)--(3,0)--(3,3)--(0,3)--cycle; \draw[thick] (3,0)--(4.3,1.3)--(4.3,4.3)--(3,3); \draw[thick] (0,3)--(1.3,4.3)--(4.3,4.3);
+  \draw[thick,dashed,gray] (0,0)--(1.3,1.3)--(4.3,1.3); \draw[thick,dashed,gray] (1.3,1.3)--(1.3,4.3);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.1);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (4.3,1.3) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (0,0) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (1.3,1.3) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (3,0) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.3,4.3) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (3,3) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (4.3,4.3) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (0,3) {$G$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-9.3) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-9.3) {after};
+\begin{scope}[shift={(15.6,-6.45)}]
+  \draw[thick] (-1.55,-1.55) rectangle (1.55,1.55);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (0.85,0) arc (0:170:0.85);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.55,-1.55) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.55,-1.55) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.55,1.55) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.55,1.55) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (18.2,-6.45) -- (19.6,-6.45);
+\begin{scope}[shift={(22.2,-6.45)}]
+  \draw[thick] (-1.55,-1.55) rectangle (1.55,1.55);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (-1.55,-1.55) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.55,-1.55) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (1.55,1.55) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-1.55,1.55) {$C$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north] at (18.9,-9.3) {top view, looking down the axis: before $\to$ after};
+  
+\begin{scope}[shift={(0,-17.2)}]
+  \draw[thick] (0,0)--(3,0)--(3,3)--(0,3)--cycle; \draw[thick] (3,0)--(4.3,1.3)--(4.3,4.3)--(3,3); \draw[thick] (0,3)--(1.3,4.3)--(4.3,4.3);
+  \draw[thick,dashed,gray] (0,0)--(1.3,1.3)--(4.3,1.3); \draw[thick,dashed,gray] (1.3,1.3)--(1.3,4.3);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.1);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (1.15,3.65) arc (180:-120:1.0 and 0.35);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (0,0) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3,0) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (3,3) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0,3) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (1.3,1.3) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.3,1.3) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (4.3,4.3) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.3,4.3) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,-15.05) -- node[above,font=\scriptsize,mkc,align=center] {three-quarter\\turn $270^\circ$} (7.0,-15.05);
+\begin{scope}[shift={(7.6,-17.2)}]
+  \draw[thick] (0,0)--(3,0)--(3,3)--(0,3)--cycle; \draw[thick] (3,0)--(4.3,1.3)--(4.3,4.3)--(3,3); \draw[thick] (0,3)--(1.3,4.3)--(4.3,4.3);
+  \draw[thick,dashed,gray] (0,0)--(1.3,1.3)--(4.3,1.3); \draw[thick,dashed,gray] (1.3,1.3)--(1.3,4.3);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.1);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (0,0) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (3,0) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (4.3,1.3) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (1.3,1.3) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (0,3) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (3,3) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (4.3,4.3) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (1.3,4.3) {$D$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-17.9) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-17.9) {after};
+\begin{scope}[shift={(15.6,-15.05)}]
+  \draw[thick] (-1.55,-1.55) rectangle (1.55,1.55);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (-0.85,0) arc (180:-110:0.85);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.55,-1.55) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.55,-1.55) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.55,1.55) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.55,1.55) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (18.2,-15.05) -- (19.6,-15.05);
+\begin{scope}[shift={(22.2,-15.05)}]
+  \draw[thick] (-1.55,-1.55) rectangle (1.55,1.55);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-1.55,-1.55) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.55,-1.55) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.55,1.55) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.55,1.55) {$D$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north] at (18.9,-17.9) {top view, looking down the axis: before $\to$ after};
+  
+\end{tikzpicture}}
+
+\newcommand{\figXdn}{%
+\begin{tikzpicture}[scale=0.55,line join=round]
+\begin{scope}[shift={(0,0)}]
+  \draw[thick] (2.15,-0.002)--(3.67,1.34);
+  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thick] (2.15,-0.002)--(2.787,1.818);
+  \draw[thick] (3.67,1.34)--(4.307,3.16);
+  \draw[thick] (-0.007,1.34)--(0.63,3.16);
+  \draw[thick] (2.787,1.818)--(4.307,3.16);
+  \draw[thick] (2.787,1.818)--(0.63,3.16);
+  \draw[thick] (4.307,3.16)--(2.15,4.502);
+  \draw[thick] (0.63,3.16)--(2.15,4.502);
+  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (3.25,3.952) arc (0:250:1.1 and 0.4);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3.67,1.34) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.513,2.682) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-0.007,1.34) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (2.787,1.818) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.307,3.16) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (0.63,3.16) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,2.15) -- node[above,font=\scriptsize,mkc,align=center] {third turn\\$120^\circ$} (7.0,2.15);
+\begin{scope}[shift={(7.6,0)}]
+  \draw[thick] (2.15,-0.002)--(3.67,1.34);
+  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thick] (2.15,-0.002)--(2.787,1.818);
+  \draw[thick] (3.67,1.34)--(4.307,3.16);
+  \draw[thick] (-0.007,1.34)--(0.63,3.16);
+  \draw[thick] (2.787,1.818)--(4.307,3.16);
+  \draw[thick] (2.787,1.818)--(0.63,3.16);
+  \draw[thick] (4.307,3.16)--(2.15,4.502);
+  \draw[thick] (0.63,3.16)--(2.15,4.502);
+  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (-0.007,1.34) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (0.63,3.16) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (2.787,1.818) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (3.67,1.34) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (1.513,2.682) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (4.307,3.16) {$H$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-0.7) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-0.7) {after};
+\begin{scope}[shift={(15.6,2.15)}]
+  \draw[thick] (30:1.95)--(90:1.95)--(150:1.95)--(210:1.95)--(270:1.95)--(330:1.95)--cycle;
+  \draw[thick] (0,0)--(270:1.95);
+  \draw[thick] (0,0)--(30:1.95);
+  \draw[thick] (0,0)--(150:1.95);
+  \draw[thick,dashed,gray] (0,0)--(330:1.95);
+  \draw[thick,dashed,gray] (0,0)--(210:1.95);
+  \draw[thick,dashed,gray] (0,0)--(90:1.95);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (60:1.0) arc (60:-60:1.0);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (1.689,0.975) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (0.0,1.95) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.689,0.975) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.689,-0.975) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-0.0,-1.95) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (1.689,-0.975) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (0,0) {$G$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (18.2,2.15) -- (19.6,2.15);
+\begin{scope}[shift={(22.2,2.15)}]
+  \draw[thick] (30:1.95)--(90:1.95)--(150:1.95)--(210:1.95)--(270:1.95)--(330:1.95)--cycle;
+  \draw[thick] (0,0)--(270:1.95);
+  \draw[thick] (0,0)--(30:1.95);
+  \draw[thick] (0,0)--(150:1.95);
+  \draw[thick,dashed,gray] (0,0)--(330:1.95);
+  \draw[thick,dashed,gray] (0,0)--(210:1.95);
+  \draw[thick,dashed,gray] (0,0)--(90:1.95);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.689,0.975) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0.0,1.95) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-1.689,0.975) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (-1.689,-0.975) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (-0.0,-1.95) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (1.689,-0.975) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (0,0) {$G$};
+\end{scope}
+  
+  
+\begin{scope}[shift={(0,-8.0)}]
+  \draw[thick] (2.15,-0.002)--(3.67,1.34);
+  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thick] (2.15,-0.002)--(2.787,1.818);
+  \draw[thick] (3.67,1.34)--(4.307,3.16);
+  \draw[thick] (-0.007,1.34)--(0.63,3.16);
+  \draw[thick] (2.787,1.818)--(4.307,3.16);
+  \draw[thick] (2.787,1.818)--(0.63,3.16);
+  \draw[thick] (4.307,3.16)--(2.15,4.502);
+  \draw[thick] (0.63,3.16)--(2.15,4.502);
+  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (1.05,3.952) arc (180:-70:1.1 and 0.4);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3.67,1.34) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.513,2.682) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-0.007,1.34) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (2.787,1.818) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.307,3.16) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (0.63,3.16) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,-5.85) -- node[above,font=\scriptsize,mkc,align=center] {two-thirds\\turn $240^\circ$} (7.0,-5.85);
+\begin{scope}[shift={(7.6,-8.0)}]
+  \draw[thick] (2.15,-0.002)--(3.67,1.34);
+  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thick] (2.15,-0.002)--(2.787,1.818);
+  \draw[thick] (3.67,1.34)--(4.307,3.16);
+  \draw[thick] (-0.007,1.34)--(0.63,3.16);
+  \draw[thick] (2.787,1.818)--(4.307,3.16);
+  \draw[thick] (2.787,1.818)--(0.63,3.16);
+  \draw[thick] (4.307,3.16)--(2.15,4.502);
+  \draw[thick] (0.63,3.16)--(2.15,4.502);
+  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (2.787,1.818) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (4.307,3.16) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (3.67,1.34) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (-0.007,1.34) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (0.63,3.16) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.513,2.682) {$H$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-8.7) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-8.7) {after};
+\begin{scope}[shift={(15.6,-5.85)}]
+  \draw[thick] (30:1.95)--(90:1.95)--(150:1.95)--(210:1.95)--(270:1.95)--(330:1.95)--cycle;
+  \draw[thick] (0,0)--(270:1.95);
+  \draw[thick] (0,0)--(30:1.95);
+  \draw[thick] (0,0)--(150:1.95);
+  \draw[thick,dashed,gray] (0,0)--(330:1.95);
+  \draw[thick,dashed,gray] (0,0)--(210:1.95);
+  \draw[thick,dashed,gray] (0,0)--(90:1.95);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (120:1.0) arc (120:240:1.0);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (1.689,0.975) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (0.0,1.95) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.689,0.975) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.689,-0.975) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-0.0,-1.95) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (1.689,-0.975) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (0,0) {$G$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (18.2,-5.85) -- (19.6,-5.85);
+\begin{scope}[shift={(22.2,-5.85)}]
+  \draw[thick] (30:1.95)--(90:1.95)--(150:1.95)--(210:1.95)--(270:1.95)--(330:1.95)--cycle;
+  \draw[thick] (0,0)--(270:1.95);
+  \draw[thick] (0,0)--(30:1.95);
+  \draw[thick] (0,0)--(150:1.95);
+  \draw[thick,dashed,gray] (0,0)--(330:1.95);
+  \draw[thick,dashed,gray] (0,0)--(210:1.95);
+  \draw[thick,dashed,gray] (0,0)--(90:1.95);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.689,0.975) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (0.0,1.95) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (-1.689,0.975) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (-1.689,-0.975) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-0.0,-1.95) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (1.689,-0.975) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (0,0) {$G$};
+\end{scope}
+  
+  
+\begin{scope}[shift={(0,-16.0)}]
+  \draw[thick] (2.15,-0.002)--(3.67,1.34);
+  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thick] (2.15,-0.002)--(2.787,1.818);
+  \draw[thick] (3.67,1.34)--(4.307,3.16);
+  \draw[thick] (-0.007,1.34)--(0.63,3.16);
+  \draw[thick] (2.787,1.818)--(4.307,3.16);
+  \draw[thick] (2.787,1.818)--(0.63,3.16);
+  \draw[thick] (4.307,3.16)--(2.15,4.502);
+  \draw[thick] (0.63,3.16)--(2.15,4.502);
+  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (3.25,3.952) arc (0:120:1.1 and 0.4);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3.67,1.34) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.513,2.682) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-0.007,1.34) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (2.787,1.818) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.307,3.16) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (0.63,3.16) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,-13.85) -- node[above,font=\scriptsize,mkc,align=center] {turn by\\$60^\circ$} (7.0,-13.85);
+\begin{scope}[shift={(7.6,-16.0)}]
+  \draw[thin,gray!60] (2.15,-0.002)--(3.67,1.34);
+  \draw[thin,gray!60] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thin,gray!60] (2.15,-0.002)--(2.787,1.818);
+  \draw[thin,gray!60] (3.67,1.34)--(4.307,3.16);
+  \draw[thin,gray!60] (-0.007,1.34)--(0.63,3.16);
+  \draw[thin,gray!60] (2.787,1.818)--(4.307,3.16);
+  \draw[thin,gray!60] (2.787,1.818)--(0.63,3.16);
+  \draw[thin,gray!60] (4.307,3.16)--(2.15,4.502);
+  \draw[thin,gray!60] (0.63,3.16)--(2.15,4.502);
+  \draw[thin,gray!40,dashed] (3.67,1.34)--(1.513,2.682);
+  \draw[thin,gray!40,dashed] (-0.007,1.34)--(1.513,2.682);
+  \draw[thin,gray!40,dashed] (1.513,2.682)--(2.15,4.502);
+\end{scope}
+\begin{scope}[shift={(7.6,-16.0)}]
+  \draw[thick] (2.15,-0.002)--(3.67,1.34);
+  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
+  \draw[thick] (2.15,-0.002)--(2.787,1.818);
+  \draw[thick] (3.67,1.34)--(4.307,3.16);
+  \draw[thick] (-0.007,1.34)--(0.63,3.16);
+  \draw[thick] (2.787,1.818)--(4.307,3.16);
+  \draw[thick] (2.787,1.818)--(0.63,3.16);
+  \draw[thick] (4.307,3.16)--(2.15,4.502);
+  \draw[thick] (0.63,3.16)--(2.15,4.502);
+  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
+  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (1.513,1.181) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-0.007,2.841) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0.63,1.659) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (4.307,1.659) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (3.67,2.841) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (2.787,3.319) {$H$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-16.7) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-16.7) {after $60^\circ$: red cube not on the grey one};
+  
+\end{tikzpicture}}
+
+\newcommand{\figXfn}{%
+\begin{tikzpicture}[scale=0.58,line join=round]
+\begin{scope}[shift={(0,0)}]
+  \draw[thick] (0.75,0.07)--(3.55,0.07);
+  \draw[thick] (0.75,0.07)--(1.344,2.347);
+  \draw[thick] (3.55,0.07)--(4.144,2.347);
+  \draw[thick] (1.344,2.347)--(4.144,2.347);
+  \draw[thick] (1.344,2.347)--(0.75,4.03);
+  \draw[thick] (4.144,2.347)--(3.55,4.03);
+  \draw[thick] (0.75,4.03)--(3.55,4.03);
+  \draw[thick,dashed,gray] (0.75,0.07)--(0.156,1.753);
+  \draw[thick,dashed,gray] (0.156,1.753)--(0.75,4.03);
+  \draw[thick,dashed,gray] (0.156,1.753)--(2.956,1.753);
+  \draw[thick,dashed,gray] (2.956,1.753)--(3.55,0.07);
+  \draw[thick,dashed,gray] (2.956,1.753)--(3.55,4.03);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.0);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (3.25,3.5300000000000002) arc (0:170:1.1 and 0.4);
+  \fill[mkc] (2.15,0.07) circle (2.2pt); \fill[mkc] (2.15,4.03) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (0.75,0.07) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (3.55,0.07) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (2.956,1.753) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0.156,1.753) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (1.344,2.347) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.144,2.347) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (3.55,4.03) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (0.75,4.03) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,2.15) -- node[above,font=\scriptsize,mkc,align=center] {half turn\\$180^\circ$} (7.0,2.15);
+\begin{scope}[shift={(7.6,0)}]
+  \draw[thick] (0.75,0.07)--(3.55,0.07);
+  \draw[thick] (0.75,0.07)--(1.344,2.347);
+  \draw[thick] (3.55,0.07)--(4.144,2.347);
+  \draw[thick] (1.344,2.347)--(4.144,2.347);
+  \draw[thick] (1.344,2.347)--(0.75,4.03);
+  \draw[thick] (4.144,2.347)--(3.55,4.03);
+  \draw[thick] (0.75,4.03)--(3.55,4.03);
+  \draw[thick,dashed,gray] (0.75,0.07)--(0.156,1.753);
+  \draw[thick,dashed,gray] (0.156,1.753)--(0.75,4.03);
+  \draw[thick,dashed,gray] (0.156,1.753)--(2.956,1.753);
+  \draw[thick,dashed,gray] (2.956,1.753)--(3.55,0.07);
+  \draw[thick,dashed,gray] (2.956,1.753)--(3.55,4.03);
+  \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.0);
+  \fill[mkc] (2.15,0.07) circle (2.2pt); \fill[mkc] (2.15,4.03) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (3.55,0.07) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (0.75,0.07) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (0.75,4.03) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (3.55,4.03) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.344,2.347) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (2.956,1.753) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (4.144,2.347) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (0.156,1.753) {$F$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north west] at (-0.6,-0.7) {before};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-0.7) {after};
+\begin{scope}[shift={(15.6,2.15)}]
+  \draw[thick] (1.25,1.77)--(-1.25,1.77)--(-1.25,-1.77)--(1.25,-1.77)--cycle;
+  \draw[thick,dashed,gray] (-1.25,0)--(1.25,0);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \draw[-{Stealth[length=4pt]},mkc,thick] (0.72,0.55) arc (37:-143:0.9);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (1.25,-1.77) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.25,-1.77) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (-1.25,1.77) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (1.25,1.77) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.25,0) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-1.25,0) {$H$};
+\end{scope}
+  \draw[-{Stealth[length=5pt]},very thick,mkc] (18.2,2.15) -- (19.6,2.15);
+\begin{scope}[shift={(22.2,2.15)}]
+  \draw[thick] (1.25,1.77)--(-1.25,1.77)--(-1.25,-1.77)--(1.25,-1.77)--cycle;
+  \draw[thick,dashed,gray] (-1.25,0)--(1.25,0);
+  \fill[mkc] (0,0) circle (2.2pt);
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (1.25,-1.77) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (-1.25,-1.77) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-1.25,1.77) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (1.25,1.77) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (1.25,0) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (-1.25,0) {$G$};
+\end{scope}
+  \node[font=\scriptsize,anchor=north] at (18.9,-0.7) {top view, looking down the axis: before $\to$ after};
+  
+\end{tikzpicture}}
+
+\newcommand{\figXkn}{%
+\begin{tikzpicture}[scale=0.82]
+  \draw[thick] (-1.008,-0.858)--(0.292,-1.027);
+  \draw[thick] (-1.008,-0.858)--(-1.008,0.442);
+  \draw[thick,dashed,gray] (-1.008,-0.858)--(-0.292,-0.273);
+  \draw[thick] (0.292,-1.027)--(0.292,0.273);
+  \draw[thick] (0.292,-1.027)--(1.008,-0.442);
+  \draw[thick] (0.292,0.273)--(-1.008,0.442);
+  \draw[thick] (0.292,0.273)--(1.008,0.858);
+  \draw[thick] (-1.008,0.442)--(-0.292,1.027);
+  \draw[thick,dashed,gray] (-0.292,-0.273)--(1.008,-0.442);
+  \draw[thick,dashed,gray] (-0.292,-0.273)--(-0.292,1.027);
+  \draw[thick] (1.008,-0.442)--(1.008,0.858);
+  \draw[thick] (1.008,0.858)--(-0.292,1.027);
+  \node[font=\tiny,gray] at (-1.350,-1.150) {A};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (-1.008,-0.858) {A};
+  \node[font=\tiny,gray] at (0.392,-1.376) {B};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (0.292,-1.027) {B};
+  \node[font=\tiny,gray] at (0.392,0.366) {C};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (0.292,0.273) {C};
+  \node[font=\tiny,gray] at (-1.350,0.592) {D};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (-1.008,0.442) {D};
+  \node[font=\tiny,gray] at (-0.392,-0.366) {E};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=violet!30,draw=violet,thick,text=black] at (-0.292,-0.273) {E};
+  \node[font=\tiny,gray] at (1.350,-0.592) {F};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (1.008,-0.442) {F};
+  \node[font=\tiny,gray] at (1.350,1.150) {G};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (1.008,0.858) {G};
+  \node[font=\tiny,gray] at (-0.392,1.376) {H};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-0.292,1.027) {H};
+  \node[font=\scriptsize,align=center,anchor=north,text width=104pt] at (0.000,-1.877) {start};
+  \draw[thick] (3.592,-0.858)--(4.893,-1.027);
+  \draw[thick] (3.592,-0.858)--(3.592,0.442);
+  \draw[thick,dashed,gray] (3.592,-0.858)--(4.307,-0.273);
+  \draw[thick] (4.893,-1.027)--(4.893,0.273);
+  \draw[thick] (4.893,-1.027)--(5.607,-0.442);
+  \draw[thick] (4.893,0.273)--(3.592,0.442);
+  \draw[thick] (4.893,0.273)--(5.607,0.858);
+  \draw[thick] (3.592,0.442)--(4.307,1.027);
+  \draw[thick,dashed,gray] (4.307,-0.273)--(5.607,-0.442);
+  \draw[thick,dashed,gray] (4.307,-0.273)--(4.307,1.027);
+  \draw[thick] (5.607,-0.442)--(5.607,0.858);
+  \draw[thick] (5.607,0.858)--(4.307,1.027);
+  \node[font=\tiny,gray] at (4.992,-1.376) {B};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (4.893,-1.027) {A};
+  \node[font=\tiny,gray] at (5.950,-0.592) {F};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (5.607,-0.442) {B};
+  \node[font=\tiny,gray] at (5.950,1.150) {G};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (5.607,0.858) {C};
+  \node[font=\tiny,gray] at (4.992,0.366) {C};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (4.893,0.273) {D};
+  \node[font=\tiny,gray] at (3.250,-1.150) {A};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=violet!30,draw=violet,thick,text=black] at (3.592,-0.858) {E};
+  \node[font=\tiny,gray] at (4.208,-0.366) {E};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (4.307,-0.273) {F};
+  \node[font=\tiny,gray] at (4.208,1.376) {H};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (4.307,1.027) {G};
+  \node[font=\tiny,gray] at (3.250,0.592) {D};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (3.592,0.442) {H};
+  \draw[white,line width=5pt,line cap=round] (4.600,-1.235)--(4.600,1.235);
+  \draw[{Stealth[length=5pt]}-{Stealth[length=5pt]},mkc,line width=1.7pt] (4.600,-1.235)--(4.600,1.235);
+  \fill[white] (4.600,-0.650) circle (3.6pt);
+  \fill[mkc] (4.600,-0.650) circle (2.7pt);
+  \fill[white] (4.600,0.650) circle (3.6pt);
+  \fill[mkc] (4.600,0.650) circle (2.7pt);
+  \draw[-{Stealth[length=4pt]},thick,mkc] (3.980,1.127) arc (180:90:0.62);
+  \node[font=\scriptsize,align=center,anchor=north,text width=104pt] at (4.600,-1.877) {after $h$: quarter turn about the vertical axis};
+  \draw[thick] (8.192,-0.858)--(9.492,-1.027);
+  \draw[thick] (8.192,-0.858)--(8.192,0.442);
+  \draw[thick,dashed,gray] (8.192,-0.858)--(8.907,-0.273);
+  \draw[thick] (9.492,-1.027)--(9.492,0.273);
+  \draw[thick] (9.492,-1.027)--(10.207,-0.442);
+  \draw[thick] (9.492,0.273)--(8.192,0.442);
+  \draw[thick] (9.492,0.273)--(10.207,0.858);
+  \draw[thick] (8.192,0.442)--(8.907,1.027);
+  \draw[thick,dashed,gray] (8.907,-0.273)--(10.207,-0.442);
+  \draw[thick,dashed,gray] (8.907,-0.273)--(8.907,1.027);
+  \draw[thick] (10.207,-0.442)--(10.207,0.858);
+  \draw[thick] (10.207,0.858)--(8.907,1.027);
+  \node[font=\tiny,gray] at (10.550,-0.592) {F};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (10.207,-0.442) {A};
+  \node[font=\tiny,gray] at (10.550,1.150) {G};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (10.207,0.858) {B};
+  \node[font=\tiny\bfseries,mkc] at (9.592,0.366) {C};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (9.492,0.273) {C};
+  \node[font=\tiny,gray] at (9.592,-1.376) {B};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (9.492,-1.027) {D};
+  \node[font=\tiny\bfseries,mkc] at (8.808,-0.366) {E};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=violet!30,draw=violet,thick,text=black] at (8.907,-0.273) {E};
+  \node[font=\tiny,gray] at (8.808,1.376) {H};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (8.907,1.027) {F};
+  \node[font=\tiny,gray] at (7.850,0.592) {D};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (8.192,0.442) {G};
+  \node[font=\tiny,gray] at (7.850,-1.150) {A};
+  \node[font=\tiny\bfseries,circle,inner sep=0.5pt,minimum size=10pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (8.192,-0.858) {H};
+  \draw[white,line width=5pt,line cap=round] (9.746,0.509)--(8.654,-0.509);
+  \draw[{Stealth[length=5pt]}-{Stealth[length=5pt]},mkc,line width=1.7pt] (9.746,0.509)--(8.654,-0.509);
+  \draw[mkc,line width=1.5pt] (9.492,0.273) circle (7.6pt);
+  \draw[mkc,line width=1.5pt] (8.907,-0.273) circle (7.6pt);
+  \draw[-{Stealth[length=4pt]},thick,mkc] (8.580,1.127) arc (180:60:0.62);
+  \node[font=\scriptsize,align=center,anchor=north,text width=104pt] at (9.200,-1.877) {then $g$: quarter turn about the left--right axis. The net effect is a third of a turn about the orange long diagonal, not a quarter turn};
+\end{tikzpicture}
+}
+
+\newcommand{\figAxF}{%
+\begin{tikzpicture}[scale=0.899,line join=round]
+  \draw[thick] (0.000,0.000)--(3.000,-0.390);
+  \draw[thick] (3.000,-0.390)--(3.000,2.610);
+  \draw[thick] (3.000,2.610)--(0.000,3.000);
+  \draw[thick] (0.000,3.000)--(0.000,0.000);
+  \draw[thick] (3.000,-0.390)--(4.650,0.960);
+  \draw[thick] (4.650,0.960)--(4.650,3.960);
+  \draw[thick] (4.650,3.960)--(3.000,2.610);
+  \draw[thick] (0.000,3.000)--(1.650,4.350);
+  \draw[thick] (1.650,4.350)--(4.650,3.960);
+  \draw[thick,dashed,gray] (0.000,0.000)--(1.650,1.350);
+  \draw[thick,dashed,gray] (1.650,1.350)--(4.650,0.960);
+  \draw[thick,dashed,gray] (1.650,1.350)--(1.650,4.350);
+  \draw[very thick,mkc,dashed] (2.325,0.480)--(2.325,3.480);
+  \draw[very thick,mkc] (2.325,-0.300)--(2.325,0.480);
+  \draw[very thick,mkc] (2.325,3.480)--(2.325,4.260);
+  \fill[mkc] (2.325,0.480) circle (2.4pt);
+  \fill[mkc] (2.325,3.480) circle (2.4pt);
+  \draw[very thick,blue!65!black,dashed] (0.825,2.175)--(3.825,1.785);
+  \draw[very thick,blue!65!black] (0.045,2.276)--(0.825,2.175);
+  \draw[very thick,blue!65!black] (3.825,1.785)--(4.605,1.684);
+  \fill[blue!65!black] (0.825,2.175) circle (2.4pt);
+  \fill[blue!65!black] (3.825,1.785) circle (2.4pt);
+  \draw[very thick,green!55!black,dashed] (1.500,1.305)--(3.150,2.655);
+  \draw[very thick,green!55!black] (1.071,0.954)--(1.500,1.305);
+  \draw[very thick,green!55!black] (3.150,2.655)--(3.579,3.006);
+  \fill[green!55!black] (1.500,1.305) circle (2.4pt);
+  \fill[green!55!black] (3.150,2.655) circle (2.4pt);
+  \node[font=\scriptsize\bfseries,mkc,anchor=south] at (2.33,4.32) {top--bottom};
+  \node[font=\scriptsize\bfseries,blue!65!black,anchor=west] at (4.67,1.68) {left--right};
+  \node[font=\scriptsize\bfseries,green!55!black,anchor=south west] at (3.65,3.06) {front--back};
+\end{tikzpicture}}
+
+\newcommand{\figAxD}{%
+\begin{tikzpicture}[scale=0.899,line join=round]
+  \draw[thick] (0.000,0.000)--(3.000,-0.390);
+  \draw[thick] (3.000,-0.390)--(3.000,2.610);
+  \draw[thick] (3.000,2.610)--(0.000,3.000);
+  \draw[thick] (0.000,3.000)--(0.000,0.000);
+  \draw[thick] (3.000,-0.390)--(4.650,0.960);
+  \draw[thick] (4.650,0.960)--(4.650,3.960);
+  \draw[thick] (4.650,3.960)--(3.000,2.610);
+  \draw[thick] (0.000,3.000)--(1.650,4.350);
+  \draw[thick] (1.650,4.350)--(4.650,3.960);
+  \draw[thick,dashed,gray] (0.000,0.000)--(1.650,1.350);
+  \draw[thick,dashed,gray] (1.650,1.350)--(4.650,0.960);
+  \draw[thick,dashed,gray] (1.650,1.350)--(1.650,4.350);
+  \draw[very thick,red!80!black] (0.000,0.000)--(4.650,3.960);
+  \draw[very thick,blue!70!black] (3.000,-0.390)--(1.650,4.350);
+  \draw[very thick,green!60!black] (3.000,2.610)--(1.650,1.350);
+  \draw[very thick,orange!90!black] (0.000,3.000)--(4.650,0.960);
+  \node[font=\scriptsize,red!80!black,fill=white,fill opacity=0.9,text opacity=1,inner sep=0.8pt] at (0.70,1.07) {$d_1$};
+  \node[font=\scriptsize,blue!70!black,fill=white,fill opacity=0.9,text opacity=1,inner sep=0.8pt] at (2.38,0.46) {$d_2$};
+  \node[font=\scriptsize,green!60!black,fill=white,fill opacity=0.9,text opacity=1,inner sep=0.8pt] at (2.98,2.09) {$d_3$};
+  \node[font=\scriptsize,orange!90!black,fill=white,fill opacity=0.9,text opacity=1,inner sep=0.8pt] at (1.07,2.92) {$d_4$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (-0.56,-0.48) {$A$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (3.16,-0.96) {$B$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (3.42,3.00) {$C$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (-0.56,3.24) {$D$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (1.23,0.96) {$E$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (5.21,0.72) {$F$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (5.21,4.44) {$G$};
+  \node[font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1pt] at (1.49,4.92) {$H$};
+\end{tikzpicture}}
+
+\newcommand{\figAxE}{%
+\begin{tikzpicture}[scale=0.899,line join=round]
+  \draw[thick] (0.000,0.000)--(3.000,-0.390);
+  \draw[thick] (3.000,-0.390)--(3.000,2.610);
+  \draw[thick] (3.000,2.610)--(0.000,3.000);
+  \draw[thick] (0.000,3.000)--(0.000,0.000);
+  \draw[thick] (3.000,-0.390)--(4.650,0.960);
+  \draw[thick] (4.650,0.960)--(4.650,3.960);
+  \draw[thick] (4.650,3.960)--(3.000,2.610);
+  \draw[thick] (0.000,3.000)--(1.650,4.350);
+  \draw[thick] (1.650,4.350)--(4.650,3.960);
+  \draw[thick,dashed,gray] (0.000,0.000)--(1.650,1.350);
+  \draw[thick,dashed,gray] (1.650,1.350)--(4.650,0.960);
+  \draw[thick,dashed,gray] (1.650,1.350)--(1.650,4.350);
+  \draw[thick,mkc,dashed] (1.500,-0.195)--(3.150,4.155);
+  \draw[thick,mkc,dashed] (3.000,1.110)--(1.650,2.850);
+  \draw[thick,mkc,dashed] (1.500,2.805)--(3.150,1.155);
+  \draw[thick,mkc,dashed] (0.000,1.500)--(4.650,2.460);
+  \draw[thick,mkc,dashed] (0.825,0.675)--(3.825,3.285);
+  \draw[thick,mkc,dashed] (3.825,0.285)--(0.825,3.675);
+  \fill[mkc] (1.500,-0.195) circle (2.2pt);
+  \fill[mkc] (3.000,1.110) circle (2.2pt);
+  \fill[mkc] (1.500,2.805) circle (2.2pt);
+  \fill[mkc] (0.000,1.500) circle (2.2pt);
+  \fill[mkc] (3.825,0.285) circle (2.2pt);
+  \fill[mkc] (4.650,2.460) circle (2.2pt);
+  \fill[mkc] (3.825,3.285) circle (2.2pt);
+  \fill[mkc] (0.825,3.675) circle (2.2pt);
+  \fill[mkc] (3.150,4.155) circle (2.2pt);
+  \fill[mkc] (0.825,0.675) circle (2.2pt);
+  \fill[mkc] (3.150,1.155) circle (2.2pt);
+  \fill[mkc] (1.650,2.850) circle (2.2pt);
+\end{tikzpicture}}
+
+\newcommand{\figSlide}{%
+\begin{tikzpicture}[scale=0.759,>={Stealth[length=4pt]}]
+\begin{scope}[shift={(0,0)}]
+  \fill[gray!45] (0,0) circle (1.15pt);
+  \fill[gray!45] (0,1) circle (1.15pt);
+  \fill[gray!45] (0,2) circle (1.15pt);
+  \fill[gray!45] (0,3) circle (1.15pt);
+  \fill[gray!45] (0,4) circle (1.15pt);
+  \fill[gray!45] (0,5) circle (1.15pt);
+  \fill[gray!45] (1,0) circle (1.15pt);
+  \fill[gray!45] (1,1) circle (1.15pt);
+  \fill[gray!45] (1,2) circle (1.15pt);
+  \fill[gray!45] (1,3) circle (1.15pt);
+  \fill[gray!45] (1,4) circle (1.15pt);
+  \fill[gray!45] (1,5) circle (1.15pt);
+  \fill[gray!45] (2,0) circle (1.15pt);
+  \fill[gray!45] (2,1) circle (1.15pt);
+  \fill[gray!45] (2,2) circle (1.15pt);
+  \fill[gray!45] (2,3) circle (1.15pt);
+  \fill[gray!45] (2,4) circle (1.15pt);
+  \fill[gray!45] (2,5) circle (1.15pt);
+  \fill[gray!45] (3,0) circle (1.15pt);
+  \fill[gray!45] (3,1) circle (1.15pt);
+  \fill[gray!45] (3,2) circle (1.15pt);
+  \fill[gray!45] (3,3) circle (1.15pt);
+  \fill[gray!45] (3,4) circle (1.15pt);
+  \fill[gray!45] (3,5) circle (1.15pt);
+  \fill[gray!45] (4,0) circle (1.15pt);
+  \fill[gray!45] (4,1) circle (1.15pt);
+  \fill[gray!45] (4,2) circle (1.15pt);
+  \fill[gray!45] (4,3) circle (1.15pt);
+  \fill[gray!45] (4,4) circle (1.15pt);
+  \fill[gray!45] (4,5) circle (1.15pt);
+  \fill[white] (0,0) circle (4.4pt);
+  \fill[red!85!black] (0,0) circle (3.3pt);
+  \draw[black,thick] (0,0) circle (5.0pt);
+  \fill[white] (1,0) circle (4.4pt);
+  \fill[orange!95!black] (1,0) circle (3.3pt);
+  \fill[white] (0,1) circle (4.4pt);
+  \fill[green!60!black] (0,1) circle (3.3pt);
+  \fill[white] (1,1) circle (4.4pt);
+  \fill[blue!70!black] (1,1) circle (3.3pt);
+  \fill[white] (2,0) circle (4.4pt);
+  \fill[violet] (2,0) circle (3.3pt);
+  \fill[white] (0,2) circle (4.4pt);
+  \fill[brown!80!black] (0,2) circle (3.3pt);
+  \node[font=\scriptsize,align=center,text width=92pt,anchor=north] at (2,-0.55) {\textbf{start}\\the ringed red point sits at $(0,0)$};
+\end{scope}
+\begin{scope}[shift={(8.4,0)}]
+  \fill[gray!45] (0,0) circle (1.15pt);
+  \fill[gray!45] (0,1) circle (1.15pt);
+  \fill[gray!45] (0,2) circle (1.15pt);
+  \fill[gray!45] (0,3) circle (1.15pt);
+  \fill[gray!45] (0,4) circle (1.15pt);
+  \fill[gray!45] (0,5) circle (1.15pt);
+  \fill[gray!45] (1,0) circle (1.15pt);
+  \fill[gray!45] (1,1) circle (1.15pt);
+  \fill[gray!45] (1,2) circle (1.15pt);
+  \fill[gray!45] (1,3) circle (1.15pt);
+  \fill[gray!45] (1,4) circle (1.15pt);
+  \fill[gray!45] (1,5) circle (1.15pt);
+  \fill[gray!45] (2,0) circle (1.15pt);
+  \fill[gray!45] (2,1) circle (1.15pt);
+  \fill[gray!45] (2,2) circle (1.15pt);
+  \fill[gray!45] (2,3) circle (1.15pt);
+  \fill[gray!45] (2,4) circle (1.15pt);
+  \fill[gray!45] (2,5) circle (1.15pt);
+  \fill[gray!45] (3,0) circle (1.15pt);
+  \fill[gray!45] (3,1) circle (1.15pt);
+  \fill[gray!45] (3,2) circle (1.15pt);
+  \fill[gray!45] (3,3) circle (1.15pt);
+  \fill[gray!45] (3,4) circle (1.15pt);
+  \fill[gray!45] (3,5) circle (1.15pt);
+  \fill[gray!45] (4,0) circle (1.15pt);
+  \fill[gray!45] (4,1) circle (1.15pt);
+  \fill[gray!45] (4,2) circle (1.15pt);
+  \fill[gray!45] (4,3) circle (1.15pt);
+  \fill[gray!45] (4,4) circle (1.15pt);
+  \fill[gray!45] (4,5) circle (1.15pt);
+  \draw[-{Stealth[length=4pt]},very thick,mkc] (0.16,0.0)--(0.84,0.0);
+  \draw[-{Stealth[length=4pt]},very thick,mkc] (1.16,0.0)--(1.84,0.0);
+  \draw[-{Stealth[length=4pt]},very thick,mkc] (2.0,0.16)--(2.0,0.84);
+  \fill[white] (2,1) circle (4.4pt);
+  \fill[red!85!black] (2,1) circle (3.3pt);
+  \draw[black,thick] (2,1) circle (5.0pt);
+  \fill[white] (3,1) circle (4.4pt);
+  \fill[orange!95!black] (3,1) circle (3.3pt);
+  \fill[white] (2,2) circle (4.4pt);
+  \fill[green!60!black] (2,2) circle (3.3pt);
+  \fill[white] (3,2) circle (4.4pt);
+  \fill[blue!70!black] (3,2) circle (3.3pt);
+  \fill[white] (4,1) circle (4.4pt);
+  \fill[violet] (4,1) circle (3.3pt);
+  \fill[white] (2,3) circle (4.4pt);
+  \fill[brown!80!black] (2,3) circle (3.3pt);
+  \node[font=\scriptsize,align=center,text width=92pt,anchor=north] at (2,-0.55) {\textbf{after the slide $(2,1)$}\\right, right, up: red is now at $(2,1)$};
+\end{scope}
+\begin{scope}[shift={(16.8,0)}]
+  \fill[gray!45] (0,0) circle (1.15pt);
+  \fill[gray!45] (0,1) circle (1.15pt);
+  \fill[gray!45] (0,2) circle (1.15pt);
+  \fill[gray!45] (0,3) circle (1.15pt);
+  \fill[gray!45] (0,4) circle (1.15pt);
+  \fill[gray!45] (0,5) circle (1.15pt);
+  \fill[gray!45] (1,0) circle (1.15pt);
+  \fill[gray!45] (1,1) circle (1.15pt);
+  \fill[gray!45] (1,2) circle (1.15pt);
+  \fill[gray!45] (1,3) circle (1.15pt);
+  \fill[gray!45] (1,4) circle (1.15pt);
+  \fill[gray!45] (1,5) circle (1.15pt);
+  \fill[gray!45] (2,0) circle (1.15pt);
+  \fill[gray!45] (2,1) circle (1.15pt);
+  \fill[gray!45] (2,2) circle (1.15pt);
+  \fill[gray!45] (2,3) circle (1.15pt);
+  \fill[gray!45] (2,4) circle (1.15pt);
+  \fill[gray!45] (2,5) circle (1.15pt);
+  \fill[gray!45] (3,0) circle (1.15pt);
+  \fill[gray!45] (3,1) circle (1.15pt);
+  \fill[gray!45] (3,2) circle (1.15pt);
+  \fill[gray!45] (3,3) circle (1.15pt);
+  \fill[gray!45] (3,4) circle (1.15pt);
+  \fill[gray!45] (3,5) circle (1.15pt);
+  \fill[gray!45] (4,0) circle (1.15pt);
+  \fill[gray!45] (4,1) circle (1.15pt);
+  \fill[gray!45] (4,2) circle (1.15pt);
+  \fill[gray!45] (4,3) circle (1.15pt);
+  \fill[gray!45] (4,4) circle (1.15pt);
+  \fill[gray!45] (4,5) circle (1.15pt);
+  \fill[white] (1,3) circle (4.4pt);
+  \fill[red!85!black] (1,3) circle (3.3pt);
+  \draw[black,thick] (1,3) circle (5.0pt);
+  \fill[white] (2,3) circle (4.4pt);
+  \fill[orange!95!black] (2,3) circle (3.3pt);
+  \fill[white] (1,4) circle (4.4pt);
+  \fill[green!60!black] (1,4) circle (3.3pt);
+  \fill[white] (2,4) circle (4.4pt);
+  \fill[blue!70!black] (2,4) circle (3.3pt);
+  \fill[white] (3,3) circle (4.4pt);
+  \fill[violet] (3,3) circle (3.3pt);
+  \fill[white] (1,5) circle (4.4pt);
+  \fill[brown!80!black] (1,5) circle (3.3pt);
+  \node[font=\scriptsize,align=center,text width=92pt,anchor=north] at (2,-0.55) {\textbf{after the slide $(-1,2)$}\\red at $(1,3)$: the net slide is $(2,1)+(-1,2)=(1,3)$};
+\end{scope}
+  \draw[-{Stealth[length=6pt]},very thick,mkc] (5.3,2.5)--(7.1,2.5);
+  \node[font=\scriptsize,mkc,above] at (6.2,2.6) {$+(2,1)$};
+  \draw[-{Stealth[length=6pt]},very thick,mkc] (13.7,2.5)--(15.5,2.5);
+  \node[font=\scriptsize,mkc,above] at (14.6,2.6) {$+(-1,2)$};
+\end{tikzpicture}}
+
+\newcommand{\figGridCheck}{%
+\begin{tikzpicture}[scale=0.767,>={Stealth[length=4pt]}]
+\begin{scope}[shift={(0,0)}]
+  \draw[blue!65!black,thick] (0,0)--(1,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,0)--(0.68,0);
+  \draw[blue!65!black,thick] (1,0)--(2,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,0)--(1.6800000000000002,0);
+  \draw[blue!65!black,thick] (2,0)--(3,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,0)--(2.68,0);
+  \draw[blue!65!black,thick] (3,0)--(4,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,0)--(3.68,0);
+  \draw[blue!65!black,thick] (0,1)--(1,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,1)--(0.68,1);
+  \draw[blue!65!black,thick] (1,1)--(2,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,1)--(1.6800000000000002,1);
+  \draw[blue!65!black,thick] (2,1)--(3,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,1)--(2.68,1);
+  \draw[blue!65!black,thick] (3,1)--(4,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,1)--(3.68,1);
+  \draw[blue!65!black,thick] (0,2)--(1,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,2)--(0.68,2);
+  \draw[blue!65!black,thick] (1,2)--(2,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,2)--(1.6800000000000002,2);
+  \draw[blue!65!black,thick] (2,2)--(3,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,2)--(2.68,2);
+  \draw[blue!65!black,thick] (3,2)--(4,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,2)--(3.68,2);
+  \draw[blue!65!black,thick] (0,3)--(1,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,3)--(0.68,3);
+  \draw[blue!65!black,thick] (1,3)--(2,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,3)--(1.6800000000000002,3);
+  \draw[blue!65!black,thick] (2,3)--(3,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,3)--(2.68,3);
+  \draw[blue!65!black,thick] (3,3)--(4,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,3)--(3.68,3);
+  \draw[green!50!black,thick] (0,0)--(0,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,0.35)--(0,0.68);
+  \draw[green!50!black,thick] (0,1)--(0,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,1.35)--(0,1.6800000000000002);
+  \draw[green!50!black,thick] (0,2)--(0,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,2.35)--(0,2.68);
+  \draw[green!50!black,thick] (1,0)--(1,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,0.35)--(1,0.68);
+  \draw[green!50!black,thick] (1,1)--(1,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,1.35)--(1,1.6800000000000002);
+  \draw[green!50!black,thick] (1,2)--(1,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,2.35)--(1,2.68);
+  \draw[green!50!black,thick] (2,0)--(2,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,0.35)--(2,0.68);
+  \draw[green!50!black,thick] (2,1)--(2,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,1.35)--(2,1.6800000000000002);
+  \draw[green!50!black,thick] (2,2)--(2,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,2.35)--(2,2.68);
+  \draw[green!50!black,thick] (3,0)--(3,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,0.35)--(3,0.68);
+  \draw[green!50!black,thick] (3,1)--(3,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,1.35)--(3,1.6800000000000002);
+  \draw[green!50!black,thick] (3,2)--(3,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,2.35)--(3,2.68);
+  \draw[green!50!black,thick] (4,0)--(4,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,0.35)--(4,0.68);
+  \draw[green!50!black,thick] (4,1)--(4,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,1.35)--(4,1.6800000000000002);
+  \draw[green!50!black,thick] (4,2)--(4,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,2.35)--(4,2.68);
+  \fill[red!75!black] (0,0) circle (1.9pt);
+  \fill[red!75!black] (0,1) circle (1.9pt);
+  \fill[red!75!black] (0,2) circle (1.9pt);
+  \fill[red!75!black] (0,3) circle (1.9pt);
+  \fill[red!75!black] (1,0) circle (1.9pt);
+  \fill[red!75!black] (1,1) circle (1.9pt);
+  \fill[red!75!black] (1,2) circle (1.9pt);
+  \fill[red!75!black] (1,3) circle (1.9pt);
+  \fill[red!75!black] (2,0) circle (1.9pt);
+  \fill[red!75!black] (2,1) circle (1.9pt);
+  \fill[red!75!black] (2,2) circle (1.9pt);
+  \fill[red!75!black] (2,3) circle (1.9pt);
+  \fill[red!75!black] (3,0) circle (1.9pt);
+  \fill[red!75!black] (3,1) circle (1.9pt);
+  \fill[red!75!black] (3,2) circle (1.9pt);
+  \fill[red!75!black] (3,3) circle (1.9pt);
+  \fill[red!75!black] (4,0) circle (1.9pt);
+  \fill[red!75!black] (4,1) circle (1.9pt);
+  \fill[red!75!black] (4,2) circle (1.9pt);
+  \fill[red!75!black] (4,3) circle (1.9pt);
+  \draw[mkc,line width=4.4pt,opacity=0.42,line cap=round] (1,1)--(2,1);
+  \node[font=\scriptsize,mkc,fill=white,fill opacity=0.9,text opacity=1,inner sep=1.2pt,anchor=north] at (1.5,0.82) {watch this edge};
+  \node[font=\scriptsize,align=center,text width=118pt,anchor=north] at (2.0,-0.55) {\textbf{the decorated grid}\\blue arrows on the horizontal edges, green on the vertical ones};
+\end{scope}
+\begin{scope}[shift={(7.6,0)}]
+  \draw[blue!65!black,thick] (0,0)--(1,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,0)--(0.68,0);
+  \draw[blue!65!black,thick] (1,0)--(2,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,0)--(1.6800000000000002,0);
+  \draw[blue!65!black,thick] (2,0)--(3,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,0)--(2.68,0);
+  \draw[blue!65!black,thick] (3,0)--(4,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,0)--(3.68,0);
+  \draw[blue!65!black,thick] (0,1)--(1,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,1)--(0.68,1);
+  \draw[blue!65!black,thick] (1,1)--(2,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,1)--(1.6800000000000002,1);
+  \draw[blue!65!black,thick] (2,1)--(3,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,1)--(2.68,1);
+  \draw[blue!65!black,thick] (3,1)--(4,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,1)--(3.68,1);
+  \draw[blue!65!black,thick] (0,2)--(1,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,2)--(0.68,2);
+  \draw[blue!65!black,thick] (1,2)--(2,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,2)--(1.6800000000000002,2);
+  \draw[blue!65!black,thick] (2,2)--(3,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,2)--(2.68,2);
+  \draw[blue!65!black,thick] (3,2)--(4,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,2)--(3.68,2);
+  \draw[blue!65!black,thick] (0,3)--(1,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,3)--(0.68,3);
+  \draw[blue!65!black,thick] (1,3)--(2,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,3)--(1.6800000000000002,3);
+  \draw[blue!65!black,thick] (2,3)--(3,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,3)--(2.68,3);
+  \draw[blue!65!black,thick] (3,3)--(4,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,3)--(3.68,3);
+  \draw[green!50!black,thick] (0,0)--(0,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,0.35)--(0,0.68);
+  \draw[green!50!black,thick] (0,1)--(0,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,1.35)--(0,1.6800000000000002);
+  \draw[green!50!black,thick] (0,2)--(0,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,2.35)--(0,2.68);
+  \draw[green!50!black,thick] (1,0)--(1,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,0.35)--(1,0.68);
+  \draw[green!50!black,thick] (1,1)--(1,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,1.35)--(1,1.6800000000000002);
+  \draw[green!50!black,thick] (1,2)--(1,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,2.35)--(1,2.68);
+  \draw[green!50!black,thick] (2,0)--(2,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,0.35)--(2,0.68);
+  \draw[green!50!black,thick] (2,1)--(2,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,1.35)--(2,1.6800000000000002);
+  \draw[green!50!black,thick] (2,2)--(2,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,2.35)--(2,2.68);
+  \draw[green!50!black,thick] (3,0)--(3,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,0.35)--(3,0.68);
+  \draw[green!50!black,thick] (3,1)--(3,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,1.35)--(3,1.6800000000000002);
+  \draw[green!50!black,thick] (3,2)--(3,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,2.35)--(3,2.68);
+  \draw[green!50!black,thick] (4,0)--(4,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,0.35)--(4,0.68);
+  \draw[green!50!black,thick] (4,1)--(4,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,1.35)--(4,1.6800000000000002);
+  \draw[green!50!black,thick] (4,2)--(4,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,2.35)--(4,2.68);
+  \fill[red!75!black] (0,0) circle (1.9pt);
+  \fill[red!75!black] (0,1) circle (1.9pt);
+  \fill[red!75!black] (0,2) circle (1.9pt);
+  \fill[red!75!black] (0,3) circle (1.9pt);
+  \fill[red!75!black] (1,0) circle (1.9pt);
+  \fill[red!75!black] (1,1) circle (1.9pt);
+  \fill[red!75!black] (1,2) circle (1.9pt);
+  \fill[red!75!black] (1,3) circle (1.9pt);
+  \fill[red!75!black] (2,0) circle (1.9pt);
+  \fill[red!75!black] (2,1) circle (1.9pt);
+  \fill[red!75!black] (2,2) circle (1.9pt);
+  \fill[red!75!black] (2,3) circle (1.9pt);
+  \fill[red!75!black] (3,0) circle (1.9pt);
+  \fill[red!75!black] (3,1) circle (1.9pt);
+  \fill[red!75!black] (3,2) circle (1.9pt);
+  \fill[red!75!black] (3,3) circle (1.9pt);
+  \fill[red!75!black] (4,0) circle (1.9pt);
+  \fill[red!75!black] (4,1) circle (1.9pt);
+  \fill[red!75!black] (4,2) circle (1.9pt);
+  \fill[red!75!black] (4,3) circle (1.9pt);
+  \draw[mkc,line width=4.4pt,opacity=0.42,line cap=round] (3,2)--(4,2);
+  \node[font=\scriptsize,mkc,fill=white,fill opacity=0.9,text opacity=1,inner sep=1.2pt,anchor=north] at (3.5,1.82) {it lands here};
+  \node[font=\scriptsize,align=center,text width=118pt,anchor=north] at (2.0,-0.55) {\textbf{after the slide $(2,1)$}\\it lands on a horizontal edge, so blue meets blue \textcolor{why}{$\checkmark$}};
+\end{scope}
+\begin{scope}[shift={(15.2,0)}]
+  \draw[blue!65!black,thick] (0,0)--(1,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,0)--(0.68,0);
+  \draw[blue!65!black,thick] (1,0)--(2,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,0)--(1.6800000000000002,0);
+  \draw[blue!65!black,thick] (2,0)--(3,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,0)--(2.68,0);
+  \draw[blue!65!black,thick] (3,0)--(4,0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,0)--(3.68,0);
+  \draw[blue!65!black,thick] (0,1)--(1,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,1)--(0.68,1);
+  \draw[blue!65!black,thick] (1,1)--(2,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,1)--(1.6800000000000002,1);
+  \draw[blue!65!black,thick] (2,1)--(3,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,1)--(2.68,1);
+  \draw[blue!65!black,thick] (3,1)--(4,1);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,1)--(3.68,1);
+  \draw[blue!65!black,thick] (0,2)--(1,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,2)--(0.68,2);
+  \draw[blue!65!black,thick] (1,2)--(2,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,2)--(1.6800000000000002,2);
+  \draw[blue!65!black,thick] (2,2)--(3,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,2)--(2.68,2);
+  \draw[blue!65!black,thick] (3,2)--(4,2);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,2)--(3.68,2);
+  \draw[blue!65!black,thick] (0,3)--(1,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (0.35,3)--(0.68,3);
+  \draw[blue!65!black,thick] (1,3)--(2,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (1.35,3)--(1.6800000000000002,3);
+  \draw[blue!65!black,thick] (2,3)--(3,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (2.35,3)--(2.68,3);
+  \draw[blue!65!black,thick] (3,3)--(4,3);
+  \draw[-{Stealth[length=4pt]},blue!65!black,thick] (3.35,3)--(3.68,3);
+  \draw[green!50!black,thick] (0,0)--(0,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,0.35)--(0,0.68);
+  \draw[green!50!black,thick] (0,1)--(0,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,1.35)--(0,1.6800000000000002);
+  \draw[green!50!black,thick] (0,2)--(0,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (0,2.35)--(0,2.68);
+  \draw[green!50!black,thick] (1,0)--(1,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,0.35)--(1,0.68);
+  \draw[green!50!black,thick] (1,1)--(1,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,1.35)--(1,1.6800000000000002);
+  \draw[green!50!black,thick] (1,2)--(1,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (1,2.35)--(1,2.68);
+  \draw[green!50!black,thick] (2,0)--(2,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,0.35)--(2,0.68);
+  \draw[green!50!black,thick] (2,1)--(2,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,1.35)--(2,1.6800000000000002);
+  \draw[green!50!black,thick] (2,2)--(2,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (2,2.35)--(2,2.68);
+  \draw[green!50!black,thick] (3,0)--(3,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,0.35)--(3,0.68);
+  \draw[green!50!black,thick] (3,1)--(3,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,1.35)--(3,1.6800000000000002);
+  \draw[green!50!black,thick] (3,2)--(3,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (3,2.35)--(3,2.68);
+  \draw[green!50!black,thick] (4,0)--(4,1);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,0.35)--(4,0.68);
+  \draw[green!50!black,thick] (4,1)--(4,2);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,1.35)--(4,1.6800000000000002);
+  \draw[green!50!black,thick] (4,2)--(4,3);
+  \draw[-{Stealth[length=4pt]},green!50!black,thick] (4,2.35)--(4,2.68);
+  \fill[red!75!black] (0,0) circle (1.9pt);
+  \fill[red!75!black] (0,1) circle (1.9pt);
+  \fill[red!75!black] (0,2) circle (1.9pt);
+  \fill[red!75!black] (0,3) circle (1.9pt);
+  \fill[red!75!black] (1,0) circle (1.9pt);
+  \fill[red!75!black] (1,1) circle (1.9pt);
+  \fill[red!75!black] (1,2) circle (1.9pt);
+  \fill[red!75!black] (1,3) circle (1.9pt);
+  \fill[red!75!black] (2,0) circle (1.9pt);
+  \fill[red!75!black] (2,1) circle (1.9pt);
+  \fill[red!75!black] (2,2) circle (1.9pt);
+  \fill[red!75!black] (2,3) circle (1.9pt);
+  \fill[red!75!black] (3,0) circle (1.9pt);
+  \fill[red!75!black] (3,1) circle (1.9pt);
+  \fill[red!75!black] (3,2) circle (1.9pt);
+  \fill[red!75!black] (3,3) circle (1.9pt);
+  \fill[red!75!black] (4,0) circle (1.9pt);
+  \fill[red!75!black] (4,1) circle (1.9pt);
+  \fill[red!75!black] (4,2) circle (1.9pt);
+  \fill[red!75!black] (4,3) circle (1.9pt);
+  \draw[mkc,line width=4.4pt,opacity=0.42,line cap=round] (3,1)--(3,2);
+  \draw[-{Stealth[length=5pt]},blue!65!black,line width=1.6pt] (3,1.1)--(3,1.9);
+  \node[font=\scriptsize,pit,fill=white,fill opacity=0.9,text opacity=1,inner sep=1.2pt,anchor=north] at (2.6,0.82) {blue on green};
+  \node[font=\scriptsize,align=center,text width=118pt,anchor=north] at (2.0,-0.55) {\textbf{after a quarter turn}\\the same edge is now vertical, so a blue arrow sits where a green one belongs \textcolor{pit}{$\times$}};
+\end{scope}
+  \draw[-{Stealth[length=6pt]},very thick,mkc] (4.9,1.5)--(6.6000000000000005,1.5);
+  \node[font=\scriptsize,mkc,align=center,anchor=south] at (5.75,1.62) {$+(2,1)$};
+  \draw[-{Stealth[length=6pt]},very thick,mkc] (12.5,1.5)--(14.2,1.5);
+  \node[font=\scriptsize,mkc,align=center,anchor=south] at (13.35,1.62) {quarter\\turn};
+\end{tikzpicture}}
+
+\newcommand{\figTree}{%
+\begin{tikzpicture}[scale=1.0,line cap=round]
+  \draw[mkc,line width=6pt,opacity=0.3] (0,0)--(2.0,0);
+  \draw[mkc,line width=6pt,opacity=0.3] (2.0,0)--(2.0,1.0);
+  \draw[red!75!black,line width=1.5pt] (0.0,0.0)--(2.0,0.0);
+  \draw[-{Stealth[length=4pt]},red!75!black,line width=1.5pt] (0.83,0.0)--(1.17,0.0);
+  \draw[red!75!black,line width=1.1pt] (2.0,0.0)--(3.0,0.0);
+  \draw[-{Stealth[length=3pt]},red!75!black,line width=1.1pt] (2.4,0.0)--(2.6,0.0);
+  \draw[red!75!black,line width=0.7pt] (3.0,0.0)--(3.5,0.0);
+  \draw[blue!65!black,line width=0.7pt] (3.0,0.0)--(3.0,0.5);
+  \draw[blue!65!black,line width=0.7pt] (3.0,0.0)--(3.0,-0.5);
+  \draw[blue!65!black,line width=1.1pt] (2.0,0.0)--(2.0,1.0);
+  \draw[-{Stealth[length=3pt]},blue!65!black,line width=1.1pt] (2.0,0.4)--(2.0,0.6);
+  \draw[red!75!black,line width=0.7pt] (2.0,1.0)--(2.5,1.0);
+  \draw[red!75!black,line width=0.7pt] (2.0,1.0)--(1.5,1.0);
+  \draw[blue!65!black,line width=0.7pt] (2.0,1.0)--(2.0,1.5);
+  \draw[blue!65!black,line width=1.1pt] (2.0,0.0)--(2.0,-1.0);
+  \draw[-{Stealth[length=3pt]},blue!65!black,line width=1.1pt] (2.0,-0.6)--(2.0,-0.4);
+  \draw[red!75!black,line width=0.7pt] (2.0,-1.0)--(2.5,-1.0);
+  \draw[red!75!black,line width=0.7pt] (2.0,-1.0)--(1.5,-1.0);
+  \draw[blue!65!black,line width=0.7pt] (2.0,-1.0)--(2.0,-1.5);
+  \draw[red!75!black,line width=1.5pt] (0.0,0.0)--(-2.0,0.0);
+  \draw[-{Stealth[length=4pt]},red!75!black,line width=1.5pt] (-1.17,0.0)--(-0.83,0.0);
+  \draw[red!75!black,line width=1.1pt] (-2.0,0.0)--(-3.0,0.0);
+  \draw[-{Stealth[length=3pt]},red!75!black,line width=1.1pt] (-2.6,0.0)--(-2.4,0.0);
+  \draw[red!75!black,line width=0.7pt] (-3.0,0.0)--(-3.5,0.0);
+  \draw[blue!65!black,line width=0.7pt] (-3.0,0.0)--(-3.0,0.5);
+  \draw[blue!65!black,line width=0.7pt] (-3.0,0.0)--(-3.0,-0.5);
+  \draw[blue!65!black,line width=1.1pt] (-2.0,0.0)--(-2.0,1.0);
+  \draw[-{Stealth[length=3pt]},blue!65!black,line width=1.1pt] (-2.0,0.4)--(-2.0,0.6);
+  \draw[red!75!black,line width=0.7pt] (-2.0,1.0)--(-1.5,1.0);
+  \draw[red!75!black,line width=0.7pt] (-2.0,1.0)--(-2.5,1.0);
+  \draw[blue!65!black,line width=0.7pt] (-2.0,1.0)--(-2.0,1.5);
+  \draw[blue!65!black,line width=1.1pt] (-2.0,0.0)--(-2.0,-1.0);
+  \draw[-{Stealth[length=3pt]},blue!65!black,line width=1.1pt] (-2.0,-0.6)--(-2.0,-0.4);
+  \draw[red!75!black,line width=0.7pt] (-2.0,-1.0)--(-1.5,-1.0);
+  \draw[red!75!black,line width=0.7pt] (-2.0,-1.0)--(-2.5,-1.0);
+  \draw[blue!65!black,line width=0.7pt] (-2.0,-1.0)--(-2.0,-1.5);
+  \draw[blue!65!black,line width=1.5pt] (0.0,0.0)--(0.0,2.0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,line width=1.5pt] (0.0,0.83)--(0.0,1.17);
+  \draw[red!75!black,line width=1.1pt] (0.0,2.0)--(1.0,2.0);
+  \draw[-{Stealth[length=3pt]},red!75!black,line width=1.1pt] (0.4,2.0)--(0.6,2.0);
+  \draw[red!75!black,line width=0.7pt] (1.0,2.0)--(1.5,2.0);
+  \draw[blue!65!black,line width=0.7pt] (1.0,2.0)--(1.0,2.5);
+  \draw[blue!65!black,line width=0.7pt] (1.0,2.0)--(1.0,1.5);
+  \draw[red!75!black,line width=1.1pt] (0.0,2.0)--(-1.0,2.0);
+  \draw[-{Stealth[length=3pt]},red!75!black,line width=1.1pt] (-0.6,2.0)--(-0.4,2.0);
+  \draw[red!75!black,line width=0.7pt] (-1.0,2.0)--(-1.5,2.0);
+  \draw[blue!65!black,line width=0.7pt] (-1.0,2.0)--(-1.0,2.5);
+  \draw[blue!65!black,line width=0.7pt] (-1.0,2.0)--(-1.0,1.5);
+  \draw[blue!65!black,line width=1.1pt] (0.0,2.0)--(0.0,3.0);
+  \draw[-{Stealth[length=3pt]},blue!65!black,line width=1.1pt] (0.0,2.4)--(0.0,2.6);
+  \draw[red!75!black,line width=0.7pt] (0.0,3.0)--(0.5,3.0);
+  \draw[red!75!black,line width=0.7pt] (0.0,3.0)--(-0.5,3.0);
+  \draw[blue!65!black,line width=0.7pt] (0.0,3.0)--(0.0,3.5);
+  \draw[blue!65!black,line width=1.5pt] (0.0,0.0)--(0.0,-2.0);
+  \draw[-{Stealth[length=4pt]},blue!65!black,line width=1.5pt] (0.0,-1.17)--(0.0,-0.83);
+  \draw[red!75!black,line width=1.1pt] (0.0,-2.0)--(1.0,-2.0);
+  \draw[-{Stealth[length=3pt]},red!75!black,line width=1.1pt] (0.4,-2.0)--(0.6,-2.0);
+  \draw[red!75!black,line width=0.7pt] (1.0,-2.0)--(1.5,-2.0);
+  \draw[blue!65!black,line width=0.7pt] (1.0,-2.0)--(1.0,-1.5);
+  \draw[blue!65!black,line width=0.7pt] (1.0,-2.0)--(1.0,-2.5);
+  \draw[red!75!black,line width=1.1pt] (0.0,-2.0)--(-1.0,-2.0);
+  \draw[-{Stealth[length=3pt]},red!75!black,line width=1.1pt] (-0.6,-2.0)--(-0.4,-2.0);
+  \draw[red!75!black,line width=0.7pt] (-1.0,-2.0)--(-1.5,-2.0);
+  \draw[blue!65!black,line width=0.7pt] (-1.0,-2.0)--(-1.0,-1.5);
+  \draw[blue!65!black,line width=0.7pt] (-1.0,-2.0)--(-1.0,-2.5);
+  \draw[blue!65!black,line width=1.1pt] (0.0,-2.0)--(0.0,-3.0);
+  \draw[-{Stealth[length=3pt]},blue!65!black,line width=1.1pt] (0.0,-2.6)--(0.0,-2.4);
+  \draw[red!75!black,line width=0.7pt] (0.0,-3.0)--(0.5,-3.0);
+  \draw[red!75!black,line width=0.7pt] (0.0,-3.0)--(-0.5,-3.0);
+  \draw[blue!65!black,line width=0.7pt] (0.0,-3.0)--(0.0,-3.5);
+  \fill[black] (0.0,0.0) circle (2.8pt);
+  \fill[black] (2.0,0.0) circle (2.0pt);
+  \fill[black] (3.0,0.0) circle (1.4pt);
+  \fill[black] (3.5,0.0) circle (1.0pt);
+  \fill[black] (3.0,0.5) circle (1.0pt);
+  \fill[black] (3.0,-0.5) circle (1.0pt);
+  \fill[black] (2.0,1.0) circle (1.4pt);
+  \fill[black] (2.5,1.0) circle (1.0pt);
+  \fill[black] (1.5,1.0) circle (1.0pt);
+  \fill[black] (2.0,1.5) circle (1.0pt);
+  \fill[black] (2.0,-1.0) circle (1.4pt);
+  \fill[black] (2.5,-1.0) circle (1.0pt);
+  \fill[black] (1.5,-1.0) circle (1.0pt);
+  \fill[black] (2.0,-1.5) circle (1.0pt);
+  \fill[black] (-2.0,0.0) circle (2.0pt);
+  \fill[black] (-3.0,0.0) circle (1.4pt);
+  \fill[black] (-3.5,0.0) circle (1.0pt);
+  \fill[black] (-3.0,0.5) circle (1.0pt);
+  \fill[black] (-3.0,-0.5) circle (1.0pt);
+  \fill[black] (-2.0,1.0) circle (1.4pt);
+  \fill[black] (-1.5,1.0) circle (1.0pt);
+  \fill[black] (-2.5,1.0) circle (1.0pt);
+  \fill[black] (-2.0,1.5) circle (1.0pt);
+  \fill[black] (-2.0,-1.0) circle (1.4pt);
+  \fill[black] (-1.5,-1.0) circle (1.0pt);
+  \fill[black] (-2.5,-1.0) circle (1.0pt);
+  \fill[black] (-2.0,-1.5) circle (1.0pt);
+  \fill[black] (0.0,2.0) circle (2.0pt);
+  \fill[black] (1.0,2.0) circle (1.4pt);
+  \fill[black] (1.5,2.0) circle (1.0pt);
+  \fill[black] (1.0,2.5) circle (1.0pt);
+  \fill[black] (1.0,1.5) circle (1.0pt);
+  \fill[black] (-1.0,2.0) circle (1.4pt);
+  \fill[black] (-1.5,2.0) circle (1.0pt);
+  \fill[black] (-1.0,2.5) circle (1.0pt);
+  \fill[black] (-1.0,1.5) circle (1.0pt);
+  \fill[black] (0.0,3.0) circle (1.4pt);
+  \fill[black] (0.5,3.0) circle (1.0pt);
+  \fill[black] (-0.5,3.0) circle (1.0pt);
+  \fill[black] (0.0,3.5) circle (1.0pt);
+  \fill[black] (0.0,-2.0) circle (2.0pt);
+  \fill[black] (1.0,-2.0) circle (1.4pt);
+  \fill[black] (1.5,-2.0) circle (1.0pt);
+  \fill[black] (1.0,-1.5) circle (1.0pt);
+  \fill[black] (1.0,-2.5) circle (1.0pt);
+  \fill[black] (-1.0,-2.0) circle (1.4pt);
+  \fill[black] (-1.5,-2.0) circle (1.0pt);
+  \fill[black] (-1.0,-1.5) circle (1.0pt);
+  \fill[black] (-1.0,-2.5) circle (1.0pt);
+  \fill[black] (0.0,-3.0) circle (1.4pt);
+  \fill[black] (0.5,-3.0) circle (1.0pt);
+  \fill[black] (-0.5,-3.0) circle (1.0pt);
+  \fill[black] (0.0,-3.5) circle (1.0pt);
+  \node[font=\scriptsize,below left,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (0.0,0.0) {$1$};
+  \node[font=\scriptsize,below,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (2.0,0.0) {$a$};
+  \node[font=\scriptsize,below,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (3.0,0.0) {$aa$};
+  \node[font=\scriptsize,above left,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (2.0,1.0) {$ab$};
+  \node[font=\scriptsize,below left,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (2.0,-1.0) {$ab^{-1}$};
+  \node[font=\scriptsize,below,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (-2.0,0.0) {$a^{-1}$};
+  \node[font=\scriptsize,above right,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (-2.0,1.0) {$a^{-1}b$};
+  \node[font=\scriptsize,below right,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (-2.0,-1.0) {$a^{-1}b^{-1}$};
+  \node[font=\scriptsize,left,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (0.0,2.0) {$b$};
+  \node[font=\scriptsize,left,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (0.0,-2.0) {$b^{-1}$};
+  \node[font=\scriptsize,mkc,anchor=west,align=left,fill=white,fill opacity=0.92,text opacity=1,inner sep=1.5pt] at (2.25,1.45) {the shaded path is\\the word $ab$: right, then up};
+  \node[font=\scriptsize,anchor=north,align=center] at (0,-3.85) {red edges: multiply by $a$, arrowheads pointing rightwards\\blue edges: multiply by $b$, arrowheads pointing upwards};
+\end{tikzpicture}}
+
+\newcommand{\figmapone}{%
+\begin{tikzpicture}[scale=1.0,font=\scriptsize,>={Stealth[length=4.5pt]},
+  box/.style={draw=big,thick,rounded corners=2pt,fill=big!6,align=center,inner sep=3pt},
+  hub/.style={draw=mkc,line width=1pt,rounded corners=3pt,fill=mkc!10,align=center,inner sep=4pt},
+  ex/.style={draw=gray!70!black,thick,rounded corners=2pt,fill=gray!7,align=center,inner sep=3pt},
+  lab/.style={font=\tiny,mkc,align=center,inner sep=1.5pt}]
+% top row
+\node[box,text width=64pt] (obj) at (1.9,10.6) {\textbf{a geometric object}\\ a cube, an $n$-gon, a marked line, a grid, a tree};
+\node[box,text width=64pt] (sym) at (6.9,10.6) {\textbf{its symmetries}\\ the motions that leave it looking the same};
+\node[hub,text width=76pt] (grp) at (12.3,10.6) {\textbf{A GROUP}\\ a set, a rule on it, and three promises: identity, inverses, associativity};
+\draw[->,very thick,mkc] (obj)--node[lab,above]{collect the\\rigid motions}(sym);
+\draw[->,very thick,mkc] (sym)--node[lab,above]{check the\\three axioms}(grp);
+\node[ex,text width=76pt] (cast) at (12.3,8.4) {\textbf{the cast}\\ $D_n$, $S_n$, $\Z/n\Z$, $\Z$, $\Z^2$, $\GL(n,\R)$, $F_2$};
+\draw[<->,thick,gray!70!black] (grp)--node[lab,right,inner sep=2pt,text=gray!60!black,fill=white,fill opacity=0.93,text opacity=1]{instances}(cast);
+% cluster headings
+% left cluster
+\node[box,text width=72pt] (gen) at (3.6,6.5) {\textbf{generating set} $S$};
+\node[box,text width=72pt] (wrd) at (3.6,5.2) {\textbf{words} in $S$\\ every element is one};
+\node[box,text width=72pt] (rel) at (3.6,3.8) {\textbf{relations}\\ which words are equal};
+\node[box,text width=72pt] (pre) at (3.6,2.5) {\textbf{presentation} $\langle S\mid R\rangle$};
+\draw[->,thick,mkc] (gen)--(wrd); \draw[->,thick,mkc] (wrd)--(rel); \draw[->,thick,mkc] (rel)--(pre);
+% right cluster
+\node[box,text width=76pt] (hom) at (10.8,5.6) {\textbf{homomorphism}\\ $f(gh)=f(g)f(h)$};
+\node[box,text width=76pt] (iso) at (14.2,5.6) {\textbf{isomorphism}\\ same group, new name};
+\node[box,text width=76pt] (ker) at (10.8,3.8) {\textbf{kernel}\\ a normal subgroup};
+\node[box,text width=76pt] (quo) at (14.2,3.8) {\textbf{quotient} $G/N$\\ e.g. $\Z/n\Z$};
+\draw[->,thick,mkc] (hom)--node[lab,above,inner sep=2pt,fill=white,fill opacity=0.93,text opacity=1]{bijective}(iso);
+\draw[->,thick,mkc] (hom)--node[lab,left,inner sep=2pt,fill=white,fill opacity=0.93,text opacity=1]{what it kills}(ker);
+\draw[->,thick,mkc] (ker)--node[lab,above,inner sep=2pt,fill=white,fill opacity=0.93,text opacity=1]{divide out}(quo);
+% from the hub into the clusters
+\draw[->,very thick,mkc] (grp) to[out=195,in=95] node[lab,above left,pos=0.62,text width=76pt,align=right,inner sep=2pt,fill=white,fill opacity=0.93,text opacity=1]{\textbf{to describe one group:} choose a few elements}(gen);
+\draw[->,very thick,mkc] (cast) to[out=250,in=60] node[lab,right,pos=0.46,text width=74pt,align=left,inner sep=2pt,fill=white,fill opacity=0.93,text opacity=1]{\textbf{to compare two groups:} the maps between them}(hom);
+% bottom
+\node[hub,text width=104pt] (cay) at (7.6,0.7) {\textbf{the Cayley graph} $\Gamma(G,S)$\\ one dot per element, one coloured arrow per generator};
+\draw[->,very thick,mkc] (pre) to[out=290,in=160] node[lab,above right,pos=0.5,inner sep=2pt,fill=white,fill opacity=0.93,text opacity=1]{draw it}(cay);
+\draw[->,very thick,dashed,why,rounded corners=6pt] (cay.west) -- (-1.0,0.7) -- (-1.0,10.6) -- (obj.west);
+\node[lab,text=why,align=center,anchor=east,text width=58pt] at (-1.15,5.8) {the next office hour proves that the symmetries of that graph are $G$ again};
+\end{tikzpicture}}
+

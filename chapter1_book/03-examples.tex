@@ -1,0 +1,272 @@
+\section{A gallery of groups}
+
+Definition~\ref{def:group} is short, so the way to make it mean something is to run it against
+examples until the pattern is automatic. For each example below the routine is the same: say what
+the \emph{set} is, say what the \emph{rule} is, check closure and the three axioms, and only then
+collect the properties that make the example worth knowing.
+
+\subsection{Dihedral groups: symmetries of a polygon}\label{sec:dihedral}
+
+\emph{The set.} All rigid motions of a regular $n$-gon in the plane that carry it onto itself. There
+are $2n$ of them: $n$ rotations, by multiples of $2\pi/n$ including the identity, and $n$
+reflections. The group is written $D_n$.
+
+\emph{The rule.} Do one, then the other, exactly as for the cube.
+
+Reflections are allowed here, and it is worth being clear why this is not inconsistent with
+Section~\ref{sec:def}. A flat polygon lives in the plane but sits in space, so you can pick it up,
+turn it over and put it back; the motion is something your hands can do. For the solid cube there
+is no such trick.
+
+\subsubsection*{Closure}
+
+Two reflections in a row are not a reflection, but they are certainly a symmetry, so nothing leaves
+the set. The same picture makes a second point that will matter later: the order of the two
+reflections changes the answer.
+
+\sfigs{0.86}{Closure in $D_5$, and the failure of commutativity. Reflecting in the axis of $t$ and then in
+the axis of $s$ gives one click of rotation anticlockwise; doing the two reflections in the other
+order gives one click clockwise. So $st\neq ts$.}{\figXq}
+
+\subsubsection*{Identity and inverses}
+
+``Leave the polygon alone'' is the rotation by $0^\circ$. A rotation is undone by turning back, which
+is the same as turning forward the rest of the way, so the inverse of one click is four clicks when
+$n=5$. A reflection undoes itself: $t^2=1$, hence $t\inv=t$.
+
+\sfigs{0.86}{Identity in $D_5$: start, after the reflection $t$, then after doing nothing.}{\figXr}
+
+\sfigs{0.86}{Inverses in $D_5$: one click of rotation, then four more clicks, returns every corner to its
+starting position, so $(st)\inv=(st)^4$.}{\figXs}
+
+\subsubsection*{Associativity}
+
+Free of charge, by the remark on page~\pageref{def:group}: the elements are functions on the polygon
+and the rule is composition. So a word like $tst$ has exactly one meaning.
+
+\subsubsection*{The extra properties}
+
+$|D_n|=2n$, and $D_n$ is not abelian for $n\ge3$. The two reflections $s$ and $t$ drawn in the
+figures \defn{generate} the group, meaning every element is a product of copies of $s$ and $t$.
+
+\sfig{\label{fig:pentaxes}The two reflection axes of $s$ and $t$ for the pentagon. They meet at the
+angle $\pi/n$, which is $36^\circ$ when $n=5$, and that is what makes the product $st$ a single
+click of rotation.}{\figpent}
+
+\begin{why}
+\emph{Why $st$ is one click.} Reflecting in two lines that meet at angle $\theta$ is the same as
+rotating by $2\theta$ about the point where they cross. The axes of $s$ and $t$ meet at $\pi/n$, so
+$st$ is the rotation by $2\pi/n$: one click. Consequently $(st)^m$ is $m$ clicks, which gives all
+$n$ rotations as $m$ runs from $0$ to $n-1$, and $(st)^n=1$.
+\end{why}
+
+\begin{why}
+\emph{Why every reflection is $s(st)^m$.} A reflection followed by a rotation is again a reflection,
+in a different axis; and since $s\cdot s=1$, the word $s(st)^m$ can be rewritten as $t(st)^{m-1}$.
+Running $m$ through $0,\dots,n-1$ produces $n$ distinct reflections, whose axes are $\pi/n$ apart.
+Together with the rotations this is $2n$ elements, which is all of them.
+\end{why}
+
+Here is the whole group $D_5$ written out, both as pictures and as words.
+
+\sfig{The ten symmetries of a regular pentagon. Top row: the five rotations, $(st)^m$ being $m$
+clicks of $72^\circ$. Bottom row: the five reflections, with their axes dashed. Each circled number
+shows where that corner has been sent.}{\figXv}
+
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+word in $s,t$ & type & what it does & corners $1\,2\,3\,4\,5$ go to\\
+\midrule
+$1$ & rotation & by $0^\circ$ (0 clicks) & 1 2 3 4 5\\
+$st$ & rotation & by $72^\circ$ (1 click) & 2 3 4 5 1\\
+$(st)^2$ & rotation & by $144^\circ$ (2 clicks) & 3 4 5 1 2\\
+$(st)^3$ & rotation & by $216^\circ$ (3 clicks) & 4 5 1 2 3\\
+$(st)^4$ & rotation & by $288^\circ$ (4 clicks) & 5 1 2 3 4\\
+\midrule
+$s$ & reflection & axis at $126^\circ$ from horizontal & 2 1 5 4 3\\
+$t$ & reflection & axis at $90^\circ$ from horizontal & 1 5 4 3 2\\
+$tst$ & reflection & axis at $54^\circ$ from horizontal & 5 4 3 2 1\\
+$tstst$ & reflection & axis at $18^\circ$ from horizontal & 4 3 2 1 5\\
+$tststst$ & reflection & axis at $-18^\circ$ from horizontal & 3 2 1 5 4\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{pitfall}
+``$s$ and $t$ generate $D_n$'' does not mean every element \emph{is} $s$ or $t$. It means every
+element is a product of copies of them. Inverses need not be mentioned here because $s\inv=s$ and
+$t\inv=t$, but in general a generating set is allowed to use inverses as well.
+\end{pitfall}
+
+The rotations of $D_n$, taken alone, are closed under the rule and form a group in their own right:
+a \defn{subgroup} of $D_n$, of size $n$. The reflections alone are not, since the product of two of
+them is a rotation. Finally, the three facts $s^2=1$, $t^2=1$ and $(st)^n=1$ turn out to determine
+$D_n$ completely, in a sense made precise in Section~\ref{sec:presentations}.
+
+\sfig{The eight symmetries of a square, which is $D_4$. Corners are numbered $1,2,3,4$ and each
+picture shows where the numbers end up; $r$ is a quarter turn and $s$ a reflection, and the other
+three reflections are $sr$, $sr^2$ and $sr^3$.}{\figsquares}
+
+\sfig{The smallest interesting case, $D_3$: three rotations and three reflections of an equilateral
+triangle, six symmetries in all.}{\figtriangle}
+
+\begin{tryit}
+Multiply two rows of the table by composing their corner maps, right-hand factor first. For example
+$t\cdot s$: first $s$ sends $1\,2\,3\,4\,5$ to $2\,1\,5\,4\,3$, then $t$ acts on the result. You
+should land on $(st)^4$, the rotation by $-72^\circ$, confirming $ts=(st)\inv$. Then find which word
+is the reflection whose axis passes through corner $3$.
+\end{tryit}
+
+\subsection{Symmetric groups: rearranging $n$ things}\label{sec:symmetric}
+
+\emph{The set.} All bijections from $\{1,2,\dots,n\}$ to itself. Such a bijection is called a
+\defn{permutation}, and the set of them is written $S_n$.
+
+\emph{The rule.} Composition of functions, with the convention of Definition~\ref{def:order}: in
+$\tau\sigma$, the permutation $\sigma$ acts first.
+
+Nothing geometric has to be respected here, which is the point of the example. If you think of
+$\{1,\dots,n\}$ as $n$ loose points with no distances and no shape, then every rearrangement of them
+is a symmetry, and $S_n$ is the symmetry group of a set of $n$ points. In the pictures below the
+points are drawn as $n$ fixed \emph{slots}, and a coloured disc is the token currently in that slot.
+
+\subsubsection*{Closure, identity, inverses, associativity}
+
+A rearrangement followed by a rearrangement is a rearrangement, since every slot still ends up with
+exactly one token. The identity is the permutation that fixes every slot, written $1$ or $()$. The
+inverse of a permutation is obtained by sending every token back where it came from, which on the
+picture means retracing the strands. Associativity is again free, since the rule is composition.
+
+\sfigs{0.86}{Closure in $S_4$: after $\sigma$, then after $\tau$, the net effect is again a single
+rearrangement.}{\figXt}
+
+\sfigs{0.86}{Identity and inverses in $S_4$ in one picture: doing nothing after $\sigma$ changes no row,
+and applying $\sigma\inv$ instead brings every token home.}{\figXu}
+
+\subsubsection*{Cycle notation}
+
+Writing a permutation as a list of images is correct but unreadable. The standard notation records
+the \emph{loops} instead.
+
+\begin{defi}
+$(i_1\,i_2\,\dots\,i_k)$ denotes the permutation sending $i_1$ to $i_2$, $i_2$ to $i_3$, and so on
+round to $i_k$, which goes back to $i_1$; every number not listed is left alone. Such a permutation
+is a \defn{$k$-cycle}, and a $2$-cycle is called a \defn{transposition} or a \defn{swap}.
+Permutations written side by side, as in $(1\,2\,4)(3\,5)$, are to be multiplied.
+\end{defi}
+
+\sfigs{0.86}{The permutation $(1\,2\,4)(3\,5)$ drawn as arrows on the six numbers. Each cycle is a closed
+loop, disjoint cycles are loops that share no points, and $6$ is left alone.}{\figXw}
+
+\begin{pitfall}
+The same cycle has several names: $(1\,2\,4)$, $(2\,4\,1)$ and $(4\,1\,2)$ are the same permutation,
+because the notation lists a loop starting from a chosen point and going round once. The starting
+point is a choice; the loop is not.
+\end{pitfall}
+
+\sfigs{0.86}{One loop, three names.}{\figXx}
+
+\subsubsection*{Multiplying permutations}
+
+There is one reliable method: push each number through both factors, remembering that the
+right-hand factor acts first. Take $(2\,6)\cdot(1\,2\,4)(3\,5)$.
+
+\begin{center}
+\small
+\begin{tabular}{@{}cccc@{}}
+\toprule
+number & after $(1\,2\,4)(3\,5)$ & then after $(2\,6)$ & so the product sends\\
+\midrule
+1 & 2 & 6 & $1\to6$\\
+2 & 4 & 4 & $2\to4$\\
+3 & 5 & 5 & $3\to5$\\
+4 & 1 & 1 & $4\to1$\\
+5 & 3 & 3 & $5\to3$\\
+6 & 6 & 2 & $6\to2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Now read the answer off as loops. Start at $1$ and follow: $1\to6\to2\to4\to1$, which closes up as
+the $4$-cycle $(1\,6\,2\,4)$. The smallest unused number is $3$, and $3\to5\to3$ gives $(3\,5)$.
+Everything is accounted for, so
+\[(2\,6)\cdot(1\,2\,4)(3\,5)=(1\,6\,2\,4)(3\,5).\]
+
+\sfigs{0.86}{The answer as a loop picture.}{\figXz}
+
+The same computation can be watched happening to the tokens. Each row is a complete snapshot of
+where everybody is; the strands between rows show each token's move.
+
+\sfigs{0.86}{One factor at a time. Read the last row: token $1$ sits in slot $6$, token $6$ in slot $2$,
+token $2$ in slot $4$, token $4$ in slot $1$, and $3,5$ have swapped. That is the right-hand column
+of the table above.}{\figXaa}
+
+\begin{why}
+The table and the picture agree because they organise the same information differently. The table
+follows one \emph{number} at a time through both factors. The picture follows all six at once,
+one \emph{factor} at a time. Neither is more correct; the table is better for computing, the picture
+is better for seeing.
+\end{why}
+
+\begin{pitfall}
+Apply $(2\,6)$ first instead and the first line of the table becomes $1\to1\to2$, and the answer
+changes to $(1\,2\,4\,6)(3\,5)$, a different element. The order is a convention, but it is not
+optional: it is fixed by Definition~\ref{def:order}.
+\end{pitfall}
+
+\subsubsection*{Permutations as diagrams, and why swaps generate}
+
+Draw the slots as $n$ points on a top row and $n$ points on a bottom row, and join each token's
+start to its finish by a strand. Nudge the picture so that no two crossings happen at the same
+height. Reading the crossings from top to bottom expresses the permutation as a succession of swaps
+of \emph{neighbouring} numbers, one per crossing.
+
+\sfig{The permutation $(1\,2\,4)(3\,5)$ as a stack of five neighbour swaps. One row per height, one
+swap between consecutive rows.}{\figXab}
+
+\sfig{The bottom row of that stack, read as loops, is the permutation we started
+with.}{\figXac}
+
+\sfig{Stacking two diagrams multiplies the permutations. The factor performed first goes on top, so
+the picture reads downwards in the same order as the product $\,(2\,6)\cdot(1\,2\,4)(3\,5)$ is
+computed. Following a strand from the top row to the bottom row gives that number's image under the
+product.}{\figstack}
+
+\begin{prop}\label{prop:swapsgen}
+Every element of $S_n$ is a product of transpositions; in fact of transpositions of neighbours.
+\end{prop}
+
+\begin{proof}
+Given a permutation, sort the tokens into place by repeatedly swapping a neighbouring pair that is
+out of order, exactly as in the sorting algorithm the picture above performs. The process ends,
+because each swap reduces by one the number of pairs that are in the wrong relative order, and that
+number is finite. Reading the swaps in the order performed expresses the permutation as their
+product.
+\end{proof}
+
+\subsubsection*{The extra properties}
+
+$|S_n|=n!$, because the token in slot $1$ has $n$ possible destinations, the next has $n-1$, and so
+on. $S_n$ is not abelian once $n\ge3$: for instance $(1\,2)(2\,3)=(1\,2\,3)$ while
+$(2\,3)(1\,2)=(1\,3\,2)$. By Proposition~\ref{prop:swapsgen} it is generated by neighbour swaps, a
+generating set of size $n-1$.
+
+And by Theorem~\ref{thm:cubeS4}, $S_4$ is the rotation group of the cube. With cycle notation
+available, the dictionary at the end of Section~\ref{sec:def} can now be read properly: a quarter
+turn about a face axis is a $4$-cycle such as $(d_1\,d_2\,d_4\,d_3)$, a half turn about a face axis
+is a pair of swaps such as $(d_1\,d_4)(d_2\,d_3)$, a third of a turn about a diagonal is a $3$-cycle
+such as $(d_2\,d_4\,d_3)$, and a half turn about an edge axis is a single swap such as
+$(d_1\,d_2)$.
+
+\begin{rem}
+The full symmetry group of the cube, reflections included, has $48$ elements and is \emph{not}
+$S_4$. It is $S_4$ paired with a two-element group that records whether a motion is a mirror image.
+Products of groups are not needed in this chapter, but that is where the extra factor comes from.
+\end{rem}
+
+\begin{tryit}
+Compute $(1\,2\,3\,4)\cdot(1\,2\,3\,4)$ and $\big((1\,2)(3\,4)\big)\inv$. Then write
+$(1\,3)(2\,4)$ as a product of neighbour swaps, and check your answer by composing them.
+\end{tryit}
