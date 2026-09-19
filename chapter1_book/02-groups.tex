@@ -46,8 +46,61 @@ Nothing about it needs to resemble multiplying numbers. In particular \textbf{no
 Definition~\ref{def:group} says $gh=hg$}. Groups in which that happens to hold for every pair are
 called \defn{abelian}, and most of the interesting groups in this chapter are not.
 
+\subsubsection*{The rule is a function, and ``multiplication'' is only its name}
+
+Definition~\ref{def:group} says the multiplication is a \emph{function}, and it means that
+literally: a function from $G\times G$ to $G$. A function of that shape is called a \defn{binary
+operation} on $G$, and the phrase carries two facts that the bare word ``function'' does not. The
+inputs are an ordered pair of elements of $G$, and the output lands back in $G$. That second fact
+is closure, and it is the one most often violated by a natural-looking candidate.
+
+So the rule can be anything at all, provided it obeys the three axioms. Here is what it actually is
+in the examples of this chapter.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+group & the operation is & written\\
+\midrule
+cube rotations, $D_n$, $S_n$ & composition of functions & $gh$\\
+$\Z$, $\Z^2$ & addition & $g+h$\\
+$\Z/n\Z$ & add, then take the remainder & $g+h$\\
+$\GL(n,\R)$ & matrix multiplication & $gh$\\
+$F_2$ & write one string after the other, then cancel & $gh$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Only the matrix row is multiplication in the ordinary sense. Concatenating two strings and
+cancelling is about as far from multiplying numbers as an operation can get, and it is still a
+group.
+
+The name survives for three reasons. Writing the operation as juxtaposition, $gh$, is as compact as
+notation gets, and it hands you $1$ for the identity, $g\inv$ for the inverse and $g^n$ for
+repetition without inventing anything. The first groups ever studied were substitutions and
+numbers, where the operation genuinely was composition or multiplication, and the notation outlived
+those examples. And a group carries only \emph{one} operation, so there is no addition alongside it
+to be confused with. A set with two compatible operations is a richer object, a ring or a field,
+and that is a different subject.
+
+One convention is worth knowing before you meet it. Additive notation, with $0$ for the identity
+and $-g$ for the inverse, is reserved almost universally for abelian groups; nobody writes a
+non-commutative operation with a plus sign. So the integers get $+$ and the symmetric group gets
+juxtaposition, and that choice quietly tells the reader the group is commutative before any axiom
+has been checked.
+
 \sfig{The anatomy of the definition: a set, a rule on that set whose answers stay inside the set,
 and three promises about the rule.}{\figXj}
+
+\begin{rem}
+The word \emph{function} turns up at two levels here, and conflating them causes trouble. The
+\emph{operation} is a function of two variables, taking $(g,h)$ to $gh$. In a symmetry group the
+\emph{elements} are themselves functions, each one a map from the object to itself. When both
+happen at once, the operation is composition of the elements, and that is exactly why associativity
+costs nothing for the cube, for $D_n$ and for $S_n$: composing functions is associative whatever
+the functions are.
+\end{rem}
 
 \begin{rem}
 The requirement that $gh$ lie back in $G$ is often called \defn{closure}. In
@@ -64,6 +117,24 @@ matrix. Many books write $e$ instead, from the German \emph{Einselement}. Likewi
 name for the element that undoes $g$, and it is not ``$1/g$'' unless the group happens to consist
 of numbers under ordinary multiplication.
 \end{rem}
+
+\begin{rem}
+Insisting that the rule be a function is not a formality. It demands that every ordered pair gets
+an answer, and that each pair gets exactly \emph{one} answer, so that the result cannot depend on
+how you carry the rule out. That second demand is where real work goes twice in this chapter. In
+the free group the rule is ``write one word after the other, then cancel'', and the cancelling can
+be done in several orders; until every order is shown to reach the same reduced word, the recipe is
+not a function and there is no group (Section~\ref{sec:free}). The same demand bites again for
+quotients, where the rule on cosets looks fine until you notice the answer can depend on which
+representative you pick, and becomes a function only when the subgroup is normal
+(Section~\ref{sec:quot}).
+\end{rem}
+
+\begin{tryit}
+To see how arbitrary the rule may be, define $x*y=x+y+1$ on the real numbers. Check that it is
+associative, find its identity and the inverse of $x$, and conclude that it is a group. It is
+neither addition nor multiplication, and yet it is a relabelled copy of $\R$ under addition.
+\end{tryit}
 
 \subsection{The three axioms on the cube}
 

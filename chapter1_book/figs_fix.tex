@@ -356,44 +356,30 @@
 \end{scope}
   \draw[-{Stealth[length=5pt]},very thick,mkc] (5.4,-13.85) -- node[above,font=\scriptsize,mkc,align=center] {turn by\\$60^\circ$} (7.0,-13.85);
 \begin{scope}[shift={(7.6,-16.0)}]
-  \draw[thin,gray!60] (2.15,-0.002)--(3.67,1.34);
-  \draw[thin,gray!60] (2.15,-0.002)--(-0.007,1.34);
-  \draw[thin,gray!60] (2.15,-0.002)--(2.787,1.818);
-  \draw[thin,gray!60] (3.67,1.34)--(4.307,3.16);
-  \draw[thin,gray!60] (-0.007,1.34)--(0.63,3.16);
-  \draw[thin,gray!60] (2.787,1.818)--(4.307,3.16);
-  \draw[thin,gray!60] (2.787,1.818)--(0.63,3.16);
-  \draw[thin,gray!60] (4.307,3.16)--(2.15,4.502);
-  \draw[thin,gray!60] (0.63,3.16)--(2.15,4.502);
-  \draw[thin,gray!40,dashed] (3.67,1.34)--(1.513,2.682);
-  \draw[thin,gray!40,dashed] (-0.007,1.34)--(1.513,2.682);
-  \draw[thin,gray!40,dashed] (1.513,2.682)--(2.15,4.502);
-\end{scope}
-\begin{scope}[shift={(7.6,-16.0)}]
-  \draw[thick] (2.15,-0.002)--(3.67,1.34);
-  \draw[thick] (2.15,-0.002)--(-0.007,1.34);
-  \draw[thick] (2.15,-0.002)--(2.787,1.818);
-  \draw[thick] (3.67,1.34)--(4.307,3.16);
-  \draw[thick] (-0.007,1.34)--(0.63,3.16);
-  \draw[thick] (2.787,1.818)--(4.307,3.16);
-  \draw[thick] (2.787,1.818)--(0.63,3.16);
-  \draw[thick] (4.307,3.16)--(2.15,4.502);
-  \draw[thick] (0.63,3.16)--(2.15,4.502);
-  \draw[thick,dashed,gray] (3.67,1.34)--(1.513,2.682);
-  \draw[thick,dashed,gray] (-0.007,1.34)--(1.513,2.682);
-  \draw[thick,dashed,gray] (1.513,2.682)--(2.15,4.502);
+  \draw[thick] (2.150,-0.002)--(4.307,1.659);
+  \draw[thick,dashed,gray] (2.150,-0.002)--(1.513,1.181);
+  \draw[thick] (2.150,-0.002)--(0.630,1.659);
+  \draw[thick] (4.307,1.659)--(3.670,2.842);
+  \draw[thick] (4.307,1.659)--(2.787,3.319);
+  \draw[thick,dashed,gray] (1.513,1.181)--(3.670,2.842);
+  \draw[thick,dashed,gray] (1.513,1.181)--(-0.007,2.842);
+  \draw[thick] (0.630,1.659)--(2.787,3.319);
+  \draw[thick] (0.630,1.659)--(-0.007,2.842);
+  \draw[thick] (3.670,2.842)--(2.150,4.502);
+  \draw[thick] (2.787,3.319)--(2.150,4.502);
+  \draw[thick] (-0.007,2.842)--(2.150,4.502);
   \draw[very thick,mkc] (2.15,-0.7)--(2.15,5.3);
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.15,-0.002) {$A$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (1.513,1.181) {$B$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (-0.007,2.841) {$C$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (0.63,1.659) {$D$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (4.307,1.659) {$E$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (3.67,2.841) {$F$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.15,4.502) {$G$};
-  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (2.787,3.319) {$H$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=red!80!black!30,draw=red!80!black,thick,text=black] at (2.150,-0.002) {$A$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=orange!95!black!30,draw=orange!95!black,thick,text=black] at (4.307,1.659) {$B$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=green!60!black!30,draw=green!60!black,thick,text=black] at (3.670,2.842) {$C$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=blue!70!black!30,draw=blue!70!black,thick,text=black] at (1.513,1.181) {$D$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=violet!30,draw=violet,thick,text=black] at (0.630,1.659) {$E$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=cyan!65!black!30,draw=cyan!65!black,thick,text=black] at (2.787,3.319) {$F$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=brown!80!black!30,draw=brown!80!black,thick,text=black] at (2.150,4.502) {$G$};
+  \node[font=\scriptsize\bfseries,circle,inner sep=1pt,minimum size=11pt,fill=magenta!75!black!30,draw=magenta!75!black,thick,text=black] at (-0.007,2.842) {$H$};
 \end{scope}
   \node[font=\scriptsize,anchor=north west] at (-0.6,-16.7) {before};
-  \node[font=\scriptsize,anchor=north west] at (7.0,-16.7) {after $60^\circ$: red cube not on the grey one};
+  \node[font=\scriptsize,anchor=north west] at (7.0,-16.7) {after $60^\circ$: the cube itself has moved, unlike the rows above};
   
 \end{tikzpicture}}
 
